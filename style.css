@@ -2,9 +2,9 @@
 * {
     font-weight: bold;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    margin: 0; /* Ensure no extra margins for any element */
-    padding: 0; /* Ensure no extra padding for any element */
-    box-sizing: border-box; /* Make sure padding and borders are included in the element's width and height */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 .buy {
@@ -26,7 +26,7 @@ a {
     margin-left: 5px;
 }
 
-.buy a:last-child a:hover {
+.buy a:last-child:hover {
     background-color: green;
     transition: all .45s ease;
 }
@@ -47,7 +47,7 @@ a {
 .dotnet {
     text-align: center;
     list-style-type: none;
-    margin-bottom: 0; /* Remove any margin at the bottom */
+    margin-bottom: 0;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -83,7 +83,6 @@ a {
     font-size: 14px;
 }
 
-/* Ensure no margins or extra space for body */
 body {
     margin: 0;
     padding: 0;
@@ -96,16 +95,17 @@ ul {
     justify-content: center;
     color: white;
     background-color: black;
-    position: fixed; /* Sticky */
+    position: fixed;
     bottom: 0;
     width: 100%;
     height: 60px;
     line-height: 60px;
     padding: 0;
-    margin: 0; /* Remove bottom margin */
+    margin: 0;
     z-index: 1000;
 }
 
+/* Ensure sticky bar stays on the bottom on mobile devices */
 @media (max-width: 600px) {
     ul {
         height: 50px; /* Adjust height for mobile */
@@ -113,6 +113,13 @@ ul {
     }
     .dotnet li {
         font-size: 12px; /* Reduce font size on mobile */
+    }
+
+    /* Ensure the nav stays attached to the bottom on mobile */
+    body {
+        min-height: 100vh; /* Ensure body height covers full viewport */
+        position: relative;
+        padding-bottom: 60px; /* Adjust padding to account for the fixed nav */
     }
 }
 
