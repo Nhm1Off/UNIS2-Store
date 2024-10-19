@@ -3,9 +3,6 @@
     <title>UNIS2 Store</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
 </head>
 <body>
     <div class="header">
@@ -54,6 +51,62 @@
         </div>
     </div>
 
-    <!-- Сюди вставляємо скрипт JS -->
-    <script src="./script.js"></script>
+    <!-- Скрипт для відправки даних -->
+    <script>
+        const modal = document.getElementById("modal");
+        const openModalLinks = document.querySelectorAll(".open-modal");
+        const closeModal = document.querySelector(".close");
+        const orderForm = document.getElementById("orderForm");
+
+        openModalLinks.forEach(link => {
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+                modal.style.display = "block";
+            });
+        });
+
+        closeModal.addEventListener("click", function () {
+            modal.style.display = "none";
+        });
+
+        window.addEventListener("click", function (event) {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+
+        orderForm.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            const surname = document.getElementById("surname").value;
+            const name = document.getElementById("name").value;
+            const phone = document.getElementById("phone").value;
+            const telegram = document.getElementById("telegram").value;
+
+            const orderData = {
+                surname: surname,
+                name: name,
+                phone: phone,
+                telegram: telegram
+            };
+
+            // Відправка даних на сервер
+            fetch("server-endpoint.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(orderData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                alert("Ваші дані відправлено!");
+                modal.style.display = "none";
+            })
+            .catch(error => {
+                console.error("Помилка відправки:", error);
+                alert("Не вдалося відправити дані.");
+            });
+        });
+    </script>
 </body>
