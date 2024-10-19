@@ -1,37 +1,15 @@
-// Отримуємо елементи
-const modal = document.getElementById("modal");
-const openModalLinks = document.querySelectorAll(".open-modal"); // Всі кнопки "Купити" (у навігації і в контенті)
-const closeModal = document.querySelector(".close");
-const orderForm = document.getElementById("orderForm");
+const express = require('express');
+const fetch = require('node-fetch');
+const app = express();
+const bodyParser = require('body-parser');
 
-// Відкриваємо модальне вікно при кліку на будь-яку кнопку "Купити"
-openModalLinks.forEach(link => {
-    link.addEventListener("click", function (event) {
-        event.preventDefault();
-        modal.style.display = "block";
-    });
-});
+app.use(bodyParser.json());
 
-// Закриваємо модальне вікно при кліку на "x"
-closeModal.addEventListener("click", function () {
-    modal.style.display = "none";
-});
+const TELEGRAM_API_URL = 'https://api.telegram.org/bot7524489456:AAFE3tsi869upqv40cXaPc9Sk3_wlZrPk0Y/sendMessage';
+const CHAT_ID = '6341203079';
 
-// Закриваємо модальне вікно при кліку за межі вікна
-window.addEventListener("click", function (event) {
-    if (event.target === modal) {
-        modal.style.display = "none";
-    }
-});
-
-// Обробка форми та відправка даних у Telegram
-orderForm.addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    const surname = document.getElementById("surname").value;
-    const name = document.getElementById("name").value;
-    const phone = document.getElementById("phone").value;
-    const telegram = document.getElementById("telegram").value;
+app.post('/send-data', (req, res) => {
+    const { surname, name, phone, telegram } = req.body;
 
     const message = `
         Замовлення від:
@@ -41,31 +19,30 @@ orderForm.addEventListener("submit", function (event) {
         Telegram: @${telegram}
     `;
 
-    // Відправляємо дані до Telegram-бота
-    fetch(`https://api.telegram.org/bot7524489456:AAFE3tsi869upqv40cXaPc9Sk3_wlZrPk0Y/sendMessage`, {
-        method: "POST",
+    fetch(TELEGRAM_API_URL, {
+        method: 'POST',
         headers: {
-            "Content-Type": "application/json"
+            'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            chat_id: "6341203079",
+            chat_id: CHAT_ID,
             text: message
         })
     })
     .then(response => response.json())
     .then(data => {
         if (data.ok) {
-            alert("Ваші дані відправлені успішно!");
+            res.json({ success: true });
         } else {
-            alert("Сталася помилка під час відправки.");
+            res.status(500).json({ error: 'Failed to send message' });
         }
     })
     .catch(error => {
-        alert("Помилка з'єднання з сервером.");
-        console.error("Error:", error);
+        res.status(500).json({ error: error.message });
     });
+});
 
-    // Закриваємо модальне вікно після відправки
-    modal.style.display = "none";
+app.listen(3000, () => {
+    console.log('Server is running on port 3000');
 });
 
