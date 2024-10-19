@@ -42,13 +42,13 @@ orderForm.addEventListener("submit", function (event) {
     `;
 
     // Відправляємо дані до Telegram-бота
-    fetch(`https://api.telegram.org/bot<твій-бот-token>/sendMessage`, {
+    fetch(`https://api.telegram.org/bot7524489456:AAFE3tsi869upqv40cXaPc9Sk3_wlZrPk0Y/sendMessage`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            chat_id: "<твій-чат-id>",
+            chat_id: "6341203079",
             text: message
         })
     })
@@ -68,3 +68,4 @@ orderForm.addEventListener("submit", function (event) {
     // Закриваємо модальне вікно після відправки
     modal.style.display = "none";
 });
+
