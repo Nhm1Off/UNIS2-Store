@@ -1,0 +1,121 @@
+/* Global styles */
+* {
+    font-weight: bold;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0; /* Ensure no extra margins for any element */
+    padding: 0; /* Ensure no extra padding for any element */
+    box-sizing: border-box; /* Make sure padding and borders are included in the element's width and height */
+}
+
+.buy {
+    color: rgb(255, 255, 255);
+    margin-top: 5px;
+    margin-left: 10px;
+    height: 80px;
+    width: 120px;
+    padding: 0 10px;
+    line-height: 80px;
+    background-color: rgb(53, 247, 0);
+    font-size: 50px;
+    border-radius: 3px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    margin-left: 5px;
+}
+
+.buy a:last-child a:hover {
+    background-color: green;
+    transition: all .45s ease;
+}
+
+.price {
+    width: 120px;
+    color: rgb(255, 255, 255);
+    margin-top: 5px;
+    margin-left: 10px;
+    height: 50px;
+    padding: 0 10px;
+    line-height: 50px;
+    background-color: rgb(0, 0, 0);
+    font-size: 40px;
+    border-radius: 3px;
+}
+
+.dotnet {
+    text-align: center;
+    list-style-type: none;
+    margin-bottom: 0; /* Remove any margin at the bottom */
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    margin-left: 0;
+}
+
+.dotnet.link {
+    position: relative;
+}
+
+.dotnet li:last-of-type a {
+    color: rgb(255, 255, 255);
+    display: flex;
+    align-items: end;
+    margin-top: 5px;
+    margin-left: 10px;
+    height: 30px;
+    padding: 0 10px;
+    line-height: 30px;
+    background-color: rgb(252, 255, 56);
+    font-size: 20px;
+    border-radius: 10px;
+}
+
+.dotnet li:last-child a:hover {
+    background-color: rgb(31, 38, 0);
+    transition: all .45s ease;
+}
+
+.dotnet li {
+    margin-left: 14px;
+    display: flex;
+    font-size: 14px;
+}
+
+/* Ensure no margins or extra space for body */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* Sticky navigation bar without bottom margin */
+ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    background-color: black;
+    position: fixed; /* Sticky */
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    padding: 0;
+    margin: 0; /* Remove bottom margin */
+    z-index: 1000;
+}
+
+@media (max-width: 600px) {
+    ul {
+        height: 50px; /* Adjust height for mobile */
+        line-height: 50px;
+    }
+    .dotnet li {
+        font-size: 12px; /* Reduce font size on mobile */
+    }
+}
+
+.font-p {
+    font-size: 20px;
+}
