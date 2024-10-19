@@ -1,57 +1,59 @@
 <!DOCTYPE html>
-    <head>
-        <title>UNIS2 Store</title>
-        <link rel="stylesheet" href="style.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-        <div class="header">
-            <div>
-            <ul class="dotnet">
-                <li>
-                    <a class="link" href="course.html">В Кошик</a>
-                </li>
-                <li>
-                    <p class="font-p">140 ₴</p>
-                </li>
-                <li>
-                    <a class="link open-modal" href="">Купити</a>
-                </li>
-            </ul>
-            </div>
+<head>
+    <title>UNIS2 Store</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"></script>
+</head>
+<body>
+    <div class="header">
+        <div>
+        <ul class="dotnet">
+            <li>
+                <a class="link" href="course.html">В Кошик</a>
+            </li>
+            <li>
+                <p class="font-p">140 ₴</p>
+            </li>
+            <li>
+                <a class="link open-modal" href="">Купити</a>
+            </li>
+        </ul>
         </div>
+    </div>
 
+    <h2>Аккумуляторна Лампа (Micro-USB)</h2>
+    <img class="fit-picture" src="https://futurio.com.ua/content/images/10/800x800l80mc0/svitlodiodna-led-lampa-60-vt-usb-43930477908845.webp" width="400px" alt="Аккумуляторна Лампа" />
+    <br> <br>
+    <div class="div-buy">
+        <a class="buy" href="">Купити</a>
+    </div>
+    <p class="price">140 ₴</p>
 
-        <h2>Аккумуляторна Лампа (Micro-USB)</h2>
-        <img class="fit-picture" src="https://futurio.com.ua/content/images/10/800x800l80mc0/svitlodiodna-led-lampa-60-vt-usb-43930477908845.webp" width="400px" alt="Аккумуляторна Лампа" />
-        <br> <br>
-        <div class="div-buy">
-            <a class="buy" href="">Купити</a>
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Введіть ваші дані</h2>
+            <form id="orderForm">
+                <label for="surname">Прізвище:</label>
+                <input type="text" id="surname" name="surname" required><br><br>
+                
+                <label for="name">Ім'я:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                
+                <label for="phone">Номер телефону:</label>
+                <input type="tel" id="phone" name="phone" required><br><br>
+                
+                <label for="telegram">Юзернейм в Telegram:</label>
+                <input type="text" id="telegram" name="telegram" required><br><br>
+                
+                <button type="submit">Відправити</button>
+            </form>
         </div>
-        <p class="price">140 ₴</p>
+    </div>
 
-        <div id="modal" class="modal">
-            <div class="modal-content">
-                <span class="close">&times;</span>
-                <h2>Введіть ваші дані</h2>
-                <form id="orderForm">
-                    <label for="surname">Прізвище:</label>
-                    <input type="text" id="surname" name="surname" required><br><br>
-                    
-                    <label for="name">Ім'я:</label>
-                    <input type="text" id="name" name="name" required><br><br>
-                    
-                    <label for="phone">Номер телефону:</label>
-                    <input type="tel" id="phone" name="phone" required><br><br>
-                    
-                    <label for="telegram">Юзернейм в Telegram:</label>
-                    <input type="text" id="telegram" name="telegram" required><br><br>
-                    
-                    <button type="submit">Відправити</button>
-                </form>
-            </div>
-        </div>
-        
-
-        <script src="./script.js"></script>
-    </body>
+    <!-- Сюди вставляємо скрипт JS -->
+    <script src="./script.js"></script>
+</body>
