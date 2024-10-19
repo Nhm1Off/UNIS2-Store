@@ -15,7 +15,7 @@
                     <p class="font-p">140 ₴</p>
                 </li>
                 <li>
-                    <a class="link" href="">Купити</a>
+                    <a class="link open-modal" href="">Купити</a>
                 </li>
             </ul>
             </div>
@@ -29,6 +29,29 @@
             <a class="buy" href="">Купити</a>
         </div>
         <p class="price">140 ₴</p>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Введіть ваші дані</h2>
+                <form id="orderForm">
+                    <label for="surname">Прізвище:</label>
+                    <input type="text" id="surname" name="surname" required><br><br>
+                    
+                    <label for="name">Ім'я:</label>
+                    <input type="text" id="name" name="name" required><br><br>
+                    
+                    <label for="phone">Номер телефону:</label>
+                    <input type="tel" id="phone" name="phone" required><br><br>
+                    
+                    <label for="telegram">Юзернейм в Telegram:</label>
+                    <input type="text" id="telegram" name="telegram" required><br><br>
+                    
+                    <button type="submit">Відправити</button>
+                </form>
+            </div>
+        </div>
+        
 
         <script src="./script.js"></script>
     </body>
