@@ -15,6 +15,71 @@
                 <p class="font-p">140 ₴</p>
             </li>
             <li>
+                <a a href="#" id="openPopup">Купити</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+
+    <h2>Аккумуляторна Лампа (Micro-USB)</h2>
+    <img class="fit-picture" src="https://futurio.com.ua/content/images/10/800x800l80mc0/svitlodiodna-led-lampa-60-vt-usb-43930477908845.webp" width="400px" alt="Аккумуляторна Лампа" />
+
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <h2>Для Покупки Напишіть Нам</h2>
+        <div class="btn-buy">
+            <a href="https://t.me/unis2_organization">Наш Telegram</a>
+        </div>
+        <div class="button-close">
+            <button id="closePopup">Закрити</button>
+        </div>
+    </div>
+
+    <script>
+        // Отримуємо елементи
+        const popup = document.getElementById('popup');
+        const overlay = document.getElementById('overlay');
+        const openPopup = document.getElementById('openPopup');
+        const closePopup = document.getElementById('closePopup');
+
+        // Функція відкриття спливаючого вікна
+        openPopup.addEventListener('click', function(event) {
+            event.preventDefault(); // Забороняємо перехід по посиланню
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+
+        // Функція закриття спливаючого вікна
+        closePopup.addEventListener('click', function() {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+
+        // Закриття вікна при натисканні на затінення
+        overlay.addEventListener('click', function() {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+    </script>
+
+</body>
+<!DOCTYPE html>
+<head>
+    <title>UNIS2 Store</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="header">
+        <div>
+        <ul class="dotnet">
+            <li>
+                <a class="link" href="course.html">В Кошик</a>
+            </li>
+            <li>
+                <p class="font-p">140 ₴</p>
+            </li>
+            <li>
                 <a class="link open-modal" href="">Купити</a>
             </li>
         </ul>
