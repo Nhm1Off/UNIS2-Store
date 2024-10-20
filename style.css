@@ -220,3 +220,14 @@ ul {
     color: white; /* Залишаємо білий колір тексту */
     transition: all .45s ease;
 }
+
+.h2-desc {
+    font-size: 25px;
+}
+
+.np-logo {
+    width: 30px; /* Adjust the size as needed */
+    height: auto;
+    vertical-align: middle; /* Ensures the logo aligns properly with the text */
+    margin-left: 5px; /* Adds some space between the text and the logo */
+}
