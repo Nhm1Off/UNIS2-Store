@@ -21,4 +21,3 @@ const popup = document.getElementById('popup');
             popup.style.display = 'none';
             overlay.style.display = 'none';
         });
-
