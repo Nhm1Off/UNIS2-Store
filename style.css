@@ -214,3 +214,39 @@ ul {
     vertical-align: middle; /* Ensures the logo aligns properly with the text */
     margin-left: 5px; /* Adds some space between the text and the logo */
 }
+
+.text-size-href {
+    font-size: 25px;
+}
+
+
+.navbar {
+    background-color: black; /* Чорний фон */
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    position: sticky;  /* Липка панель */
+    top: 0;  /* Відстань від верху */
+    z-index: 1000; /* Забезпечує, що панель буде поверх іншого контенту */
+}
+
+/* Логотип та назва сайту */
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+/* Стиль логотипу */
+.logo-img {
+    width: 40px; /* Розмір логотипу */
+    height: 40px;
+    margin-right: 15px;
+}
+
+/* Стиль назви сайту */
+.site-name {
+    color: white; /* Білий текст */
+    font-size: 20px;
+    font-weight: bold;
+}
