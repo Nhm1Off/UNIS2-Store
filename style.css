@@ -260,3 +260,15 @@ ul {
     text-decoration: none;
     border-radius: 5px;
 }
+
+.dark-white {
+    display: block;
+    background-color: rgb(232, 232, 232);
+    padding: 10px;
+}
+
+.white {
+    display: block;
+    background-color: rgb(255, 255, 255);
+    padding: 10px;
+}
