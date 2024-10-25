@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <title>UNIS2 Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="header">
+        <div>
+        <ul class="dotnet">
+            <li>
+                <a class="link" href="index.html">Головна</a>
+            </li>
+            <li>
+                <p class="font-p">1000 ₴</p>
+            </li>
+            <li>
+                <a href="#" id="openPopup">Купити</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+
+    <h2>Кашпо Lechuza 13510 Cube Glossy 14</h2>
+    <img class="fit-picture" src="https://i.ibb.co/JvZsy5J/image-s-1000x700.jpg" width="400px" alt="Кашпо Lechuza 13510 Cube Glossy 14" />
+    <p class="h2-desc">Доставка: <img src="./3F3F_3F3F28201929.png" alt="Нова Пошта" class="np-logo"></p>
+
+    <br> <br>
+    <h2 class="h2-desc">Характеристики</h2>
+    <h3 class="white">Матеріал: Акрилонітрил-бутадієн-стирол</h3>    
+    <h3 class="dark-white">Тип кріплення: Настільний</h3>
+    <h3 class="white">Використання: в приміщенні/зовні приміщення</h3>
+    <h3 class="dark-white">Розміри виробу: 14 Г х 14 Ш х 13,5</h3>
+    <h3 class="white">Індикатор рівня води</h3>
+    <h3 class="dark-white">Застосування: Для дому/офісу</h3>    
+    <h3 class="white">Форма кубика</h3>
+
+    <br> <br>
+    <br> <br>
+    <h2 class="h2-desc">Умови Повернення</h2>
+    <h3>Товар можна повернути протягом 7 днів з моменту отримання замовлення</h3>
+    <h3>Витрати на повернення товару покриває покупець, за винятком випадків, коли товар має дефекти </h3>
+    <h3>Після отримання та перевірки поверненого товару</h3>
+    <h3>ми здійснимо повернення коштів протягом 7 робочих днів тим самим способом, яким було здійснено оплату</h3>
+    <h3>Відшкодування не поширюється на витрати за доставку</h3>
+
+
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <h2>Для Покупки Заповніть Форму</h2>
+        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfkiQgCa4W2wipc84hON92mPgHw_UNUgYHrQ6nHTeoF-oEZSA/viewform?embedded=true" width="350" height="500" frameborder="0" marginheight="0" marginwidth="0">Завантаження…</iframe>
+        <br> <br>
+        <div class="button-close">
+            <button id="closePopup">Закрити</button>
+        </div>
+    </div>
+
+    <script>
+        // Отримуємо елементи
+        const popup = document.getElementById('popup');
+        const overlay = document.getElementById('overlay');
+        const openPopup = document.getElementById('openPopup');
+        const closePopup = document.getElementById('closePopup');
+
+        // Функція відкриття спливаючого вікна
+        openPopup.addEventListener('click', function(event) {
+            event.preventDefault(); // Забороняємо перехід по посиланню
+            popup.style.display = 'block';
+            overlay.style.display = 'block';
+        });
+
+        // Функція закриття спливаючого вікна
+        closePopup.addEventListener('click', function() {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+
+        // Закриття вікна при натисканні на затінення
+        overlay.addEventListener('click', function() {
+            popup.style.display = 'none';
+            overlay.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
