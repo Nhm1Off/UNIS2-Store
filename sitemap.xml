@@ -38,6 +38,13 @@
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
+
+    <url>
+        <loc>https://unis2.store/airpods2.html</loc>
+        <lastmod>2024-10-28</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
     
 
 </urlset>
