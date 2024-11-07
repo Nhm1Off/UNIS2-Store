@@ -281,3 +281,20 @@ ul {
     color: white;
     background-color: black;
 }
+
+.hover-text {
+    color: rgb(255, 255, 255); /* Початковий колір */
+    transition: color 0.3s; /* Плавний перехід */
+}
+
+.hover-text:hover {
+    color: rgb(166, 166, 166); /* Колір при наведенні */
+}
+
+.bg-ymovu {
+    background-color: rgb(232, 232, 232);
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+}
