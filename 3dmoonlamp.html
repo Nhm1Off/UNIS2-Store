@@ -120,31 +120,5 @@
         });
 
     </script>
-
-<script type="text/javascript">
-    // Параметри для ініціалізації платежу
-    var liqpayData = {
-      action: "pay",
-      amount: "170.00", // Вартість товару
-      currency: "UAH", // Валюта
-      description: "Нічна лампа місяць",
-      order_id: "12345", // Унікальний ID замовлення
-      version: "3", // Версія API
-      public_key: "sandbox_i71473566595", // Ваш публічний ключ
-      sandbox: "1", // Якщо потрібно тестувати (1 — для тестового режиму)
-    };
-  
-    // Кнопка для ініціації платежу
-    document.getElementById("liqpay-button").onclick = function() {
-      LiqPayCheckout.init({
-        data: JSON.stringify(liqpayData),
-        signature: LiqPayCheckout.signature(liqpayData, "your_private_key"), // Ваш приватний ключ
-        embedTo: "#liqpay-button", // Місце вставки кнопки
-        lang: "uk", // Мова інтерфейсу
-      }).checkout();
-    };
-  </script>
-  
-
 </body>
 </html>
