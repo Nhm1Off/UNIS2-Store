@@ -8,6 +8,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+    <script src="https://static.liqpay.com/js/checkout.js" type="text/javascript"></script>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BGC8NF4Y0"></script>
     <script>
@@ -52,9 +55,22 @@
         <h3>Щоб заповнити контакті дані, нажміть на кнопку Конт. Дані (Контактні дані)</h3>
         <h3>Вона знаходиться нижче</h3>
         <br> <br>
-        <h3>Після заповнення контактних даних, ви можете оплатити</h3>
+        <h3>Після заповнення контактних даних, ви можете оплатити зразу, або при отриманні</h3>
         <br> <br>
-        <a href="https://www.privat24.ua/send/dlk40" class="hover-text">Оплатити Зараз</a>
+        <h3>Якщо ви не оплатили зразу, після заповнення контактних даних, то оплата буде при отримуванні </h3>
+        <br> <br>
+   <!-- <a href="https://www.privat24.ua/send/dlk40" class="text-pay">Оплатити Зараз</a>   -->
+
+        <div>
+            <form method="POST" accept-charset="utf-8" target="_blank" action="https://www.liqpay.ua/api/3/checkout">
+                <input type="hidden" name="data" value="eyJ2ZXJzaW9uIjozLCJhY3Rpb24iOiJwYXkiLCJhbW91bnQiOiIxNzAiLCJjdXJyZW5jeSI6IlVBSCIsImRlc2NyaXB0aW9uIjoi0J3RltGH0L3QsCDQu9Cw0LzQv9CwINC80ZbRgdGP0YbRjCIsInB1YmxpY19rZXkiOiJzYW5kYm94X2k3MTQ3MzU2NjU5NSIsImxhbmd1YWdlIjoidWsiLCJzZXJ2ZXJfdXJsIjoiaHR0cHM6Ly93d3cudW5pczIuc3RvcmUvY2FuY2VsLmh0bWwiLCJyZXN1bHRfdXJsIjoiaHR0cHM6Ly93d3cudW5pczIuc3RvcmUvcmVzdWx0Lmh0bWwifQ==" />
+                <input type="hidden" name="signature" value="OUWJBvNR6VbNVOBcDRVIgvPi0AA=" />
+                <button style="border: none; display: inline-block; text-align: center; padding: 5px 24px; color: #fff; box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.12), 0px 2px 4px rgba(0, 0, 0, 0.12); font-size: 16px; line-height: 1.75; font-weight: 600; font-family: 'Open Sans', sans-serif; cursor: pointer; border-radius: 8px; background: #77CC5D;" onmouseover="this.style.opacity='0.5';" onmouseout="this.style.opacity='1';">
+                  <img src="https://static.liqpay.ua/buttons/logo-white.svg" name="btn_text" style="vertical-align: middle;"/>
+                  <span style="vertical-align: middle; margin-left: 8px;">Оплатити Зараз</span>
+                </button>
+              </form>
+        </div>
     </div>
     
     <br> <br>
@@ -69,7 +85,7 @@
 
     <div class="overlay" id="overlay"></div>
     <div class="popup" id="popup">
-        <h2>Для Покупки Заповніть Форму</h2>
+        <h2>Для Покупки Заповніть Свої Контактні Дані</h2>
 <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfkiQgCa4W2wipc84hON92mPgHw_UNUgYHrQ6nHTeoF-oEZSA/viewform?embedded=true" width="350" height="500" frameborder="0" marginheight="0" marginwidth="0">Завантаження…</iframe>
         <br> <br>
         <div class="button-close">
@@ -102,7 +118,33 @@
             popup.style.display = 'none';
             overlay.style.display = 'none';
         });
+
     </script>
+
+<script type="text/javascript">
+    // Параметри для ініціалізації платежу
+    var liqpayData = {
+      action: "pay",
+      amount: "170.00", // Вартість товару
+      currency: "UAH", // Валюта
+      description: "Нічна лампа місяць",
+      order_id: "12345", // Унікальний ID замовлення
+      version: "3", // Версія API
+      public_key: "sandbox_i71473566595", // Ваш публічний ключ
+      sandbox: "1", // Якщо потрібно тестувати (1 — для тестового режиму)
+    };
+  
+    // Кнопка для ініціації платежу
+    document.getElementById("liqpay-button").onclick = function() {
+      LiqPayCheckout.init({
+        data: JSON.stringify(liqpayData),
+        signature: LiqPayCheckout.signature(liqpayData, "your_private_key"), // Ваш приватний ключ
+        embedTo: "#liqpay-button", // Місце вставки кнопки
+        lang: "uk", // Мова інтерфейсу
+      }).checkout();
+    };
+  </script>
+  
 
 </body>
 </html>
