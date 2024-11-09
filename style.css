@@ -349,3 +349,23 @@ ul {
     background-color: #267a2e;
     transition: all .45s ease;
 }
+
+.wrapper {
+    max-height: 400px;
+    border: 1px solid #ddd;
+    display: flex;
+    overflow-x: auto;
+}
+
+.wrapper::-webkit-scrollbar {
+    width: 0;
+}
+
+.wrapper .item {
+    min-width: 373px;
+    height: 373px;
+    line-height: 373px;
+    text-align: center;
+    background-color: #ddd;
+    margin-right: 2px;
+}
