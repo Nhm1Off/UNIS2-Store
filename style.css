@@ -355,6 +355,7 @@ ul {
     border: 1px solid #ddd;
     display: flex;
     overflow-x: auto;
+    overflow-y: hidden; 
 }
 
 .wrapper::-webkit-scrollbar {
