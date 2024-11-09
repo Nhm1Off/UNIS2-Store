@@ -327,19 +327,18 @@ ul {
 }
 
 .button-buy {
-    display: block;
-    margin: 0 auto; /* Центрування кнопки по горизонталі */
-    background-color: #4dff5e; /* Колір кнопки */
-    color: white; /* Колір тексту */
-    padding: 10px 20px;
-    border: none;
-    text-align: center;
-    font-size: 10px;
-    font-size: 90%; /* Розмір тексту на 10% менший від самої кнопки */
-    cursor: pointer;
-    border-radius: 5px;
-    margin-left: 10px;
-    margin-right: 10%;
+    background-color: #46ff4c; /* зелений фон */
+    border: none; /* без обводки */
+    color: white; /* білий текст */
+    padding: 10px 32px; /* відступи */
+    text-align: center; /* вирівнювання тексту по центру */
+    text-decoration: none; /* без підкреслення */
+    display: inline-block; /* щоб кнопка виглядала як елемент */
+    font-size: 20px; /* розмір шрифту */
+    margin: 4px 4px; /* відступи навколо кнопки */
+    cursor: pointer; /* курсор при наведенні */
+    border-radius: 8px; /* заокруглені кути */
+    
 }
 
 .text-margin {
