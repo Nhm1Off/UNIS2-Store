@@ -278,8 +278,8 @@ ul {
 }
 
 .about-bg {
-    color: white;
-    background-color: black;
+    color: rgb(0, 0, 0);
+    background-color: rgb(232, 232, 232);
 }
 
 .hover-text {
