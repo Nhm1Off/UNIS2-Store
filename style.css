@@ -58,7 +58,7 @@ a {
     position: relative;
 }
 
-.dotnet li:last-of-type a {
+/* .dotnet li:last-of-type a {
     color: rgb(255, 255, 255);
     display: flex;
     align-items: end;
@@ -75,7 +75,7 @@ a {
 .dotnet li:last-child a:hover {
     background-color: rgb(31, 38, 0);
     transition: all .45s ease;
-}
+} */
 
 .dotnet li {
     margin-left: 14px;
@@ -284,11 +284,12 @@ ul {
 
 .hover-text {
     color: rgb(255, 255, 255); /* Початковий колір */
-    transition: color 0.3s; /* Плавний перехід */
+    font-size: 25px;
 }
 
 .hover-text:hover {
     color: rgb(166, 166, 166); /* Колір при наведенні */
+    transition: all .45s ease;
 }
 
 .bg-ymovu {
@@ -297,4 +298,55 @@ ul {
     margin-left: 20px;
     margin-right: 20px;
     border-radius: 10px;
+}
+
+.text-pay {
+    background-color: rgb(252, 255, 56);
+    color: white;
+    border-radius: 10px;
+    height: 25px;
+    background-color: rgb(252, 255, 56);
+    font-size: 20px;
+}
+
+.liqpay-pay button {
+    background-color: rgb(252, 255, 56);
+    color: white;
+    border-radius: 10px;
+    width: 200px;
+    font-size: 20px;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    transition: all .45s ease;
+}
+
+.liqpay-pay button:hover {
+    background-color: rgb(67, 82, 0);
+    transition: all .45s ease;
+}
+
+.button-buy {
+    display: block;
+    margin: 0 auto; /* Центрування кнопки по горизонталі */
+    background-color: #4dff5e; /* Колір кнопки */
+    color: white; /* Колір тексту */
+    padding: 10px 20px;
+    border: none;
+    text-align: center;
+    font-size: 10px;
+    font-size: 90%; /* Розмір тексту на 10% менший від самої кнопки */
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+    margin-right: 10%;
+}
+
+.text-margin {
+    margin-left: 10px;
+}
+
+.button-buy:hover {
+    background-color: #267a2e;
+    transition: all .45s ease;
 }
