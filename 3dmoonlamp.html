@@ -9,8 +9,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
 
-    <script src="https://static.liqpay.com/js/checkout.js" type="text/javascript"></script>
-
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-1BGC8NF4Y0"></script>
     <script>
@@ -22,7 +20,7 @@
     </script>
 </head>
 <body>
-   <!-- <div class="header">
+ <!-- div class="header">
         <div>
         <ul class="dotnet">
             <li>
@@ -32,7 +30,7 @@
         </div>
     </div> -->
 
-    <h2 class="product-title">Нічний світильник місяць 3D MOON LAMP</h2>
+    <h2>Нічний світильник місяць 3D MOON LAMP</h2>
     <!-- <img class="fit-picture" src="https://i.ibb.co/L0tJkHD/image.png" width="100%" alt="Акумуляторна Лампа" /> -->
 
     <div class="wrapper">
@@ -70,6 +68,78 @@
 
     <hr color="#caccca" width="100%">
     <br>
+
+    <div class="reviews-container">
+        <div class="bg-ymovu review">
+            <h2>Максим Т.</h3>
+            <br>
+            <div>            
+                <img src="https://i.ibb.co/pxq00mz/image.png" width="30px">
+                <img src="https://i.ibb.co/pxq00mz/image.png" width="30px">
+                <img src="https://i.ibb.co/pxq00mz/image.png" width="30px">
+                <img src="https://i.ibb.co/pxq00mz/image.png" width="30px">
+                <img src="https://i.ibb.co/pxq00mz/image.png" width="30px">
+            </div>
+            <br>
+            <h2>Коментар:</h3>
+            <h4 class="margin-h4">Лампа чудова, тримає заряд досить довго, коштує небагато раджу купляти не пожалієте!</h4>
+        </div>
+        <br>
+        <div class="bg-ymovu review">
+            <h2>Андрій Р.</h3>
+            <br>
+            <div>            
+                <img src="https://i.ibb.co/pxq00mz/image.png" width="30px">
+                <img src="https://i.ibb.co/pxq00mz/image.png" width="30px">
+                <img src="https://i.ibb.co/pxq00mz/image.png" width="30px">
+                <img src="https://i.ibb.co/pxq00mz/image.png" width="30px">
+                <img src="https://i.ibb.co/pxq00mz/image.png" width="30px">
+            </div>
+            <br>
+            <h2>Коментар:</h3>
+            <h4 class="margin-h4">Купляв лампу місяць назад, все добре</h4>
+        </div>
+        <br>
+
+    </div>
+    <br>
+
+    <a href="#" id="openNewPopup" class="h2-desc">Написати відгук</a>
+    <br> <br>
+
+    <div class="overlay-new" id="overlayNew"></div>
+    <div class="popup-new" id="popupNew">
+        <h2>Написати відгук</h2>
+        <div class="close-icon-new" id="closePopupNew">&times;</div>
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="79f3bbaf-4a85-49b9-90f6-6ad7e910e1d0">
+            <br>
+            <label for="name">Прізвище, Ім'я:</label>
+            <input type="text" id="name" name="name" required><br><br>
+            
+            <div class="rating-container">
+                <input type="radio" id="rating1" name="rating" value="1" class="rating-circle">
+                <label for="rating1" class="rating-label">1</label>
+    
+                <input type="radio" id="rating2" name="rating" value="2" class="rating-circle">
+                <label for="rating2" class="rating-label">2</label>
+    
+                <input type="radio" id="rating3" name="rating" value="3" class="rating-circle">
+                <label for="rating3" class="rating-label">3</label>
+    
+                <input type="radio" id="rating4" name="rating" value="4" class="rating-circle">
+                <label for="rating4" class="rating-label">4</label>
+    
+                <input type="radio" id="rating5" name="rating" value="5" class="rating-circle">
+                <label for="rating5" class="rating-label">5</label>
+            </div>
+            
+            <label for="text">Коментар:</label>
+            <textarea id="text" name="text" required></textarea><br><br>
+    
+            <button type="submit">Відправити</button>
+        </form>
+    </div>
     
     <div class="about-bg">
         <p>UNIS2 Store - Працює Для Вас</p>
@@ -94,15 +164,6 @@
 
     </div>
 
-<!--   <div class="bg-ymovu">
-        <h2 class="h2-desc">Умови Повернення</h2>
-        <h3>Товар можна повернути протягом 7 днів з моменту отримання замовлення</h3>
-        <h3>Витрати на повернення товару покриває покупець, за винятком випадків, коли товар має дефекти </h3>
-        <h3>Після отримання та перевірки поверненого товару</h3>
-        <h3>ми здійснимо повернення коштів протягом 7 робочих днів тим самим способом, яким було здійснено оплату</h3>
-        <h3>Відшкодування не поширюється на витрати за доставку</h3>
-    </div> --> 
-
     <div class="overlay" id="overlay"></div>
     <div class="popup" id="popup">
         <h2>Ваші контактні дані</h2>
@@ -112,8 +173,6 @@
 
         <input type="hidden" name="access_key" value="79f3bbaf-4a85-49b9-90f6-6ad7e910e1d0">
 
-            <input type="hidden" id="product-name" name="product" value="">
-            
             <label for="name">Прізвище, Ім'я:</label>
             <input type="text" id="name" name="name" required><br><br>
             
@@ -131,15 +190,6 @@
         </form>
         <br>
     </div>
-
-    <script> 
-        document.addEventListener('DOMContentLoaded', () => {
-        const productElement = document.querySelector('.product-title');
-        if (productElement) {
-             document.getElementById('product-name').value = productElement.textContent.trim();
-             }
-        });
-    </script>
 
     <script>
         // Отримуємо елементи
@@ -166,6 +216,31 @@
             popup.style.display = 'none';
             overlay.style.display = 'none';
         });
+
+            // Отримуємо елементи для нового попапу
+    const popupNew = document.getElementById('popupNew');
+    const overlayNew = document.getElementById('overlayNew');
+    const openNewPopup = document.getElementById('openNewPopup');
+    const closePopupNew = document.getElementById('closePopupNew');
+
+    // Функція відкриття нового попапу
+    openNewPopup.addEventListener('click', function(event) {
+        event.preventDefault(); // Забороняємо перехід по посиланню
+        popupNew.style.display = 'block';
+        overlayNew.style.display = 'block';
+    });
+
+    // Функція закриття нового попапу
+    closePopupNew.addEventListener('click', function() {
+        popupNew.style.display = 'none';
+        overlayNew.style.display = 'none';
+    });
+
+    // Закриття попапу при натисканні на затінення
+    overlayNew.addEventListener('click', function() {
+        popupNew.style.display = 'none';
+        overlayNew.style.display = 'none';
+    });
 
     </script>
 </body>
