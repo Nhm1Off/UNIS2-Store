@@ -166,26 +166,27 @@ ul {
     display: none;
     position: fixed;
     left: 50%;
-    top: 50%;
+    top: 48%;
     transform: translate(-50%, -50%);
     width: 350px;
+    height: 530px;
     padding: 20px;
     background-color: white;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     z-index: 100;
+    align-items: center;
 }
 
-@media (max-width: 768px) {
+/* @media (max-width: 768px) { 
     .popup {
-        width: 85%; /* Зменшуємо ширину для додаткових відступів з боків */
+        width: 88%; 
         padding: 15px;
-        left: 50%;
-        top: 50%;
+        left: 48%;
+        top: 48%;
         transform: translate(-50%, -50%);
-        margin: 20px 5px; /* Відступи зверху і знизу 20px, з боків 5px */
+        margin: 10px; 
     }
-}
-
+} */
 
 
 
