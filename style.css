@@ -396,3 +396,16 @@ ul {
     background-color: #267a2e;
 }
 
+.close-icon {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Зміна кольору хрестика при наведенні */
+.close-icon:hover {
+    color: rgb(163, 163, 163);
+}
