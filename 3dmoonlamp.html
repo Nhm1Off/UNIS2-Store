@@ -132,6 +132,15 @@
         <br>
     </div>
 
+    <script> 
+        document.addEventListener('DOMContentLoaded', () => {
+        const productElement = document.querySelector('.product-title');
+        if (productElement) {
+             document.getElementById('product-name').value = productElement.textContent.trim();
+             }
+        });
+    </script>
+
     <script>
         // Отримуємо елементи
         const popup = document.getElementById('popup');
