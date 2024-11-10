@@ -177,7 +177,7 @@ ul {
     align-items: center;
 }
 
-/* @media (max-width: 768px) { 
+@media (max-width: 768px) { 
     .popup {
         width: 88%; 
         padding: 15px;
@@ -186,7 +186,7 @@ ul {
         transform: translate(-50%, -50%);
         margin: 10px; 
     }
-} */
+}
 
 
 
