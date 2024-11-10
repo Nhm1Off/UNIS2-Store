@@ -166,7 +166,7 @@ ul {
     display: none;
     position: fixed;
     left: 50%;
-    top: 48%;
+    top: 50%;
     transform: translate(-50%, -50%);
     width: 90%;
     padding: 20px;
@@ -175,16 +175,17 @@ ul {
     z-index: 100;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
     .popup {
-        width: 80%; /* Зменшуємо ширину для більшого відступу з боків */
+        width: 85%; /* Трохи менша ширина для додаткових відступів з боків */
         padding: 15px;
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        margin: 20px 10px; /* Відступи 20px зверху і знизу, 10px з боків */
+        margin: 25px 5px; /* Відступи зверху і знизу 25px, з боків 5px */
     }
 }
+
 
 
 /* Затінення фону */
