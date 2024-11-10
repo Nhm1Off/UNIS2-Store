@@ -162,6 +162,7 @@ ul {
 }
 
 .popup {
+    border-radius: 6px;
     display: none; /* Спочатку вікно приховане */
     position: fixed;
     left: 50%;
@@ -309,23 +310,6 @@ ul {
     font-size: 20px;
 }
 
-.liqpay-pay button {
-    background-color: rgb(252, 255, 56);
-    color: white;
-    border-radius: 10px;
-    width: 200px;
-    font-size: 20px;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    transition: all .45s ease;
-}
-
-.liqpay-pay button:hover {
-    background-color: rgb(67, 82, 0);
-    transition: all .45s ease;
-}
-
 .button-buy {
     background-color: #46ff4c; /* зелений фон */
     border: none; /* без обводки */
@@ -355,7 +339,7 @@ ul {
     border: 1px solid #ddd;
     display: flex;
     overflow-x: auto;
-    overflow-y: hidden; 
+    overflow-y: hidden;
 }
 
 .wrapper::-webkit-scrollbar {
@@ -370,3 +354,32 @@ ul {
     background-color: #ddd;
     margin-right: 2px;
 }
+
+.popup form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.popup input, .popup textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.popup button[type="submit"] {
+    background-color: #46ff4c; /* зелений фон */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+.popup button[type="submit"]:hover {
+    background-color: #267a2e;
+}
+
