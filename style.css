@@ -160,16 +160,15 @@ ul {
     text-decoration: none;
     cursor: pointer;
 }
-
 .popup {
     border-radius: 6px;
     display: none;
     position: fixed;
     left: 50%;
-    top: 48%;
+    top: 40%;
     transform: translate(-50%, -50%);
     width: 350px;
-    height: 530px;
+    height: 570px;
     padding: 20px;
     background-color: white;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -182,10 +181,9 @@ ul {
         width: 350px; 
         padding: 15px;
         left: 50%;
-        top: 48%;
+        top: 40%;
         transform: translate(-50%, -50%);
-        margin: 10px; 
-        height: 530px;
+        height: 570px;
     }
 }
 
