@@ -168,7 +168,7 @@ ul {
     left: 50%;
     top: 48%;
     transform: translate(-50%, -50%);
-    width: 70%;
+    width: 90%;
     padding: 20px;
     background-color: white;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
@@ -177,12 +177,12 @@ ul {
 
 @media (max-width: 768px) {
     .popup {
-        width: 70%; /* Робимо попап ширшим для телефону */
+        width: 90%; /* Робимо попап ширшим для телефону */
         padding: 15px; /* Трохи менший padding */
         left: 48%;
         top: 48%;
         transform: translate(-50%, -50%);
-        margin: 10px; /* Відступи з боків, верху та низу */
+        margin: 15px; /* Відступи з боків, верху та низу */
     }
 }
 
