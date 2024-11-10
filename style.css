@@ -166,23 +166,23 @@ ul {
     display: none;
     position: fixed;
     left: 50%;
-    top: 50%;
+    top: 48%;
     transform: translate(-50%, -50%);
-    width: 90%;
+    width: 350px;
     padding: 20px;
     background-color: white;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     z-index: 100;
 }
 
-@media (max-width: 720px) {
+@media (max-width: 768px) {
     .popup {
-        width: 85%; /* Трохи менша ширина для додаткових відступів з боків */
-        padding: 15px;
-        left: 50%;
-        top: 50%;
+        width: 88%; /* Робимо попап ширшим для телефону */
+        padding: 15px; /* Трохи менший padding */
+        left: 48%;
+        top: 48%;
         transform: translate(-50%, -50%);
-        margin: 25px 5px; /* Відступи зверху і знизу 25px, з боків 5px */
+        margin: 10px; /* Відступи з боків, верху та низу */
     }
 }
 
