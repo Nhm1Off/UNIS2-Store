@@ -52,4 +52,3 @@ const popup = document.getElementById('popup');
                 console.error("Помилка:", error);
             });
         });
-        
