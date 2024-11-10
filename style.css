@@ -488,3 +488,8 @@ ul {
     font-size: 18px;
     transition: background-color 0.3s ease;
 }
+
+.margin-h2 {
+    padding: 10px;
+    font-size: 20px;
+}
