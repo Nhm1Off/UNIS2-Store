@@ -163,16 +163,27 @@ ul {
 
 .popup {
     border-radius: 6px;
-    display: none; /* Спочатку вікно приховане */
+    display: none;
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    width: 400px;
+    width: 80%;
     padding: 20px;
     background-color: white;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     z-index: 100;
+}
+
+@media (max-width: 768px) {
+    .popup {
+        width: 88%; /* Робимо попап ширшим для телефону */
+        padding: 15px; /* Трохи менший padding */
+        left: 48%;
+        top: 48%;
+        transform: translate(-50%, -50%);
+        margin: 10px; /* Відступи з боків, верху та низу */
+    }
 }
 
 /* Затінення фону */
