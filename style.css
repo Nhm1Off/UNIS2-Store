@@ -325,18 +325,15 @@ ul {
 }
 
 .button-buy {
-    background-color: #46ff4c; /* зелений фон */
-    border: none; /* без обводки */
-    color: white; /* білий текст */
-    padding: 10px 32px; /* відступи */
-    text-align: center; /* вирівнювання тексту по центру */
-    text-decoration: none; /* без підкреслення */
-    display: inline-block; /* щоб кнопка виглядала як елемент */
-    font-size: 20px; /* розмір шрифту */
-    margin: 4px 4px; /* відступи навколо кнопки */
-    cursor: pointer; /* курсор при наведенні */
-    border-radius: 8px; /* заокруглені кути */
-    
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #53f700; /* Adjust button color */
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
 }
 
 .text-margin {
@@ -344,8 +341,8 @@ ul {
 }
 
 .button-buy:hover {
-    background-color: #267a2e;
-    transition: all .45s ease;
+    transition: all .35s ease;
+    background-color: #3eac00;
 }
 
 .wrapper {
@@ -492,4 +489,8 @@ ul {
 .margin-h2 {
     padding: 10px;
     font-size: 20px;
+}
+
+.icon-class {
+    width: 20px;
 }
