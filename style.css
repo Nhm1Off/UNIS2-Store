@@ -175,6 +175,7 @@ ul {
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
     z-index: 100;
     align-items: center;
+    overflow-y: auto;
 }
 
 @media (max-width: 768px) { 
@@ -373,6 +374,13 @@ ul {
 }
 
 .popup input, .popup textarea {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.popup select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
