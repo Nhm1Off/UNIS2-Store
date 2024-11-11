@@ -56,8 +56,7 @@
         <p class="font-p text-margin">170 ₴</p>
         <br>
         <a href="#" class="button-buy" id="openPopup">Купити Зараз</a>
-        <br> <br>
-        <p class="h2-desc text-margin">Доставка: <img src="./3F3F_3F3F28201929.png" alt="Нова Пошта" class="np-logo"></p>
+        <br>
     </div>
     <br> <br>
     <h2 class="h2-desc">Характеристики</h2>
@@ -181,12 +180,19 @@
 
             <label for="name">Прізвище, Ім'я:</label>
             <input type="text" id="name" name="name" required><br><br>
-            
+
             <label for="phone">Номер Телефону:</label>
             <input type="text" id="phone" name="phone" required><br><br>
             
             <label for="message">Адреса Доставки:</label>
             <textarea id="message" name="message" required></textarea><br><br>
+            
+            <label for="product">Поштова служба:</label>
+            <select name="product" id="product" name="poshta" required>
+                <option value="Nova poshta">Нова Пошта</option>
+                <option value="Ukr poshta">Укр Пошта</option>
+                <option value="Meest poshta">Meest Пошта</option>
+            </select>
 
             <label for="call">Не зв'язуватися зі мною
                 <input type="checkbox" id="call" name="call">
