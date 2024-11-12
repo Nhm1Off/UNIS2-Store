@@ -502,3 +502,25 @@ ul {
 .icon-class {
     width: 20px;
 }
+
+.diagonal-strike {
+    position: relative;
+    display: inline-block;
+}
+  
+.diagonal-strike::before {
+    content: '';
+    position: absolute;
+    top: 50%; /* Зміщення вниз на половину висоти контейнера */
+    left: 0;
+    width: 100%;
+    border-top: 2px solid red; /* Товщина і колір лінії */
+    transform: translateY(-50%) rotate(-22deg); /* Опускаємо і обертаємо лінію */
+    transform-origin: center;
+    pointer-events: none; /* Щоб лінія не перекривала клікабельність тексту */
+  }
+  
+
+.font-mini {
+    font-size: 18px;
+}
