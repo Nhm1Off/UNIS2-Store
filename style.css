@@ -566,5 +566,15 @@ ul {
 }
   
 .fixed-link:hover {
-    background-color: #0056b3;
+    background-color: #868686;
+    transition: all .45s ease;
+}
+
+.bg-contacts {
+    background-color: rgb(192, 192, 192);
+}
+
+.text-and-image:hover {
+    background-color: #868686;
+    transition: all .45s ease;
 }
