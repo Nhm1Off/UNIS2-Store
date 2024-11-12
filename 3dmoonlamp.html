@@ -20,16 +20,6 @@
     </script>
 </head>
 <body>
- <!-- div class="header">
-        <div>
-        <ul class="dotnet">
-            <li>
-                <a class="link hover-text" href="index.html">Головна</a>
-            </li>
-        </ul>
-        </div>
-    </div> -->
-
     <h2>Нічний світильник місяць 3D MOON LAMP</h2>
     <!-- <img class="fit-picture" src="https://i.ibb.co/L0tJkHD/image.png" width="100%" alt="Акумуляторна Лампа" /> -->
 
@@ -57,6 +47,27 @@
         <p class="font-p text-margin">170 ₴</p>
         <br>
         <a href="#" class="button-buy" id="openPopup">Купити Зараз</a>
+        <br>
+
+        <div id="title">До закінчення акції залишилось:</div>
+
+        <div class="timer-container">
+            <div class="time-box">
+                <div id="hours" class="time">00</div>
+                <div class="label">Години</div>
+            </div>
+
+            <div class="time-box">
+                <div id="minutes" class="time">00</div>
+                <div class="label">Хвилини</div>
+            </div>
+
+            <div class="time-box">
+                <div id="seconds" class="time">00</div>
+                <div class="label">Секунди</div>
+            </div>
+
+        </div>
         <br>
     </div>
     <br> <br>
@@ -165,8 +176,6 @@
                 <img src="https://i.ibb.co/MScg26D/image.png" width="40px" />
             </a>
             <br> <br>
-            <h3>ФОП Роман Назар Володимирович</h3>
-            <br> <br>
             <a href="./politicy/result.html">Умови Повернення</a>
         </div>
 
@@ -257,6 +266,33 @@
         overlayNew.style.display = 'none';
     });
 
+    </script>
+
+    <script>
+        function updateTimer() {
+            const now = new Date();
+            const midnight = new Date();
+            midnight.setHours(24, 0, 0, 0);
+
+            const timeRemaining = midnight - now;
+
+            if (timeRemaining > 0) {
+                const hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
+                const minutes = Math.floor((timeRemaining / (1000 * 60)) % 60);
+                const seconds = Math.floor((timeRemaining / 1000) % 60);
+
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            } else {
+                document.getElementById('title').innerText = 'Акція завершена';
+                document.getElementById('hours').innerText = '00';
+                document.getElementById('minutes').innerText = '00';
+                document.getElementById('seconds').innerText = '00';
+            }
+        }
+
+        setInterval(updateTimer, 1000);
     </script>
 </body>
 </html>
