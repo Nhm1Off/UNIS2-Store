@@ -173,7 +173,7 @@ ul {
     padding: 20px;
     background-color: white;
     box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    z-index: 100;
+    z-index: 101;
     align-items: center;
     overflow-y: auto;
 }
@@ -199,7 +199,7 @@ ul {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.7);
-    z-index: 99;
+    z-index: 100;
 }
 
 
@@ -505,18 +505,20 @@ ul {
 }
 
 .diagonal-strike {
+    color: rgb(99, 99, 99);
     position: relative;
     display: inline-block;
 }
   
 .diagonal-strike::before {
+    color: rgb(99, 99, 99);
     content: '';
     position: absolute;
     top: 50%; /* Зміщення вниз на половину висоти контейнера */
     left: 0;
     width: 100%;
-    border-top: 2px solid red; /* Товщина і колір лінії */
-    transform: translateY(-50%) rotate(-13deg); /* Опускаємо і обертаємо лінію */
+    border-top: 2px solid rgb(99, 99, 99); /* Товщина і колір лінії */
+    transform: translateY(-50%) rotate(-180deg); /* Опускаємо і обертаємо лінію */
     transform-origin: center;
     pointer-events: none; /* Щоб лінія не перекривала клікабельність тексту */
   }
@@ -559,7 +561,7 @@ ul {
     position: fixed;
     right: 20px; /* відступ від правого краю */
     bottom: 20px; /* відступ від нижнього краю */
-    z-index: 1000; /* щоб переконатися, що елемент завжди над іншими */
+    z-index: 9; /* щоб переконатися, що елемент завжди над іншими */
     text-decoration: none;
     padding: 10px 15px;
     border-radius: 10px;
@@ -577,4 +579,9 @@ ul {
 .text-and-image:hover {
     background-color: #868686;
     transition: all .45s ease;
+}
+
+ol {
+    text-decoration: underline;
+    color: rgb(67, 67, 255);
 }
