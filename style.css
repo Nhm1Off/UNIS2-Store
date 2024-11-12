@@ -334,7 +334,8 @@ ul {
     color: white;
     text-decoration: none;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .text-margin {
@@ -552,4 +553,18 @@ ul {
 #title {
     font-size: 24px;
     margin-bottom: 20px;
+}
+
+.fixed-link {
+    position: fixed;
+    right: 20px; /* відступ від правого краю */
+    bottom: 20px; /* відступ від нижнього краю */
+    z-index: 1000; /* щоб переконатися, що елемент завжди над іншими */
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 10px;
+}
+  
+.fixed-link:hover {
+    background-color: #0056b3;
 }
