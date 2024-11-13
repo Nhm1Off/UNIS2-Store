@@ -588,3 +588,6 @@ ol {
     text-decoration: underline;
     color: rgb(67, 67, 255);
 }
+
+.center-ground {
+    text-align: center;
