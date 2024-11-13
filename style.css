@@ -296,6 +296,8 @@ ul {
 .about-bg {
     color: rgb(0, 0, 0);
     background-color: rgb(232, 232, 232);
+    margin: 0;
+    padding: 10px;
 }
 
 .hover-text {
