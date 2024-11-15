@@ -85,7 +85,6 @@ a {
 
 body {
     margin: 0;
-    margin-bottom: 0;
     padding: 0;
 }
 
@@ -260,6 +259,7 @@ ul {
     width: 40px; /* Розмір логотипу */
     height: 40px;
     margin-right: 15px;
+    border-radius: 20px;
 }
 
 /* Стиль назви сайту */
@@ -351,7 +351,7 @@ ul {
 }
 
 .wrapper {
-    max-height: 400px;
+    max-height: 410px;
     border: 1px solid #ddd;
     display: flex;
     overflow-x: auto;
@@ -363,9 +363,9 @@ ul {
 }
 
 .wrapper .item {
-    min-width: 373px;
-    height: 373px;
-    line-height: 373px;
+    min-width: 400px;
+    height: 400px;
+    line-height: 400px;
     text-align: center;
     background-color: #ddd;
     margin-right: 2px;
@@ -592,4 +592,13 @@ ol {
 
 .center-ground {
     text-align: center;
+}
+
+.margin-index {
+    display: block;
+    border-radius: 8px;
+    margin-left: 5%;
+    margin-right: 5%;
+    min-width: 400px;
+    max-width: 410px;
 }
