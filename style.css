@@ -599,6 +599,6 @@ ol {
     border-radius: 8px;
     margin-left: 5%;
     margin-right: 5%;
-    min-width: 400px;
-    max-width: 410px;
+    min-width: 90%;
+    max-width: 95%;
 }
