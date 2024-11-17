@@ -40,24 +40,24 @@
 
     <div>
         <h2 class="h2-desc">Оплата та Доставка</h2>
-        <h3>Оплата тільки при отриманні</h3>
+        <p>Оплата тільки при отриманні</p>
         <br>
-        <h3>Відправка здійснюється на Нову Пошту, Укр Пошту</h3>
+        <p>Відправка здійснюється на Нову Пошту, Укр Пошту</p>
     </div>
      <br>
 
     </div>
     <br> <br>
     <h2 class="h2-desc">Характеристики</h2>
-    <h3 class="dark-white">Тип: Унісекс</h3>
-    <h3 class="white">Розмір: 36-45</h3>
-    <h3 class="dark-white">Виробник: Туреччина</h3>    
-    <h3 class="white">Склад Тканини: Бавовна 95%, Лайкра 5%</h3>    
+    <p class="dark-white">Тип: Унісекс</p>
+    <p class="white">Розмір: 36-45</p>
+    <p class="dark-white">Виробник: Туреччина</p>    
+    <p class="white">Склад Тканини: Бавовна 95%, Лайкра 5%</p>    
     <br>
 
     <h2 class="h2-desc">Опис</h2>
-    <h3>Високі шкарпетки Nike на махрі, вироблені в Туреччині, виготовлені з 95% бавовни, 5% лайкри. Забезпечують зручну посадку, добре зберігають тепло, зберігають форму після прання. Ідеально підходять для спорту та повсякденного носіння.
-    </h3>
+    <p>Високі шкарпетки Nike на махрі, вироблені в Туреччині, виготовлені з 95% бавовни, 5% лайкри. Забезпечують зручну посадку, добре зберігають тепло, зберігають форму після прання. Ідеально підходять для спорту та повсякденного носіння.
+    </p>
     <br> <br>
 
     <hr color="#caccca" width="100%">
@@ -66,7 +66,7 @@
     <h2>Відгуки</h2>
     <br>
     <div class="reviews-container">
-        <h2>Тут ще немає відгуків...</h2>
+        <p>Тут ще немає відгуків...</p>
     </div>
     <br>
 
@@ -82,7 +82,8 @@
             <br>
             <label for="name">Ім'я:</label>
             <input type="text" id="name" name="name" required><br><br>
-            
+
+            <label>Рейтинг:</label>
             <div class="rating-container">
                 <input type="radio" id="rating1" name="rating" value="1" class="rating-circle">
                 <label for="rating1" class="rating-label">1</label>
@@ -232,31 +233,5 @@
     });
 
     </script>
-
-<script>
-    function updateTimer() {
-        const now = new Date();
-        const midnight = new Date();
-        midnight.setHours(24, 0, 0, 0);
-
-        let timeRemaining = midnight - now;
-
-        if (timeRemaining <= 0) {
-            // Якщо таймер закінчився, перезапустити його на 24 години
-            timeRemaining = 24 * 60 * 60 * 1000; // 24 години у мілісекундах
-        }
-
-        const hours = Math.floor((timeRemaining / (1000 * 60 * 60)) % 24);
-        const minutes = Math.floor((timeRemaining / (1000 * 60)) % 60);
-        const seconds = Math.floor((timeRemaining / 1000) % 60);
-
-        document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-        document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-        document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
-    }
-
-    setInterval(updateTimer, 1000);
-    updateTimer(); // Викликати одразу, щоб відображати час без затримки
-</script>
 </body>
 </html>
