@@ -1,0 +1,53 @@
+* {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.bg-black {
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+.bg-black-border {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.bg-blue {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+}
+
+.bg-blue-border {
+    background-color: blue;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.margin-no {
+    margin-bottom: 0;
+    margin: 0;
+}
+
+.a-be {
+    color: white;
+}
+
+body {
+    margin: 0;
+}
+
+.square-border {
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    padding: 10px;
+}
