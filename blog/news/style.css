@@ -61,3 +61,12 @@ body {
     color: rgb(73, 73, 73);
     transition: all .45s ease;
 }
+
+table {
+    border-collapse: collapse; /* Прибирає проміжки між рамками */
+}
+
+th, td {
+    border: 1px solid #ffffff; /* Тонка рамка */
+    padding: 2px; 
+}
