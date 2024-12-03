@@ -19,6 +19,7 @@
 }
 
 .bg-blue {
+    /* background-color: rgb(119, 19, 195); */
     background-color: blue;
     color: white;
     padding: 10px;
@@ -69,4 +70,142 @@ table {
 th, td {
     border: 1px solid #ffffff; /* Тонка рамка */
     padding: 2px; 
+}
+
+details summary {
+    list-style: none; /* Прибираємо стандартну стрілку */
+    cursor: pointer; /* Додаємо ефект курсора */
+    position: relative;
+    padding-left: 25px; /* Залишаємо місце для зображення */
+}
+
+details summary::before {
+    content: "";
+    background-image: url('https://i.ibb.co/30KxRG1/arrow-List.png'); /* Ваша URL-іконка */
+    background-size: cover;
+    width: 16px; /* Розмір іконки */
+    height: 16px;
+    position: absolute;
+    left: 0; /* Позиція іконки */
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease; /* Анімація */
+}
+
+details[name="pidrozdil"] summary {
+    list-style: none; /* Прибираємо стандартну стрілку */
+    cursor: pointer; /* Курсор при наведенні */
+    position: relative;
+    padding-left: 25px; /* Відступ для іконки */
+}
+
+details[name="pidrozdil"] summary::before {
+    content: "";
+    background-image: url('https://i.ibb.co/30KxRG1/arrow-List.png'); /* Посилання на вашу картинку */
+    background-size: cover;
+    width: 16px; /* Ширина іконки */
+    height: 16px; /* Висота іконки */
+    position: absolute;
+    left: 0; /* Позиція іконки зліва */
+    top: 50%;
+    transform: translateY(-50%) rotate(270deg); /* Початковий поворот на 90 градусів */
+    transition: transform 0.3s ease; /* Анімація */
+}
+
+details[name="pidrozdil"][open] summary::before {
+    transform: translateY(-50%) rotate(360deg); /* Поворот на 180 градусів при відкритті */
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-list-link a {
+        display: none;
+    }
+    #burgerMenu {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    #burgerMenu {
+        display: none;
+    }
+}
+
+.header {
+    background-color: black;
+    width: 100%;
+    white-space: nowrap;
+    position: fixed;
+    padding: 15px;
+    color: white;
+    display: flex;
+    z-index: 100;
+    font-size: 18px;
+}
+
+.header a {
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.nav-list-link ul, li {
+    list-style-type: none;
+    text-decoration: none;
+}
+
+.header #burgerMenu {
+    margin-right: 10px;
+    margin-left: 90%;
+    margin-top: 0;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+.header #burgerMenu:hover {
+    transition: all .45s ease;
+    background-color: rgba(255, 255, 255, 0.17);
+    padding: 1px;
+    border-radius: 5px;
+}
+
+#popup {
+    z-index: 101;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    padding: 20px;
+    align-items: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    width: 100%;
+    font-size: 40px;
+    text-align: center;
+}
+
+#popup li {
+    padding: 12%;
+}
+
+#popup #closePopup {
+    margin-right: 10px;
+    margin-left: 90%;
+    margin-top: 0;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0);
+}
+
+#popup #closePopup:hover {
+    transition: all .45s ease;
+    background-color: rgba(255, 255, 255, 0.17);
+    padding: 1px;
+    border-radius: 5px;
 }
