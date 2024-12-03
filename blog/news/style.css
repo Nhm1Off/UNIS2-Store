@@ -209,3 +209,9 @@ a {
     padding: 1px;
     border-radius: 5px;
 }
+
+
+.color-black {
+    color: black;
+    font-size: 25px;
+}
