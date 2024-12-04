@@ -596,3 +596,15 @@ ol {
     font-weight: 500;
     font-size: 30px;
 }
+
+
+.icon-home {
+    padding: 5px;
+    display: flex;
+    white-space: nowrap;
+}
+
+.icon-home p {
+    margin-left: 5px;
+    color: #808080;
+}
