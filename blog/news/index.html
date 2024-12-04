@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="uk">
     <head>
@@ -26,11 +25,72 @@
         </script>
     </head>
     <body>
-        <br>
+        <div class="header">
+            <div class="nav-list-link">
+                <ul>
+                    <li>
+                        <a href="blog">Головна</a>
+                        <a href="blog/news">Новини</a>
+                        <a href="blog/aboutus">Про Нас</a>
+                        <a href="blog/donate">Підтримати Нас</a>
+                    </li>
+                </ul>
+            </div>
+            <button id="burgerMenu">
+                <img src="https://i.ibb.co/HXz5NKV/burger-Menu-icon.png" width="30em" height="30em">
+            </button>
+        </div>
+
+        <div class="margins">
+            <br>
+        </div>
+        <br><br><br><br>
+
         <div class="square-border">
             <h1 class="bg-black-border">Новини</h1>
             <br>
-            <a href="news/bs-komanda-rozpalas.html" class="color-black">Команда по Brawl Stars Розпалась</a>
+            <a href="blog/news/bs-komanda-rozpalas.html" class="color-black">Команда по Brawl Stars Розпалась</a>
+            <br> <br> <br>
+            <a href="blog/" class="bg-blue-border">Головна</a>
+            <br> <br>
         </div>
+
+        <div id="popup">
+            <button id="closePopup">
+                <img src="https://i.ibb.co/qBRxwkt/close-Window.png" width="30em" height="30em">
+            </button>
+            <ul>
+                <li>
+                    <a href="blog">Головна</a>
+                    <br> <br>
+                    <a href="">Новини</a>
+                    <br> <br>
+                    <a href="blog/aboutus">Про Нас</a>
+                    <br> <br>
+                    <a href="blog/donate">Підтримати Нас</a>
+                </li>
+            </ul>
+         </div>
+
+        <script>
+            const OpenBurgerMenu = document.getElementById("burgerMenu");
+            const Popup = document.getElementById("popup");
+            const closePopup = document.getElementById("closePopup");
+
+            Popup.style.display = "none";
+
+            function OpenPopup() {
+                Popup.style.display = "inline";
+                OpenBurgerMenu.style.display = "none";
+            }
+
+            function ClosePopup() {
+                Popup.style.display = "none";
+                OpenBurgerMenu.style.display = "block";
+            }
+
+            OpenBurgerMenu.addEventListener("click", OpenPopup)
+            closePopup.addEventListener("click", ClosePopup)
+        </script>
     </body>
 </html>
