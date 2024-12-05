@@ -4,6 +4,7 @@ const filtersPopup = document.getElementById("popup");
 const closePopup = document.getElementById("closePopup");
 const applyFiltersButton = document.getElementById("applyFilters");
 const productList = document.getElementById("productList");
+const clearFiltersButton = document.getElementById("clearFilters");
 
 // Відкрити попап
 filtersButton.addEventListener("click", () => {
@@ -60,5 +61,26 @@ applyFiltersButton.addEventListener("click", () => {
     });
 
     // Закриваємо попап після застосування фільтрів
+    filtersPopup.style.display = "none";
+});
+
+clearFiltersButton.addEventListener("click", () => {
+    // Скидаємо значення мінімальної та максимальної ціни
+    document.getElementById("minPrice").value = "";
+    document.getElementById("maxPrice").value = "";
+
+    // Знімаємо всі галочки в категоріях
+    const checkboxes = document.querySelectorAll(".categoryCheckbox");
+    checkboxes.forEach((checkbox) => {
+        checkbox.checked = checkbox.value === "all"; // Установлюємо "Усі" як вибрану
+    });
+
+    // Показуємо всі товари
+    const products = productList.getElementsByClassName("product");
+    Array.from(products).forEach((product) => {
+        product.style.display = "block";
+    });
+
+    // Закриваємо попап, якщо він відкритий
     filtersPopup.style.display = "none";
 });
