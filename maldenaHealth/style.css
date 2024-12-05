@@ -11,6 +11,44 @@ body {
     background-color: #E5E5E5;
 }
 
+.header {
+    background-color: #e7e7e7;
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    position: fixed;
+    top: 0;
+    z-index: 100;
+    flex-direction: column;
+}
+
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header a {
+    font-size: 20px;
+    transition: all 0.5s ease;
+    text-decoration: none;
+    color: rgb(54, 54, 54);
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.header a:hover {
+    font-size: 25px;
+    transition: all 0.5s ease;
+}
+
+.header hr {
+    width: 100%; /* Розтягує лінію на всю ширину */
+    border: none; /* Видаляє стандартний стиль лінії */
+    border-top: 2px solid #ccc; /* Стиль, товщина і колір лінії */
+    margin: 10px 0 0 0; /* Відступ зверху */
+}
+
 .bg-yellow-border {
     background: url("https://goldenpages.rv.ua/uploads/images/17303%20-%20EXTREME,%20STUDIO%20PERSONAL%20TRAINING/Extreme_02_785x350.jpg");
     color: white;
