@@ -3,7 +3,7 @@
     <head>
         <title>Maldena Health</title>
 
-        <link rel="stylesheet" href="maldenaHealth/style.css">
+        <link rel="stylesheet" href="style.css">
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,34 +26,74 @@
             <p class="next-p">Інтернет магазин для спортсменів!</p>
         </div>
         <br>
+        <button id="filters" class="btn-just">Фільтри</button>
+        <br>
         <div class="content">
             <p class="p-headers">Асортимент</p>
             <br>
             <hr color="#f0f0f0">
             <br>
-            <div class="items">
-                <div class="product">
-                    <img src="https://bb.ua/storage/product_images/2038/01dcC-Gold%20Standard%20100%20Whey%20Protein%20(2273%20%D0%B3%D1%80)%20Double%20Rich%20Chocolate.jpg.webp">
-                    <br>
-                    <p>Протеїн 500 г</p>
-                    <br>
-                    <p class="price-menu">600 ₴</p>
-                    <br>
-                    <a href="" class="buy-btn">Купити</a>
-                    <br><br>
-                </div>
-
-                <div class="product">
-                    <img src="https://image.maudau.com.ua/webp/size/lg/products/8c/15/fc/8c15fca4-2e1c-42df-bf3a-a0427e96bbf6">
-                    <br>
-                    <p>Напій 4move ізотонічний мультифрукт негазований 0.75 л</p>
-                    <br>
-                    <p class="price-menu">70 ₴</p>
-                    <br>
-                    <a href="" class="buy-btn">Купити</a>
-                    <br><br>
+            <div id="productList">
+                <div class="items">
+                    <div class="product sports-nutrition" data-price="600">
+                        <img src="https://bb.ua/storage/product_images/2038/01dcC-Gold%20Standard%20100%20Whey%20Protein%20(2273%20%D0%B3%D1%80)%20Double%20Rich%20Chocolate.jpg.webp">
+                        <br>
+                        <p>Протеїн 500 г</p>
+                        <br>
+                        <p class="price-menu">600 ₴</p>
+                        <br>
+                        <a href="" class="buy-btn">Купити</a>
+                        <br><br>
+                    </div>
+                    <div class="product self-care" data-price="70">
+                        <img src="https://image.maudau.com.ua/webp/size/lg/products/8c/15/fc/8c15fca4-2e1c-42df-bf3a-a0427e96bbf6">
+                        <br>
+                        <p>Напій 4move ізотонічний мультифрукт негазований 0.75 л</p>
+                        <br>
+                        <p class="price-menu">70 ₴</p>
+                        <br>
+                        <a href="" class="buy-btn">Купити</a>
+                        <br><br>
+                    </div>
                 </div>
             </div>
+            
+            
+
+        <div class="popup" id="popup">
+            <p class="p-headers">Фільтри</p>
+            <br><br>
+            <form id="filtersForm">
+                <label><p class="p-headers-mini">Категорії:</p></label>
+                <br>
+                <label>
+                    <input type="checkbox" class="categoryCheckbox" value="sports-nutrition"> Спортивне харчування
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" class="categoryCheckbox" value="self-care"> Догляд за собою
+                </label>
+                <br>
+                <label>
+                    <input type="checkbox" class="categoryCheckbox" value="all" checked> Усі категорії
+                </label>
+                <br> <br>
+                <p class="p-headers-mini">Ціна</p>
+                <label> 
+                    <input type="number" id="minPrice" placeholder="Мін." />
+                </label>
+                <br> <br>
+                <label>
+                    <input type="number" id="maxPrice" placeholder="Макс." />
+                </label>
+            </form>
+            <br><br>
+            <button id="applyFilters">Застосувати</button>
+            <br>
+            <button id="closePopup">Закрити</button>
         </div>
+        
+
+        <script src="script.js"></script>
     </body>
 </html>
