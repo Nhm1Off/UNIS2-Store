@@ -1,0 +1,117 @@
+* {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden;
+    background-color: #E5E5E5;
+}
+
+.bg-yellow-border {
+    background: url("https://goldenpages.rv.ua/uploads/images/17303%20-%20EXTREME,%20STUDIO%20PERSONAL%20TRAINING/Extreme_02_785x350.jpg");
+    color: white;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    background-color: rgb(237, 237, 96);
+    padding: 20px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    background-size: cover;
+    height: auto;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 30vh;
+}
+
+.bg-yellow-border p {
+    font-size: 30px;
+}
+
+.content {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.p-headers {
+    font-size: 30px;
+}
+
+@media (max-width: 768px) {
+    .bg-yellow-border {
+        width: 90%; /* Зменшуємо ширину для мобільних */
+        padding: 10px; /* Менші відступи */
+        border-radius: 10px; /* Зменшення радіусу на малих екранах */
+        margin: 10px auto; /* Центруємо для мобільних */
+    }
+}
+
+/* Медіа-запит для дуже маленьких екранів (наприклад, 320px) */
+@media (max-width: 480px) {
+    .bg-yellow-border {
+        width: 100%; /* Займає всю ширину */
+        padding: 15px; /* Ще менші відступи */
+    }
+}
+
+.product {
+    background-color: #fbfbfb;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid rgb(215, 215, 215);
+    width: 180px;
+}
+
+.product img {
+    min-width: 50px;
+    max-width: 150px;
+}
+
+.buy-btn {
+    color: black;
+    background-color: rgb(255, 182, 35);
+    text-decoration: none;
+    padding: 8px;
+    border-radius: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.466);
+    margin-bottom: 10px;
+    width: 100%;
+    transition: all 0.5s ease;
+}
+
+.buy-btn:hover {
+    font-size: 20px;
+    transition: all 0.5s ease;
+}
+
+.buy-btn:active {
+    font-size: 14px;
+    transition: all 0.5s ease;
+}
+
+.items {
+    display: flex;
+    gap: 15px;
+}
+
+@media (max-width: 768px) {
+    .items {
+        flex-wrap: wrap;
+    }
+}
+
+.price-menu {
+    font-size: 30px;
+    font-weight: 400;
+}
