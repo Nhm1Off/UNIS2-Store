@@ -75,11 +75,12 @@ body {
 .content {
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 20px;
+    margin: 20px;
     padding: 20px;
-    margin-bottom: 20px;
+}
+
+.adaptive-page {
+    display: flex;
 }
 
 .p-headers {
@@ -92,6 +93,9 @@ body {
         padding: 10px; /* Менші відступи */
         border-radius: 10px; /* Зменшення радіусу на малих екранах */
         margin: 10px auto; /* Центруємо для мобільних */
+    }
+    .adaptive-page {
+        flex-direction: column;
     }
 }
 
@@ -158,6 +162,7 @@ body {
     margin-bottom: 15px;
     font-size: 18px;
 }
+
 .popup {
     border-radius: 6px;
     display: none;
@@ -276,4 +281,84 @@ a {
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 13px;
+}
+
+@media (max-width: 768px) {
+    .adaptive-page {
+        flex-wrap: wrap;
+    }
+    .border-page-img {
+        width: 100%;
+    }
+}
+
+.border-page-img {
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.no-content {
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.block-right {
+    display: inline-flex;
+    margin-left: 20px;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.price-page {
+    font-size: 40px;
+    font-weight: 240;
+}
+
+.name-page {
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.in-stock {
+    color: #00ab29;
+    padding: 0;
+    margin-right: 80%;
+    margin-bottom: 10px;
+}
+
+.in-on {
+    border: 2px solid #eaeaea;
+    padding: 10px;
+    background-color: white;
+    border-radius: 10px;
+    text-wrap: nowrap;
+}
+
+.in-on button {
+    border: none;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 20px;
+    width: 100%;
+    background-color: rgba(255, 182, 35, 0.79);
+    transition: all 0.5s ease;
+}
+
+.in-on button:hover {
+    transition: all 0.5s ease;
+    font-size: 28px;
+}
+
+.in-on button:active {
+    transition: all 0.5s ease;
+    font-size: 28px;
 }
