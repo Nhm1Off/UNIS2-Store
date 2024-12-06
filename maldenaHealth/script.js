@@ -1,6 +1,7 @@
 // Отримуємо елементи
 const filtersButton = document.getElementById("filters");
 const filtersPopup = document.getElementById("popup");
+const overlay = document.getElementById("overlay");
 const closePopup = document.getElementById("closePopup");
 const applyFiltersButton = document.getElementById("applyFilters");
 const productList = document.getElementById("productList");
@@ -10,11 +11,13 @@ const categoryCheckboxes = document.querySelectorAll(".categoryCheckbox");
 // Відкрити попап
 filtersButton.addEventListener("click", () => {
     filtersPopup.style.display = "block";
+    overlay.style.display = "block";
 });
 
 // Закрити попап
 closePopup.addEventListener("click", () => {
     filtersPopup.style.display = "none";
+    overlay.style.display = "none";
 });
 
 // Додатково: Закрити попап при кліку за його межами
