@@ -5,6 +5,7 @@ const closePopup = document.getElementById("closePopup");
 const applyFiltersButton = document.getElementById("applyFilters");
 const productList = document.getElementById("productList");
 const clearFiltersButton = document.getElementById("clearFilters");
+const categoryCheckboxes = document.querySelectorAll(".categoryCheckbox");
 
 // Відкрити попап
 filtersButton.addEventListener("click", () => {
@@ -64,15 +65,15 @@ applyFiltersButton.addEventListener("click", () => {
     filtersPopup.style.display = "none";
 });
 
+// Скинути фільтри
 clearFiltersButton.addEventListener("click", () => {
-    // Скидаємо значення мінімальної та максимальної ціни
+    // Скидаємо значення полів ціни
     document.getElementById("minPrice").value = "";
     document.getElementById("maxPrice").value = "";
 
-    // Знімаємо всі галочки в категоріях
-    const checkboxes = document.querySelectorAll(".categoryCheckbox");
-    checkboxes.forEach((checkbox) => {
-        checkbox.checked = checkbox.value === "all"; // Установлюємо "Усі" як вибрану
+    // Знімаємо галочки з усіх категорій
+    categoryCheckboxes.forEach((checkbox) => {
+        checkbox.checked = false;
     });
 
     // Показуємо всі товари
@@ -81,6 +82,19 @@ clearFiltersButton.addEventListener("click", () => {
         product.style.display = "block";
     });
 
-    // Закриваємо попап, якщо він відкритий
+    // Закриваємо попап
     filtersPopup.style.display = "none";
+});
+
+// Обробка змін у категоріях
+categoryCheckboxes.forEach((checkbox) => {
+    checkbox.addEventListener("change", () => {
+        // Якщо хоча б один конкретний чекбокс вибрано, знімаємо галочку з "Усі категорії"
+        if (Array.from(categoryCheckboxes).some((cb) => cb.checked && cb !== allCategoriesCheckbox)) {
+            allCategoriesCheckbox.checked = false;
+        } else {
+            // Якщо жоден конкретний чекбокс не вибрано, ставимо галочку на "Усі категорії"
+            allCategoriesCheckbox.checked = true;
+        }
+    });
 });
