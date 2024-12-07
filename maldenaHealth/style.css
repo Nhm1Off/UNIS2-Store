@@ -143,11 +143,7 @@ body {
 
 @media (max-width: 768px) {
     .items {
-        display: grid;
-        align-items: center;
-        align-content: center;
-        margin-top: 50px;
-        font-size: 20px;
+        flex-wrap: wrap;
         justify-content: center;
     }
 }
