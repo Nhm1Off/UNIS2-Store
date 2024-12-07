@@ -35,7 +35,7 @@ const userSignin = (e) => {
     try {
         signInWithEmailAndPassword(auth, email, password).then(() => {
             alert("Signed in succesfully!")
-            window.location.replace("https://unis2.store/maldenaHealth")
+            window.location.replace("https://unis2.store/maldenaHealth/profile")
 
         }).catch( (error) => {
             alert(error);
