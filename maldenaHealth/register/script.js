@@ -1,6 +1,6 @@
 window.onload = function() {
     google.accounts.id.initialize({
-        client_id: "672903744712-5s97ekr693ere7g2vk7c89jc9cacvugt.apps.googleusercontent.com", // Вставте ваш Client ID
+        client_id: "672903744712-1dhajcnv9bm36bbbc746pdi3cs0l2r5m.apps.googleusercontent.com", // Вставте ваш Client ID
         callback: handleCredentialResponse
     });
 
