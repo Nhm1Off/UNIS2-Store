@@ -1,13 +1,13 @@
-// login
-// const signinForm = document.getElementById("SignInBtn")
-const signinBtn = document.querySelector("#SignInBtn")
+const signinBtn = document.getElementById("SignInBtn")
 
 const signinEmailInput = document.querySelector("#SignInEmail");
 const signinPasswordInput = document.querySelector("#SignInPassword");
 
+const logoutBtn = document.querySelector("#logout"); 
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js"; // Імпортуємо методи аутентифікації
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js"; // Імпортуємо методи аутентифікації
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -37,7 +37,7 @@ const userSignin = (e) => {
     try {
         signInWithEmailAndPassword(auth, email, password).then(() => {
             alert("Signed in succesfully!")
-            window.location.replace("http://127.0.0.1:5500")
+            window.location.replace("https://unis2.store/maldenaHealth/profile")
 
         }).catch( (error) => {
             alert(error);
@@ -47,4 +47,16 @@ const userSignin = (e) => {
     }
 }
 
-signinBtn.addEventListener("click", userSignin);
+const logoutUser = () => {
+    try {
+        signOut(auth).then(() => {
+            alert("Signed out!");
+            window.location.replace("https://unis2.store/maldenaHealth/login");
+        })
+    } catch (error) {
+        alert(error);
+    }
+}
+
+// signinBtn.addEventListener("click", userSignin);
+logoutBtn.addEventListener("click", logoutUser);
