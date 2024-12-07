@@ -315,13 +315,11 @@ a {
 }
 
 .in-on {
-    border: 2px solid #eaeaea;
     padding: 10px;
     background-color: white;
     border-radius: 10px;
     text-wrap: nowrap;
 }
-
 .in-on button {
     border: none;
     border-radius: 10px;
