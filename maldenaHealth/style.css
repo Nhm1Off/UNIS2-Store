@@ -288,11 +288,8 @@ a {
 .no-content {
     background-color: rgb(255, 255, 255);
     border-radius: 10px;
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 20px;
+    margin: 20px;
     padding: 20px;
-    margin-bottom: 20px;
 }
 
 .block-right {
@@ -432,4 +429,20 @@ a {
 .popup-buy button:hover {
     transition: all 1s ease;
     background-color: rgba(255, 182, 35, 0.56);
+}
+
+.content input {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+.no-content button {
+    border: 0;
+    border-radius: 10px;
+    padding: 8px;
+    font-size: 20px;
+    background-color: rgba(255, 182, 35, 0.79);
+    transition: all 0.5s ease;
 }
