@@ -334,12 +334,14 @@ a {
 
 .in-on button:hover {
     transition: all 0.5s ease;
-    font-size: 28px;
+    background-color: white;
+    border: 1px solid #ccc;
 }
 
 .in-on button:active {
     transition: all 0.5s ease;
-    font-size: 28px;
+    background-color: white;
+    border: 1px solid #ccc;
 }
 
 .overlay {
