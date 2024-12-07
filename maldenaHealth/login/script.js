@@ -1,4 +1,4 @@
-const signinBtn = document.querySelector("#SignInBtn")
+const signinBtn = document.getElementById("SignInBtn")
 
 const signinEmailInput = document.querySelector("#SignInEmail");
 const signinPasswordInput = document.querySelector("#SignInPassword");
