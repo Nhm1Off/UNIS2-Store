@@ -96,14 +96,7 @@ body {
     }
     .adaptive-page {
         flex-direction: column;
-    }
-}
-
-/* Медіа-запит для дуже маленьких екранів (наприклад, 320px) */
-@media (max-width: 480px) {
-    .bg-yellow-border {
-        width: 100%; /* Займає всю ширину */
-        padding: 15px; /* Ще менші відступи */
+        align-items: center;
     }
 }
 
@@ -145,11 +138,15 @@ body {
 .items {
     display: flex;
     gap: 15px;
+    box-sizing: border-box;
 }
 
 @media (max-width: 768px) {
     .items {
+        flex: 1 1 calc(50% - 10px);
         flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
     }
 }
 
@@ -237,9 +234,9 @@ body {
     margin-top: 0;
     background-color: rgb(255, 255, 255);
     color: black;
-    padding: 10px;
+    padding: 5px;
     border: 1px solid rgba(0, 0, 0, 0.444);
-    border-radius: 20px;
+    border-radius: 45px;
     transition: all 0.5s ease;
 }
 
@@ -249,7 +246,7 @@ body {
     margin-top: 0;
     background-color: rgb(255, 255, 255);
     color: black;
-    padding: 10px;
+    padding: 8px;
     border: 1px solid rgba(0, 0, 0, 0.444);
     border-radius: 20px;
     transition: all 0.5s ease;
@@ -383,4 +380,3 @@ a {
     cursor: pointer;
     color: #333;
 }
-
