@@ -145,6 +145,7 @@ body {
     .items {
         flex-wrap: wrap;
         justify-content: center;
+        gap: 15px;
     }
 }
 
