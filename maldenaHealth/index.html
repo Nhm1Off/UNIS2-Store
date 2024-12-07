@@ -12,6 +12,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+
         <div class="header">
             <div class="nav-link">
                 <a href="https://unis2.store/maldenaHealth">Головна</a>
@@ -20,77 +21,83 @@
             <hr>
         </div>
         <br> <br> <br>
-        <div class="bg-yellow-border">
-            <p>Maldena Health</p>
-            <br>
-            <p class="next-p">Інтернет магазин для спортсменів!</p>
+
+        <div class="content adaptive-page">
+            <img src="https://image.maudau.com.ua/webp/size/lg/products/8c/15/fc/8c15fca4-2e1c-42df-bf3a-a0427e96bbf6" class="border-page-img">
+            <div class="text-container justify-between">
+                <p class="name-page">Напій 4move ізотонічний мультифрукт негазований 0.75 л</p>
+                <br>
+                <div class="in-on">
+                    <p class="in-stock">В наявності</p>
+                    <br>
+                    <p class="price-page">70 ₴</p>
+                    <br>
+                    <button id="buy-popup">Купити</button>
+                </div>
+            </div>
         </div>
-        <br>
-        <div class="content">
-            <p class="p-headers">Асортимент</p>
+        
+        <!-- Popup -->
+        <div class="popup-buy" id="popup-buy">
+            <h2>Ваші контактні дані</h2>
             <br>
-            <button id="filters" class="icon-btn"><img src="https://i.ibb.co/t2vQjdq/image.png">Фільтри</button>
-            <br>
-            <hr color="#f0f0f0">
-            <br>
-            <div id="productList">
-                <div class="items">
-                    <div class="product sports-nutrition" data-price="600">
-                        <a href="">
-                            <img src="https://bb.ua/storage/product_images/2038/01dcC-Gold%20Standard%20100%20Whey%20Protein%20(2273%20%D0%B3%D1%80)%20Double%20Rich%20Chocolate.jpg.webp">
-                            <br>
-                            <p>Протеїн 500 г</p>
-                            <br>
-                            <p class="price-menu">600 ₴</p>
-                            <br>
-                        </a>
-                    </div>
-
-                    <div class="product self-care" data-price="70">
-                        <a href="maldenaHealth/products/sport/4move-izotonic.html">
-                            <img src="https://image.maudau.com.ua/webp/size/lg/products/8c/15/fc/8c15fca4-2e1c-42df-bf3a-a0427e96bbf6">
-                            <br>
-                            <p>Напій 4move ізотонічний мультифрукт негазований 0.75 л</p>
-                            <br>
-                            <p class="price-menu">70 ₴</p>
-                        </a>
-                        <br>
-                    </div>
-
-        <button class="overlay" id="overlay"></button>
-        <div class="popup" id="popup">
-            <p class="p-headers">Фільтри</p>
             <div class="close-icon" id="closePopup">
                 <img src="https://i.ibb.co/6nJsJBK/image.png">
             </div>
-            <br><br>
-            <form id="filtersForm">
-                <label><p class="p-headers-mini">Категорії:</p></label>
-                <br>
-                <label>
-                    <input type="checkbox" class="categoryCheckbox" value="sports-nutrition"> Спортивне харчування
-                </label>
-                <br>
-                <label>
-                    <input type="checkbox" class="categoryCheckbox" value="self-care"> Догляд за собою
-                </label>
-                <br> <br>
-                <p class="p-headers-mini">Ціна</p>
-                <label> 
-                    <input type="number" id="minPrice" placeholder="Мін." />
-                </label>
-                <br> <br>
-                <label>
-                    <input type="number" id="maxPrice" placeholder="Макс." />
-                </label>
-            </form>
-            <br><br>
-            <button id="applyFilters">Застосувати</button>
-            <br>
-            <button id="clearFilters">Скинути</button>
-        </div>
-        
+            <form action="https://api.web3forms.com/submit" method="POST">
 
-        <script src="maldenaHealth/script.js"></script>
+            <input type="hidden" name="access_key" value="79f3bbaf-4a85-49b9-90f6-6ad7e910e1d0">
+
+                <input type="hidden" id="product_name" name="product_name" value="Напій 4move ізотонічний мультифрукт негазований 0.75 л" required>
+
+                <label for="name">Прізвище, Ім'я:</label>
+                <br>
+                <input type="text" id="name" name="name" required><br><br>
+    
+                <label for="phone">Номер Телефону:</label>
+                <br>
+                <input type="text" id="phone" name="phone" required><br><br>
+                
+                <label for="email">Ваш e-mail:</label>
+                <br>
+                <input type="text" id="email" name="email" required><br><br>
+
+                <label for="city">Місто:</label>
+                <br>
+                <textarea id="city" name="city" required></textarea><br><br>
+    
+                <label for="address">Адреса Доставки:</label>
+                <br>
+                <textarea id="address" name="address" required></textarea><br><br>
+                
+                <label for="product">Поштова служба:</label>
+                <br>
+                <select name="product" id="product" name="poshta" required>
+                    <option value="Nova poshta">Нова Пошта</option>
+                    <option value="Ukr poshta">Укр Пошта</option>
+                    <option value="Meest poshta">Meest Пошта</option>
+                </select>
+                <br>
+                <br>
+
+                <label for="oplata">Оплата:</label>
+                <br>
+                <select name="oplata" id="oplata" name="oplata" required>
+                    <option value="Card">Оплата онлайн</option>
+                    <option value="pru otrumani">Оплата при отриманні</option>
+                </select>
+
+                <br><br>
+
+                <label for="no-call">Не зв'язуватися зі мною
+                    <input type="checkbox" id="no-call" name="no-call">
+                </label>
+                <br> <br>
+                <button type="submit">Відправити</button>
+            </form>
+        </div>
+
+        <script src="script.js"></script>
+
     </body>
 </html>
