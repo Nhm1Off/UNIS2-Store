@@ -8,6 +8,14 @@ const productList = document.getElementById("productList");
 const clearFiltersButton = document.getElementById("clearFilters");
 const categoryCheckboxes = document.querySelectorAll(".categoryCheckbox");
 
+overlay.style.display = "none";
+
+// Закрити попап при натискані за його межами
+overlay.addEventListener("click", function () {
+    filtersPopup.style.display = "none";
+    overlay.style.display = "none";
+});
+
 // Відкрити попап
 filtersButton.addEventListener("click", () => {
     filtersPopup.style.display = "block";
@@ -24,6 +32,7 @@ closePopup.addEventListener("click", () => {
 filtersPopup.addEventListener("click", (event) => {
     if (event.target === filtersPopup) {
         filtersPopup.style.display = "none";
+        overlay.style.display = "none";
     }
 });
 
@@ -66,6 +75,7 @@ applyFiltersButton.addEventListener("click", () => {
 
     // Закриваємо попап після застосування фільтрів
     filtersPopup.style.display = "none";
+    overlay.style.display = "none";
 });
 
 // Скинути фільтри
@@ -87,6 +97,7 @@ clearFiltersButton.addEventListener("click", () => {
 
     // Закриваємо попап
     filtersPopup.style.display = "none";
+    overlay.style.display = "none";
 });
 
 // Обробка змін у категоріях
