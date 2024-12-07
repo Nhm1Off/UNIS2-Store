@@ -379,3 +379,18 @@ a {
     cursor: pointer;
     color: #333;
 }
+
+.icon-btn {
+    border: none;
+    font-size: 20px;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    background-color: transparent;
+    align-items: center;
+    transition: all 0.5s ease;
+}
+
+.icon-btn img {
+    width: 40px;
+}
