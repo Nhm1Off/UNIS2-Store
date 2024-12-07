@@ -45,7 +45,7 @@ const userReg = async (event) => {
             displayName: nameInput.value
         })
         alert("Account has been created")
-        window.location.replace("https://unis2.store/maldenaHealth")
+        window.location.replace("https://unis2.store/maldenaHealth/profile")
     } catch (error) {
         alert(error) 
     }
