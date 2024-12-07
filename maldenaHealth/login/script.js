@@ -1,13 +1,11 @@
-const nameInput = document.querySelector("#name");
-const regEmail = document.querySelector("#email");
-const Registerpassword = document.querySelector("#password");
-const regBtn = document.querySelector("#registerBtn");
+const signinBtn = document.querySelector("#SignInBtn")
 
-
+const signinEmailInput = document.querySelector("#SignInEmail");
+const signinPasswordInput = document.querySelector("#SignInPassword");
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js"; // Імпортуємо методи аутентифікації
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js"; // Імпортуємо методи аутентифікації
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -29,26 +27,22 @@ const analytics = getAnalytics(app);
 
 const auth = getAuth(app);
 
-// Код
-const userReg = async (event) => {
-    event.preventDefault();
 
+const userSignin = (e) => {
+    e.preventDefault();
+    const email = signinEmailInput.value;
+    const password = signinPasswordInput.value;
     try {
-        const email = regEmail.value;
-        const password = Registerpassword.value;
+        signInWithEmailAndPassword(auth, email, password).then(() => {
+            alert("Signed in succesfully!")
+            window.location.replace("http://127.0.0.1:5500")
 
-        await createUserWithEmailAndPassword(auth,email,password).catch((error) => {
-            alert(error)
+        }).catch( (error) => {
+            alert(error);
         })
-
-        await updateProfile(auth.currentUser, {
-            displayName: nameInput.value
-        })
-        alert("Account has been created")
-        window.location.replace("http://127.0.0.1:5500/")
     } catch (error) {
-        alert(error) 
+        alert(error);
     }
 }
 
-regBtn.addEventListener("click",  userReg)
+signinBtn.addEventListener("click", userSignin);
