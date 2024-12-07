@@ -3,7 +3,7 @@
     <head>
         <title>Maldena Health</title>
 
-        <link rel="stylesheet" href="/style.css"> <!-- github \maldenaHealth\style.css -->
+        <link rel="stylesheet" href="/maldenaHealth/style.css"> <!-- github /maldenaHealth/style.css -->
 
         <script src="https://accounts.google.com/gsi/client" async defer></script>
 
@@ -14,15 +14,25 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div class="no-content">
 
-            <div id="profile-info">
-                <h2>Profile</h2>
-                <img id="profile-avatar" src="" alt="Avatar" style="width: 100px; height: 100px;">
-                <p id="profile-name"></p>
+        <div class="header">
+            <div class="nav-link">
+                <a href="https://unis2.store/maldenaHealth">Головна</a>
+                <a href="">Корисні Знання</a>
             </div>
+            <hr>
+        </div>
+        <br> <br> <br>
+        <div class="content">
+            <p class="p-headers">Профіль</p>
+            <br>
+            <hr color="#ebebeb">
 
-            <script src="profile.js"></script> <!-- github maldenaHealth/script.js -->
+            <!-- Знизу -->
+            <br>
+            <button id="logout" class="red-border">Вийти</button>
+
+            <script type="module" src="/maldenaHealth/profile/script.js"></script> <!-- github /maldenaHealth/profile/script.js -->
         </div>
     </body>
 </html>
