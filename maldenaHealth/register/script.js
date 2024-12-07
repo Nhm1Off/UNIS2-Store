@@ -11,7 +11,7 @@ function handleCredentialResponse(response) {
     console.log("Encoded JWT ID token: " + response.credential);
 
     // Надсилаємо токен на сервер для перевірки
-    fetch('https://unis2.store/maldenaHealth/profile', {
+    fetch('https://www.unis2.store/maldenaHealth/profile', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
