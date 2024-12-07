@@ -137,7 +137,7 @@ body {
 
 .items {
     display: flex;
-    gap: 15px;
+    gap: 10px;
     box-sizing: border-box;
 }
 
@@ -147,6 +147,11 @@ body {
         align-items: center;
         align-content: center;
         grid-template-columns: repeat(2, 1fr);
+        margin-top: 50px;
+        font-size: 18px;
+    }
+    .items img {
+        width: 120px;
     }
 }
 
