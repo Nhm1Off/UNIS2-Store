@@ -505,10 +505,3 @@ a {
     color: #A9C132;
     text-decoration: underline;
 }
-
-@media (min-width: 768px) {
-    .content img {
-        width: 300px;
-        height: 300px;
-    }
-}
