@@ -57,35 +57,32 @@ const userReg = async (event) => {
         const email = regEmail.value;
         const password = Registerpassword.value;
 
-        // Check if email is already in use before registering
-        const existingUser = await auth.fetchSignInMethodsForEmail(email);
-        if (existingUser.length > 0) {
-            alert("This email is already registered. Please use a different email.");
-            return;
-        }
-
-        // Create user with email and password
-        await createUserWithEmailAndPassword(auth, email, password);
-
-        // If registration is successful, update user profile
-        await updateProfile(auth.currentUser, {
-            displayName: nameInput.value
-        });
+        // Try to create the user with email and password
+        await createUserWithEmailAndPassword(auth, email, password)
+            .then(() => {
+                // If registration is successful, update the user profile
+                return updateProfile(auth.currentUser, {
+                    displayName: nameInput.value
+                });
+            })
+            .catch((error) => {
+                // Handle specific error codes here
+                if (error.code === "auth/email-already-in-use") {
+                    alert("This email is already in use. Please use a different email.");
+                } else if (error.code === "auth/weak-password") {
+                    alert("The password is too weak. Please choose a stronger password.");
+                } else if (error.code === "auth/invalid-email") {
+                    alert("The email address is invalid.");
+                } else {
+                    alert("Error during registration: " + error.message);
+                }
+            });
 
         // Successfully registered and updated profile
         alert("Account has been created successfully!");
         window.location.replace("https://unis2.store/maldenaHealth/profile");
     } catch (error) {
-        // Handle errors
-        if (error.code === "auth/email-already-in-use") {
-            alert("This email is already in use. Please use a different email.");
-        } else if (error.code === "auth/weak-password") {
-            alert("The password is too weak. Please choose a stronger password.");
-        } else if (error.code === "auth/invalid-email") {
-            alert("The email address is invalid.");
-        } else {
-            alert("Error during registration: " + error.message);
-        }
+        alert("Error: " + error.message);
     }
 }
 
