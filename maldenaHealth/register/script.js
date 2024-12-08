@@ -32,7 +32,7 @@ const validateInputs = () => {
     }
 
     // Validate email format
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zAZ0-9.-]+$/;
     if (!emailPattern.test(regEmail.value)) {
         alert("Please enter a valid email address.");
         return false;
@@ -70,7 +70,11 @@ const userReg = async (event) => {
             })
             .catch((error) => {
                 // Handle error during user creation
-                alert("Error during registration: " + error.message);
+                if (error.code === "auth/email-already-in-use") {
+                    alert("This email is already in use. Please use a different email.");
+                } else {
+                    alert("Error during registration: " + error.message);
+                }
             });
 
         // Successfully registered and updated profile
