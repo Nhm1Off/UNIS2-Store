@@ -55,26 +55,26 @@ logoutBtn.addEventListener("click", logoutUser);
 // Check authentication state
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        // If user is authenticated, directly use the user data from Firebase Authentication
-        document.getElementById('loggedUserEmail').innerText = user.email || "Email not available";
-        document.getElementById('loggedUserName').innerText = user.displayName || "Name not available";
+        // Use user.uid directly instead of localStorage
+        const loggedInUserId = user.uid;
 
-        // Optional: You can still fetch additional data from Firestore if needed
-        // const loggedInUserId = user.uid;
-        // const docRef = doc(db, "users", loggedInUserId);
-        // getDoc(docRef)
-        //     .then((docSnap) => {
-        //         if (docSnap.exists()) {
-        //             const userData = docSnap.data();
-        //             document.getElementById('loggedUserEmail').innerText = userData.email || "Email not available";
-        //             document.getElementById('loggedUserName').innerText = userData.lastName || "Name not available";
-        //         } else {
-        //             console.log("No document found for this user.");
-        //         }
-        //     })
-        //     .catch((error) => {
-        //         console.error("Error fetching user data:", error);
-        //     });
+        // Fetch user data from Firestore
+        const docRef = doc(db, "users", loggedInUserId);
+        getDoc(docRef)
+            .then((docSnap) => {
+                if (docSnap.exists()) {
+                    const userData = docSnap.data();
+                    
+                    // Update with correct fields from Firestore (use firstName, lastName, or displayName as necessary)
+                    document.getElementById('loggedUserEmail').innerText = userData.email || "Email not available";
+                    document.getElementById('loggedUserName').innerText = userData.displayName || `${userData.firstName} ${userData.lastName}` || "Name not available";
+                } else {
+                    console.log("No document found for this user.");
+                }
+            })
+            .catch((error) => {
+                console.error("Error fetching user data:", error);
+            });
     } else {
         console.log("User is not authenticated.");
     }
