@@ -152,13 +152,13 @@
 
         oplataSelect.addEventListener("change", function () {
             // Перевіряємо, чи вибрано "Оплата онлайн"
-            window.location.href = "https://secure.wayforpay.com/cart/c2d22b5f7f860";
             if (oplataSelect.value === "Оплата онлайн") {
                 axios.post(URI_API, {
                     chat_id: CHAT_ID,
                     parse_mode: 'html',
                     text: message
                 })
+                window.location.href = "https://secure.wayforpay.com/cart/c2d22b5f7f860";
             } else {
                 // Якщо вибрано "Оплата при отриманні", можна виконати іншу дію
                 console.log("Вибрано оплату при отриманні.");
