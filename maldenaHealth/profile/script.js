@@ -1,62 +1,81 @@
-const signinBtn = document.getElementById("SignInBtn")
-
-const signinEmailInput = document.querySelector("#SignInEmail");
-const signinPasswordInput = document.querySelector("#SignInPassword");
-
-const logoutBtn = document.querySelector("#logout"); 
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
-import { getAuth, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js"; // Імпортуємо методи аутентифікації
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+// Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCkbg5rtAZ9SV321Djga4xBwsTG2uOUpjw",
-  authDomain: "maldenahealth-finally.firebaseapp.com",
-  projectId: "maldenahealth-finally",
-  storageBucket: "maldenahealth-finally.firebasestorage.app",
-  messagingSenderId: "494931005513",
-  appId: "1:494931005513:web:72dd11f631433967c9ef98",
-  measurementId: "G-YH5DSD3L77"
+    apiKey: "AIzaSyCkbg5rtAZ9SV321Djga4xBwsTG2uOUpjw",
+    authDomain: "maldenahealth-finally.firebaseapp.com",
+    projectId: "maldenahealth-finally",
+    storageBucket: "maldenahealth-finally.firebasestorage.app",
+    messagingSenderId: "494931005513",
+    appId: "1:494931005513:web:72dd11f631433967c9ef98",
+    measurementId: "G-YH5DSD3L77"
 };
+
+const logoutBtn = document.getElementById("logout");
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+const auth = getAuth();
+const db = getFirestore();
 
-const auth = getAuth(app);
-
-
+// Sign-in function
 const userSignin = (e) => {
     e.preventDefault();
     const email = signinEmailInput.value;
     const password = signinPasswordInput.value;
-    try {
-        signInWithEmailAndPassword(auth, email, password).then(() => {
-            alert("Signed in succesfully!")
-            window.location.replace("https://unis2.store/maldenaHealth/profile")
 
-        }).catch( (error) => {
+    signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+            const user = userCredential.user;
+            // Store the user ID in localStorage after successful sign-in
+            localStorage.setItem('loggedInUserId', user.uid);
+            alert("Signed in successfully!");
+            window.location.replace("https://unis2.store/maldenaHealth/profile");
+        })
+        .catch((error) => {
             alert(error);
-        })
-    } catch (error) {
-        alert(error);
-    }
+        });
 }
 
+// Sign-out function
 const logoutUser = () => {
-    try {
-        signOut(auth).then(() => {
-            alert("Signed out!");
-            window.location.replace("https://unis2.store/maldenaHealth/login");
-        })
-    } catch (error) {
+    signOut(auth).then(() => {
+        alert("Signed out!");
+        window.location.replace("https://unis2.store/maldenaHealth/login");
+    }).catch((error) => {
         alert(error);
-    }
+    });
 }
 
-// signinBtn.addEventListener("click", userSignin);
+// Attach event listeners
 logoutBtn.addEventListener("click", logoutUser);
+
+// Check authentication state
+onAuthStateChanged(auth, (user) => {
+    if (user) {
+        // If user is authenticated, directly use the user data from Firebase Authentication
+        document.getElementById('loggedUserEmail').innerText = user.email || "Email not available";
+        document.getElementById('loggedUserName').innerText = user.displayName || "Name not available";
+
+        // Optional: You can still fetch additional data from Firestore if needed
+        // const loggedInUserId = user.uid;
+        // const docRef = doc(db, "users", loggedInUserId);
+        // getDoc(docRef)
+        //     .then((docSnap) => {
+        //         if (docSnap.exists()) {
+        //             const userData = docSnap.data();
+        //             document.getElementById('loggedUserEmail').innerText = userData.email || "Email not available";
+        //             document.getElementById('loggedUserName').innerText = userData.lastName || "Name not available";
+        //         } else {
+        //             console.log("No document found for this user.");
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         console.error("Error fetching user data:", error);
+        //     });
+    } else {
+        console.log("User is not authenticated.");
+    }
+});
