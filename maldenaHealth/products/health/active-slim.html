@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="uk">
+    <head>
+        <title>Maldena Health</title>
+
+        <link rel="stylesheet" href="/maldenaHealth/style.css"> <!-- github \maldenaHealth\style.css -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+
+        <div class="header">
+            <div class="nav-link">
+                <a href="https://unis2.store/maldenaHealth">Головна</a>
+                <a href="">Корисні Знання</a>
+            </div>
+            <hr>
+        </div>
+        <br> <br> <br>
+
+        <div class="content adaptive-page">
+            <img src="https://choice.ua/storage/images/products/264_card.png" class="border-page-img">
+            <div class="text-container justify-between">
+                <p class="name-page name-weight">ACTIVE SLIM
+                </p>
+                <br>
+                <p class="green-col">60 капсул</p>
+                <div class="in-on">
+                    <p class="name-weight">679 ₴</p>
+                    <br>
+                    <button id="buy-popup">Купити</button>
+                </div>
+                <br>
+                <span> <p class="in-desc">ПРИЗНАЧЕННЯ:</p><p class="margin-left">Контроль апетиту, калорій, ваги. Покращення вуглеводного та жирового обмінів. Поліпшення процесів травлення.
+                    Рекомендується вживати у програмах корекції та зниження ваги для відновлення вуглеводного й ліпідного (жирового) обмінів, метаболічному синдромі (інсулінорезистентності), цукровому діабеті 2-го типу та ожирінні 1-го, 2-го та 3-го ступеню, диспепсії та ферментної недостатності. У комплексі з іншими продуктами — для повноцінного відновлення після тривалих фізичних, психічних і розумових навантажень.</p>
+                </span>
+                <br><br>
+                <span><p class="in-desc">ОПИС:</p><p class="margin-left">Active Slim — рослинний комплекс, який поєднує екстракти рослин і рослинні ферменти, отримані за допомогою ферментації лікарських рослин, фруктів, овочів та зерен. Нормалізує вуглеводний обмін, підтримує здоровий метаболізм глюкози, уповільнює швидку абсорбцію цукру в шлунково-кишковому тракті, зменшуючи вуглеводне навантаження на підшлункову залозу. Покращує чутливість клітин до власного інсуліну, що призводить до збільшення енергетичного обміну і кращої утилізації глюкози, завдяки чому зменшуються прояви інсулінорезистентності...
+                </p></span>
+                <br>
+                <span><p class="in-desc">ПЕРЕВАГИ:</p><p class="margin-left">- 100 % натуральний комплекс.
+                </p>
+                <p class="margin-left">- Новітній продукт, створений на основі результатів досліджень південнокорейських і японських науковців на замовлення компанії</p>
+                <p class="margin-left">- Блокатор засвоєння швидких вуглеводів.
+                </p>
+                <p class="margin-left">- Унікальна комбінація рослинних ферментів із ферментованих зерен, лікарських рослин, фруктів та овочів.
+                </p>
+                <p class="margin-left">- Не містить штучних барвників, підсолоджувачів, консервантів, глютену, лактози, глюкози.
+                </p>
+                </span>
+                <br><br>
+                <a href="https://choice.ua/zdorovia/active-slim" class="margin-left a-white">Детальніше на сайті</a>
+            </div>
+        </div>
+        
+        <!-- Popup -->
+        <div class="popup-buy" id="popup-buy">
+            <h2>Ваші контактні дані</h2>
+            <br>
+            <div class="close-icon" id="closePopup">
+                <img src="https://i.ibb.co/6nJsJBK/image.png">
+            </div>
+            <form id="tg">
+                <div class="form-group">
+                    <input type="hidden" id="product_name" name="product_name" value="Напій 4move ізотонічний мультифрукт негазований 0.75 л" required>
+
+                    <label for="name">Прізвище, Ім'я:</label>
+                    <br>
+                    <input type="text" id="name" name="name" required><br><br>
+        
+                    <label for="phone">Номер Телефону:</label>
+                    <br>
+                    <input type="number" id="phone" name="phone" required><br><br>
+                    
+                    <label for="email">Ваша e-пошта:</label>
+                    <br>
+                    <input type="text" id="email" name="email" required><br><br>
+
+                    <label for="city">Місто:</label>
+                    <br>
+                    <textarea id="city" name="city" required></textarea><br><br>
+        
+                    <label for="address">Адреса Доставки:</label>
+                    <br>
+                    <textarea id="address" name="address" required></textarea><br><br>
+                    
+                    <label for="poshta">Поштова служба:</label>
+                    <br>
+                    <select name="poshta" id="poshta" name="poshta" required>
+                        <option value="Нова пошта">Нова Пошта</option>
+                        <option value="Укр пошта">Укр Пошта</option>
+                        <option value="Meest пошта">Meest Пошта</option>
+                    </select>
+                    <br>
+                    <br>
+
+                    <label for="oplata">Оплата:</label>
+                    <br>
+                    <select name="oplata" id="oplata" name="oplata" required>
+                        <option value="Картою">Оплата онлайн</option>
+                        <option value="При отриманні">Оплата при отриманні</option>
+                    </select>
+
+                    <br><br>
+
+                    <label for="no-call">Не зв'язуватися зі мною
+                        <input type="checkbox" id="no-call" name="no-call">
+                    </label>
+                    <br> <br>
+                    <button type="submit">Відправити</button>
+                </div>
+            </form>
+        </div>
+
+        <script src="/products/script.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+        <script>
+            const TOKEN = "7759369845:AAFExU3zFGdNtJZEybSftmeGA3eQpZvtFdc";
+            const CHAT_ID = "-1002460784573";
+            const URI_API = `https://api.telegram.org/bot${ TOKEN }/sendMessage`;
+
+            document.getElementById("tg").addEventListener("submit", function (e) {
+                e.preventDefault();
+
+                let message = `<b>Заявка зі сайту!</b>\n`;
+                message += `<b>Товар: </b> ${ this.product_name.value }\n`;
+                message += `<b>Прізвище, Ім'я: </b> ${ this.name.value }\n`;
+                message += `<b>Номер телефону: </b> ${ this.phone.value }\n`;
+                message += `<b>E-mail: </b> ${ this.email.value }\n`;
+                message += `<b>Місто: </b> ${ this.city.value }\n`;
+                message += `<b>Адреса доставки: </b> ${ this.address.value }\n`;
+                message += `<b>Поштова служба: </b> ${ this.poshta.value }\n`;
+                message += `<b>Оплата: </b> ${ this.oplata.value }\n`;
+                message += `<b>Не зв'язуватися: </b> ${ this['no-call'].checked ? 'Так' : 'Ні' }`;
+
+                axios.post(URI_API, {
+                    chat_id: CHAT_ID,
+                    parse_mode: 'html',
+                    text: message
+                })
+
+                window.location.replace("https://unis2.store/maldenaHealth")
+            })
+
+        </script>
+
+    </body>
+</html>
