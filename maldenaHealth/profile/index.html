@@ -1,38 +1,48 @@
 <!DOCTYPE html>
 <html lang="uk">
-    <head>
-        <title>Maldena Health</title>
 
-        <link rel="stylesheet" href="/maldenaHealth/style.css"> <!-- github /maldenaHealth/style.css -->
+<head>
+    <title>Maldena Health</title>
 
-        <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="stylesheet" href="../style.css"> <!-- github /maldenaHealth/style.css -->
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
 
-        <div class="header">
-            <div class="nav-link">
-                <a href="https://unis2.store/maldenaHealth">Головна</a>
-                <a href="">Корисні Знання</a>
-            </div>
-            <hr>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+    <div class="header">
+        <div class="nav-link">
+            <a href="https://unis2.store/maldenaHealth">Головна</a>
+            <a href="">Корисні Знання</a>
         </div>
-        <br> <br> <br>
-        <div class="content">
-            <p class="p-headers">Профіль</p>
-            <br>
-            <hr color="#ebebeb">
+        <hr>
+    </div>
+    <br> <br> <br>
+    <div class="content">
+        <p class="p-headers">Профіль</p>
+        <br>
+        <hr color="#ebebeb">
+        <br>
 
-            <!-- Знизу -->
-            <br>
-            <button id="logout" class="red-border">Вийти</button>
+        <h1>Welcome to the Homepage</h1>
+        <div>Name: <span id="loggedUserName"></span></div>
+        <br>
+        <div>Email: <span id="loggedUserEmail"></span></div>
 
-            <script type="module" src="/maldenaHealth/profile/script.js"></script> <!-- github /maldenaHealth/profile/script.js -->
-        </div>
-    </body>
+        <!-- Знизу -->
+        <br>
+        <button id="logout" class="red-border">Вийти</button>
+
+        <script type="module" src="/maldenaHealth/profile/script.js"></script> <!-- github /maldenaHealth/profile/script.js -->
+    </div>
+</body>
+
 </html>
