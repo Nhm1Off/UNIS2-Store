@@ -55,26 +55,25 @@ logoutBtn.addEventListener("click", logoutUser);
 // Check authentication state
 onAuthStateChanged(auth, (user) => {
     if (user) {
-        // Use user.uid directly instead of localStorage
-        const loggedInUserId = user.uid;
-
-        // Fetch user data from Firestore
-        const docRef = doc(db, "users", loggedInUserId);
-        getDoc(docRef)
-            .then((docSnap) => {
-                if (docSnap.exists()) {
-                    const userData = docSnap.data();
-                    
-                    // Update with correct fields from Firestore (use firstName, lastName, or displayName as necessary)
-                    document.getElementById('loggedUserEmail').innerText = userData.email || "Email not available";
-                    document.getElementById('loggedUserName').innerText = userData.displayName || `${userData.firstName} ${userData.lastName}` || "Name not available";
-                } else {
-                    console.log("No document found for this user.");
-                }
-            })
-            .catch((error) => {
-                console.error("Error fetching user data:", error);
-            });
+        const loggedInUserId = localStorage.getItem('loggedInUserId');
+        if (loggedInUserId) {
+            const docRef = doc(db, "users", loggedInUserId);
+            getDoc(docRef)
+                .then((docSnap) => {
+                    if (docSnap.exists()) {
+                        const userData = docSnap.data();
+                        document.getElementById('loggedUserEmail').innerText = userData.email;
+                        document.getElementById('loggedUserName').innerText = userData.lastName;
+                    } else {
+                        console.log("No document found for this user.");
+                    }
+                })
+                .catch((error) => {
+                    console.error("Error fetching user data:", error);
+                });
+        } else {
+            console.log("User ID not found in local storage.");
+        }
     } else {
         console.log("User is not authenticated.");
     }
