@@ -4,7 +4,6 @@ const Registerpassword = document.querySelector("#password");
 const regBtn = document.querySelector("#registerBtn");
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-analytics.js";
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js"; 
 
 // Your web app's Firebase configuration
@@ -20,8 +19,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
 const auth = getAuth(app);
 
 // Input validation function
@@ -32,7 +29,7 @@ const validateInputs = () => {
     }
 
     // Validate email format
-    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zAZ0-9.-]+$/;
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
     if (!emailPattern.test(regEmail.value)) {
         alert("Please enter a valid email address.");
         return false;
@@ -60,28 +57,35 @@ const userReg = async (event) => {
         const email = regEmail.value;
         const password = Registerpassword.value;
 
+        // Check if email is already in use before registering
+        const existingUser = await auth.fetchSignInMethodsForEmail(email);
+        if (existingUser.length > 0) {
+            alert("This email is already registered. Please use a different email.");
+            return;
+        }
+
         // Create user with email and password
-        await createUserWithEmailAndPassword(auth, email, password)
-            .then(() => {
-                // If registration is successful, update user profile
-                return updateProfile(auth.currentUser, {
-                    displayName: nameInput.value
-                });
-            })
-            .catch((error) => {
-                // Handle error during user creation
-                if (error.code === "auth/email-already-in-use") {
-                    alert("This email is already in use. Please use a different email.");
-                } else {
-                    alert("Error during registration: " + error.message);
-                }
-            });
+        await createUserWithEmailAndPassword(auth, email, password);
+
+        // If registration is successful, update user profile
+        await updateProfile(auth.currentUser, {
+            displayName: nameInput.value
+        });
 
         // Successfully registered and updated profile
         alert("Account has been created successfully!");
         window.location.replace("https://unis2.store/maldenaHealth/profile");
     } catch (error) {
-        alert("Error: " + error.message);
+        // Handle errors
+        if (error.code === "auth/email-already-in-use") {
+            alert("This email is already in use. Please use a different email.");
+        } else if (error.code === "auth/weak-password") {
+            alert("The password is too weak. Please choose a stronger password.");
+        } else if (error.code === "auth/invalid-email") {
+            alert("The email address is invalid.");
+        } else {
+            alert("Error during registration: " + error.message);
+        }
     }
 }
 
