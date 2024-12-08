@@ -102,10 +102,11 @@
                     <label for="oplata">Оплата:</label>
                     <br>
                     <select name="oplata" id="oplata" name="oplata" required>
-                        <option value="Картою">Оплата онлайн</option>
                         <option value="При отриманні">Оплата при отриманні</option>
+                        <option value="Оплата онлайн">Оплата онлайн</option>
                     </select>
-
+                    <br><br>
+                    <a href="https://secure.wayforpay.com/cart/c2d22b5f7f860" class="pay-now">Оплатити зараз</a>
                     <br><br>
 
                     <label for="no-call">Не зв'язуватися зі мною
@@ -121,32 +122,48 @@
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
         <script>
-            const TOKEN = "7759369845:AAFExU3zFGdNtJZEybSftmeGA3eQpZvtFdc";
-            const CHAT_ID = "-1002460784573";
-            const URI_API = `https://api.telegram.org/bot${ TOKEN }/sendMessage`;
+        const TOKEN = "7759369845:AAFExU3zFGdNtJZEybSftmeGA3eQpZvtFdc";
+        const CHAT_ID = "-1002460784573";
+        const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 
-            document.getElementById("tg").addEventListener("submit", function (e) {
-                e.preventDefault();
+        document.getElementById("tg").addEventListener("submit", function (e) {
+            e.preventDefault();
 
-                let message = `<b>Заявка зі сайту!</b>\n`;
-                message += `<b>Товар: </b> ${ this.product_name.value }\n`;
-                message += `<b>Прізвище, Ім'я: </b> ${ this.name.value }\n`;
-                message += `<b>Номер телефону: </b> ${ this.phone.value }\n`;
-                message += `<b>E-mail: </b> ${ this.email.value }\n`;
-                message += `<b>Місто: </b> ${ this.city.value }\n`;
-                message += `<b>Адреса доставки: </b> ${ this.address.value }\n`;
-                message += `<b>Поштова служба: </b> ${ this.poshta.value }\n`;
-                message += `<b>Оплата: </b> ${ this.oplata.value }\n`;
-                message += `<b>Не зв'язуватися: </b> ${ this['no-call'].checked ? 'Так' : 'Ні' }`;
+            let message = `<b>Заявка зі сайту!</b>\n`;
+            message += `<b>Товар: </b> ${this.product_name.value}\n`;
+            message += `<b>Прізвище, Ім'я: </b> ${this.name.value}\n`;
+            message += `<b>Номер телефону: </b> ${this.phone.value}\n`;
+            message += `<b>E-mail: </b> ${this.email.value}\n`;
+            message += `<b>Місто: </b> ${this.city.value}\n`;
+            message += `<b>Адреса доставки: </b> ${this.address.value}\n`;
+            message += `<b>Поштова служба: </b> ${this.poshta.value}\n`;
+            message += `<b>Оплата: </b> ${this.oplata.value}\n`;
+            message += `<b>Не зв'язуватися: </b> ${this['no-call'].checked ? 'Так' : 'Ні'}`;
 
+            axios.post(URI_API, {
+                chat_id: CHAT_ID,
+                parse_mode: 'html',
+                text: message
+            })
+        })
+
+        const oplataSelect = document.getElementById("oplata");
+        const pay = document.getElementsByClassName("pay-now");
+
+        oplataSelect.addEventListener("change", function () {
+            // Перевіряємо, чи вибрано "Оплата онлайн"
+            window.location.href = "https://secure.wayforpay.com/cart/c2d22b5f7f860";
+            if (oplataSelect.value === "Оплата онлайн") {
                 axios.post(URI_API, {
                     chat_id: CHAT_ID,
                     parse_mode: 'html',
                     text: message
                 })
-
-                window.location.replace("https://unis2.store/maldenaHealth")
-            })
+            } else {
+                // Якщо вибрано "Оплата при отриманні", можна виконати іншу дію
+                console.log("Вибрано оплату при отриманні.");
+            }
+        });
 
         </script>
 
