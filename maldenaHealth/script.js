@@ -99,16 +99,3 @@ clearFiltersButton.addEventListener("click", () => {
     filtersPopup.style.display = "none";
     overlay.style.display = "none";
 });
-
-// Обробка змін у категоріях
-categoryCheckboxes.forEach((checkbox) => {
-    checkbox.addEventListener("change", () => {
-        // Якщо хоча б один конкретний чекбокс вибрано, знімаємо галочку з "Усі категорії"
-        if (Array.from(categoryCheckboxes).some((cb) => cb.checked && cb !== allCategoriesCheckbox)) {
-            allCategoriesCheckbox.checked = false;
-        } else {
-            // Якщо жоден конкретний чекбокс не вибрано, ставимо галочку на "Усі категорії"
-            allCategoriesCheckbox.checked = true;
-        }
-    });
-});
