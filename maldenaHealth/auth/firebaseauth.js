@@ -49,7 +49,7 @@ signUp.addEventListener("click", (event) => {
             const docRef = doc(db, "users", user.uid);
             setDoc(docRef, userData)
                 .then(() => {
-                    window.location.href = "/index.html";
+                    window.location.href = "/maldenaHealth";
                 })
                 .catch((error) => {
                     console.error("error while writing document", error);
@@ -78,7 +78,7 @@ signIn.addEventListener("click", (event) => {
             showMessage("Ви успішно ввійли в акаунт!", "signInMessage")
             const user = userCredential.user;
             localStorage.setItem("loggedInUserId", user.uid);
-            window.location.href = "/index.html";
+            window.location.href = "/maldenaHealth";
         })
         .catch((error) => {
             const errorCode = error.code;
