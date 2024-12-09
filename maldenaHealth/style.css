@@ -561,3 +561,37 @@ a {
     transition: all 0.5s ease;
     width: 45px;
 }
+
+#closeOverlay {
+    margin-right: 10px;
+    margin-left: 90%;
+    margin-top: 20px;
+    border: 0;
+    background-color: rgba(255, 255, 255, 0);
+    transition: all 0.5s ease;
+}
+
+#closeOverlay:hover {
+    transition: all 0.5s ease;
+    background-color: rgba(255, 255, 255, 0.17);
+    padding: 2px;
+    border-radius: 5px;
+}
+
+#popup-header a {
+    display: inline;
+    padding-top: 10%;
+    color: white;
+    font-size: 50px;
+}
+
+#popup-header li {
+    padding: 12%;
+    text-align: center;
+    margin-bottom: 300px;
+}
+
+#popup-header li {
+    margin-bottom: 300px;
+}
+
