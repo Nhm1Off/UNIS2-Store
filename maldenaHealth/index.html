@@ -14,8 +14,12 @@
     <body>
         <div class="header">
             <div class="nav-link">
-                <a href="https://unis2.store/maldenaHealth">Головна</a>
-                <a href="">Корисні Знання</a>
+                <!-- <a href="https://unis2.store/maldenaHealth">Головна</a>
+                <a href="">Корисні Знання</a> -->
+
+                <button id="burgerMenuBtn">
+                    <img src="https://i.ibb.co/dDr8Qx1/3hr.png">
+                </button>
             </div>
             <hr>
         </div>
@@ -112,8 +116,28 @@
             <br>
             <button id="clearFilters">Скинути</button>
         </div>
-        
+                    
+        <!-- Popup header -->
+        <div class="overlay" id="popup-header">
+            <button id="closeOverlay">
+                <img src="https://i.ibb.co/qBRxwkt/close-Window.png" width="30em" height="30em">
+            </button>
+            <ul>
+                <li>
+                    <a href="https://unis2.store/maldenaHealth">Головна</a>
+                    <br> <br> <br>
+                    <a href="https://unis2.store/maldenaHealth/healthy-mind">Корисні Знання</a>
+                    <br> <br> <br>
+                    <a href="https://unis2.store/maldenaHealth">Магазин</a>
+                    <br> <br> <br>
+                    <a href="">Форум</a>
+                    <br> <br> <br>
+                    <a href="">Профіль</a>
+                </li>
+            </ul>
+        </div>
 
         <script src="maldenaHealth/script.js"></script>
+        <script src="maldenaHealth/header/burger.js"></script> <!-- github maldenaHealth/header/burger.js -->
     </body>
 </html>
