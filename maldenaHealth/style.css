@@ -532,3 +532,14 @@ a {
     color: white;
     margin-top: 10px;
 }
+
+.messageDiv {
+    background-color: #00ab29;
+    color: white;
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 10px;
+    font-size: 1rem;
+    opacity: 0;
+    animation: fadeOut 7s forwards;
+}
