@@ -543,3 +543,21 @@ a {
     opacity: 0;
     animation: fadeOut 7s forwards;
 }
+
+#burgerMenuBtn img {
+    background-color: transparent;
+    width: 40px;
+    margin-left: 10px;
+    margin-right: 85%;
+    transition: all 0.5s ease;
+}
+
+#burgerMenuBtn {
+    background-color: transparent;
+    border: none;
+}
+
+#burgerMenuBtn img:hover {
+    transition: all 0.5s ease;
+    width: 45px;
+}
