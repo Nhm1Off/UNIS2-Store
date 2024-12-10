@@ -1,82 +1,107 @@
 <!DOCTYPE html>
 <html lang="uk">
-    <head>
-        <title>Maldena Health</title>
 
-        <link rel="stylesheet" href="/maldenaHealth/style.css"> <!-- github /maldenaHealth/style.css -->
+<head>
+    <title>Maldena Health</title>
 
-        <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <link rel="stylesheet" href="/maldenaHealth/style.css"> <!-- github /maldenaHealth/style.css -->
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
 
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body>
-          <div class="header">
-            <div class="nav-link">
-                <!-- <a href="https://unis2.store/maldenaHealth">Головна</a>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <div class="header">
+        <div class="nav-link">
+            <!-- <a href="https://unis2.store/maldenaHealth">Головна</a>
                 <a href="">Корисні Знання</a> -->
 
-                <button id="burgerMenuBtn">
-                    <img src="https://i.ibb.co/dDr8Qx1/3hr.png">
-                </button>
-            </div>
-            <hr>
+            <button id="burgerMenuBtn">
+                <img src="https://i.ibb.co/dDr8Qx1/3hr.png">
+            </button>
         </div>
-        <br> <br> <br>
-        <div class="content">
-            <form>
-                <h1 class="p-headers" id="registerDiv">Реєстрація</h1>
-                <div id="signUpMessage" class="messageDiv" style="display: none;"></div>
-                <div class="register">
-                    <br><br>
-                    <label for "name" class="p-headers">Логін</label>
-                    <br>
-                    <input type="text" name="name" id="name" required>
-                    <br><br>
-                    <label for "Remail" class="p-headers">E-mail</label>
-                    <br>
-                    <input type="email" name="Remail" id="Remail" required>
-                    <br><br>
-                    <label for "Rpassword" class="p-headers">Пароль</label>
-                    <br>
-                    <input type="password" name="Rpassword" id="Rpassword" required>
-                    <br><br>
-                    <button type="submit" id="registerBtn" class="btn-send">Зареєструватися</button>
-                </div>
-                <br>
-                <p>Вже маєте акаунт? Тоді увійдіть нижче</p>
-                <br>
-                <hr color="#ccc">
-                <br>
-            </form>
-        </div>
-
-        <br> <br>
-        <div class="content">
-            <h1 class="p-headers" id="loginDiv">Вхід</h1>
-            <div id="signInMessage" class="messageDiv" style="display: none;"></div>
-            <div class="loginDiv">
+        <hr>
+    </div>
+    <br> <br> <br>
+    <div class="content">
+        <form>
+            <h1 class="p-headers" id="registerDiv">Реєстрація</h1>
+            <div id="signUpMessage" class="messageDiv" style="display: none;"></div>
+            <div class="register">
                 <br><br>
-                <label for "SignInEmail" class="p-headers">E-mail</label>
+                <label for "name" class="p-headers">Логін</label>
                 <br>
-                <input type="text" name="SignInEmail" id="SignInEmail" required>
+                <input type="text" name="name" id="name" required>
                 <br><br>
-                <label for "Lpassword" class="p-headers">Пароль</label>
+                <label for "Remail" class="p-headers">E-mail</label>
                 <br>
-                <input type="password" name="Lpassword" id="Lpassword" required>
+                <input type="email" name="Remail" id="Remail" required>
                 <br><br>
-                <button type="submit" id="SignInBtn" class="btn-send">Увійти</button>
+                <label for "Rpassword" class="p-headers">Пароль</label>
+                <br>
+                <input type="password" name="Rpassword" id="Rpassword" required>
+                <br><br>
+                <button type="submit" id="registerBtn" class="btn-send">Зареєструватися</button>
             </div>
             <br>
-            <p>Не маєте акаунту? Тоді створіть його вище</p>
+            <p>Вже маєте акаунт? Тоді увійдіть нижче</p>
             <br>
             <hr color="#ccc">
             <br>
+        </form>
+    </div>
+
+    <br> <br>
+    <div class="content">
+        <h1 class="p-headers" id="loginDiv">Вхід</h1>
+        <div id="signInMessage" class="messageDiv" style="display: none;"></div>
+        <div class="loginDiv">
+            <br><br>
+            <label for "SignInEmail" class="p-headers">E-mail</label>
+            <br>
+            <input type="text" name="SignInEmail" id="SignInEmail" required>
+            <br><br>
+            <label for "Lpassword" class="p-headers">Пароль</label>
+            <br>
+            <input type="password" name="Lpassword" id="Lpassword" required>
+            <br><br>
+            <button type="submit" id="SignInBtn" class="btn-send">Увійти</button>
         </div>
-        <script type="module" src="/maldenaHealth/auth/firebaseauth.js"></script> <!-- github /maldenaHealth/auth/firebaseauth.js -->
-        <script src="/maldenaHealth/header/burger.js"></script> <!-- github maldenaHealth/header/burger.js -->
-    </body>
+        <br>
+        <p>Не маєте акаунту? Тоді створіть його вище</p>
+        <br>
+        <hr color="#ccc">
+        <br>
+    </div>
+
+    <!-- Popup header -->
+    <div class="overlay" id="popup-header" style="display: none;">
+        <button id="closeOverlay">
+            <img src="https://i.ibb.co/qBRxwkt/close-Window.png" width="30em" height="30em">
+        </button>
+        <ul>
+            <li>
+                <a href="https://unis2.store/maldenaHealth">Головна</a>
+                <br> <br> <br>
+                <a href="https://unis2.store/maldenaHealth/healthy-mind">Корисні Знання</a>
+                <br> <br> <br>
+                <a href="https://unis2.store/maldenaHealth">Магазин</a>
+                <br> <br> <br>
+                <a href="">Форум</a>
+                <br> <br> <br>
+                <a href="">Профіль</a>
+            </li>
+        </ul>
+    </div>
+    
+    <script src="/maldenaHealth/auth/firebaseauth.js"></script> <!-- github /maldenaHealth/auth/firebaseauth.js -->
+    <script type="module" src="/maldenaHealth/auth/firebaseauth.js"></script> <!-- github /maldenaHealth/auth/firebaseauth.js -->
+</body>
+
 </html>
