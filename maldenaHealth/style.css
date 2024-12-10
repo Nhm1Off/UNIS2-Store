@@ -580,13 +580,12 @@ a {
 
 #popup-header a {
     display: inline;
-    padding-top: 10%;
     color: white;
     font-size: 50px;
 }
 
 #popup-header li {
-    padding: 5%;
+    padding: 8%;
     text-align: center;
     margin-bottom: 300px;
 }
