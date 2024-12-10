@@ -48,7 +48,7 @@ logoutButton.addEventListener("click", () => {
     localStorage.removeItem("loggedInUserId");
     signOut(auth) 
     .then(() => {
-        window.location.href = "../auth/register";
+        window.location.href = "https://unis2.store/maldenaHealth/auth/register";
     })
     .catch((error) => {
         console.error("Error Signing out: ", error);
