@@ -586,11 +586,10 @@ a {
 }
 
 #popup-header li {
-    padding: 8%;
     text-align: center;
+    padding-top: 50px;
     margin-bottom: 300px;
 }
-
 #popup-header li {
     margin-bottom: 300px;
 }
