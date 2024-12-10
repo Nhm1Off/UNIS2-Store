@@ -43,13 +43,13 @@ signUp.addEventListener("click", (event) => {
                 email: email,
                 name: name
             };
-            showMessage("Акаунт створено успішно!", "signUpMessage");
+            // showMessage("Акаунт створено успішно!", "signUpMessage");
             console.log("Email:", email);
             console.log("Password:", password);
             const docRef = doc(db, "users", user.uid);
             setDoc(docRef, userData)
                 .then(() => {
-                    window.location.href = "/maldenaHealth";
+                    showMessage("Акаунт створено успішно! Тепер увійдіть в нього нижче", "signUpMessage");
                 })
                 .catch((error) => {
                     console.error("error while writing document", error);
@@ -78,7 +78,7 @@ signIn.addEventListener("click", (event) => {
             showMessage("Ви успішно ввійли в акаунт!", "signInMessage")
             const user = userCredential.user;
             localStorage.setItem("loggedInUserId", user.uid);
-            window.location.href = "/maldenaHealth";
+            window.location.href = "../../profile"; // github /maldenaHealth
         })
         .catch((error) => {
             const errorCode = error.code;
