@@ -4,8 +4,6 @@ const BurgerMenuBtn = document.getElementById("burgerMenuBtn");
 const closeOverlay = document.getElementById("closeOverlay");
 
 
-Popup.style.display = "none";
-
 function OpenPopup() {
     Popup.style.display = "inline-block"; 
     BurgerMenuBtn.style.display = "none";
