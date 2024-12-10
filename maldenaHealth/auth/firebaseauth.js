@@ -78,7 +78,7 @@ signIn.addEventListener("click", (event) => {
             showMessage("Ви успішно ввійли в акаунт!", "signInMessage")
             const user = userCredential.user;
             localStorage.setItem("loggedInUserId", user.uid);
-            window.location.href = "../../profile"; // github /maldenaHealth
+            window.location.href = "https://unis2.store/maldenaHealth/profile"; // github /maldenaHealth
         })
         .catch((error) => {
             const errorCode = error.code;
