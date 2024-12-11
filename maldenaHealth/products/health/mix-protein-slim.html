@@ -216,7 +216,7 @@
 
         const pay = document.getElementById("pay");
 
-        pay.addEventListener("click", send);
+      
 
             const product_name = document.getElementById('product_name');
 
@@ -238,13 +238,13 @@
         message += `<b>Поштова служба: </b> ('poshta')\n`;
         message += `<b>Оплата: </b> ('oplata')\n`;
         
-     function send() {
+   
         axios.post(URI_API, {
             chat_id: CHAT_ID,
             parse_mode: 'html',
             text: message
         })
-     }
+     
      </script>
 </body>
 
