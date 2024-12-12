@@ -130,9 +130,10 @@
         <div class="close-icon" id="closePopup">
             <img src="https://i.ibb.co/6nJsJBK/image.png">
         </div>
-        <form id="tg" method="GET" action="https://unis2.store/maldenaHealth/products/health/acceptedlC/active-slim.html">
+        <form id="tg">
             <div class="form-group">
                 <input type="hidden" id="product_name" name="product_name" value="Choice Mix Protein SLIM" required>
+                <input type="hidden" id="price" name="price" value="1416 ₴" required>
 
                 <label for="name">Прізвище, Ім'я:</label>
                 <br>
@@ -177,14 +178,13 @@
                     <input type="checkbox" id="no-call" name="no-call">
                 </label>
                 <br> <br>
-                <button type="submit" id="pay">Далі</button><br><br>
-                <a href="https://secure.wayforpay.com/button/bb5f0b07390a8" style="display:inline-block!important;background:#2B3160 url('https://s3.eu-central-1.amazonaws.com/w4p-merch/button/bg6x2.png') no-repeat center right;background-size:cover;width: 256px!important;height:54px!important;border:none!important;border-radius:14px!important;padding:18px!important;text-decoration:none!important;box-shadow:3px 2px 8px rgba(71,66,66,0.22)!important;text-align:left!important;box-sizing:border-box!important;" onmouseover="this.style.opacity='0.8';" onmouseout="this.style.opacity='1';"><span style="font-family:Verdana,Arial,sans-serif!important;font-weight:bold!important;font-size:14px!important;color:#ffffff!important;line-height:18px!important;vertical-align:middle!important;">Оплатити</span></a>
+                <button type="submit" id="next">Далі</button>
+                <br> <br>
             </div>
         </form>
         <br>
     </div>
 
-    <script src="https://unis2.store/maldenaHealth/products/script.js"></script> <!-- github https://unis2.store/maldenaHealth/products/script.js -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- Popup header -->
@@ -207,9 +207,40 @@
         </ul>
     </div>
 
-    <script src="https://unis2.store/maldenaHealth/header/burger.js"></script> <!-- github maldenaHealth/header/burger.js -->
+    <script>
+        const TOKEN = "7759369845:AAFExU3zFGdNtJZEybSftmeGA3eQpZvtFdc";
+        const CHAT_ID = "-1002460784573";
+        const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 
-             <script src="https://unis2.store/maldenaHealth/token.js"></script> <!-- github https://unis2.store/maldenaHealth/token.js -->
+        document.getElementById("tg").addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            let message = `<b>Заявка зі сайту!</b>\n`;
+            message += `<b>Товар: </b> ${this.product_name.value}\n`;
+            message += `<b>Прізвище, Ім'я: </b> ${this.name.value}\n`;
+            message += `<b>Номер телефону: </b> ${this.phone.value}\n`;
+            message += `<b>E-mail: </b> ${this.email.value}\n`;
+            message += `<b>Місто: </b> ${this.city.value}\n`;
+            message += `<b>Адреса доставки: </b> ${this.address.value}\n`;
+            message += `<b>Поштова служба: </b> ${this.poshta.value}\n`;
+            message += `<b>Оплата: </b> ${this.oplata.value}\n`;
+            message += `<b>Сума: </b> ${this.price.value}\n`;
+            message += `<b>Статус оплати: Не оплачено</b>`;
+
+            axios.post(URI_API, {
+                chat_id: CHAT_ID,
+                parse_mode: 'html',
+                text: message
+            })
+
+            window.location.href = "https://secure.wayforpay.com/button/bb5f0b07390a8";
+        })
+    </script>
+
+
+    <script src="https://unis2.store/maldenaHealth/products/script.js"></script> <!-- github maldenaHealth/script.js -->
+    <script src="https://unis2.store/maldenaHealth/header/burger.js"></script>
+    <!-- github maldenaHealth/header/burger.js -->
 </body>
 
 </html>
