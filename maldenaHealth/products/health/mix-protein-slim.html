@@ -185,6 +185,7 @@
         <br>
     </div>
 
+    <script src="../script.js"></script> <!-- github https://unis2.store/maldenaHealth/products/script.js -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <!-- Popup header -->
@@ -212,6 +213,16 @@
         const CHAT_ID = "-1002460784573";
         const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
 
+        const Name = document.getElementById("name");
+
+
+        Name.addEventListener("keyup", display);
+
+        function display() {
+            localStorage.setItem("name", Name.value);
+            console.log(localStorage.getItem("name"));
+        }
+
         document.getElementById("tg").addEventListener("submit", function (e) {
             e.preventDefault();
 
@@ -232,6 +243,9 @@
                 parse_mode: 'html',
                 text: message
             })
+
+            localStorage.setItem("product_name", this.product_name.value);
+            console.log(localStorage.getItem("product_name"));
 
             window.location.href = "https://secure.wayforpay.com/button/bb5f0b07390a8";
         })
