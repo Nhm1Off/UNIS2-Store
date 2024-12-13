@@ -20,6 +20,7 @@ body {
     top: 0;
     z-index: 100;
     flex-direction: column;
+    margin-bottom: 30px;
 }
 
 .nav-links {
@@ -471,7 +472,7 @@ a {
     color: #ff5745;
     border-radius: 30px;
     font-size: 20px;
-    box-shadow: 1px 1px 10px #ff5745;
+    box-shadow: 1.5px 1.5px 1px #ff5745;
     transition: all 0.5s ease;
 }
 
@@ -563,22 +564,19 @@ a {
 }
 
 #closeOverlay {
-    margin-right: 10px;
-    margin-left: 90%;
-    margin-top: 20px;
+    margin-right: 80%;
+    padding: 10px;
     border: 0;
     background-color: rgba(255, 255, 255, 0);
-    transition: all 0.5s ease;
+    transition: all 0.7s ease;
 }
 
 #closeOverlay:hover {
-    transition: all 0.5s ease;
-    background-color: rgba(255, 255, 255, 0.17);
-    padding: 2px;
-    border-radius: 5px;
+    transition: all 1s ease;
+    transform: scale(0.6);
 }
 
-#popup-header a {
+/* #popup-header a {
     display: inline;
     color: white;
     font-size: 50px;
@@ -589,14 +587,107 @@ a {
     text-align: center;
     padding-top: 50px;
     margin-bottom: 300px;
-}
-
-#popup-header li {
-    margin-bottom: 300px;
-}
+} */
 
 .text-center {
     text-align: center;
     margin-bottom: 40%;
+}
+
+.card {
+    display: inline-block;
+    background-color: rgb(253, 41, 41);
+    padding: 10px;
+    margin: 15px;
+    color: white;
+    width: 300px;
+    height: 150px;
+    border-radius: 10px;
+}
+
+.card p {
+    margin-top: 60px;
+}
+
+.card button {
+    margin-top: 80px;
+    margin-left: 140px;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+}
+
+.card-nowrap {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.left-menu {
+    display: block;
+    background-color: white;
+    width: 250px;
+    margin-left: 0;
+    height: 100%;
+    color: black;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: all 0.5s ease;
+}
+
+.left-menu ul {
+    padding-top: 10px;
+    overflow: hidden;
+    list-style-type: none; /* Забираємо маркери списку */
+}
+
+.left-menu::before {
+    opacity: 1;
+}
+
+.left-menu ul li a {
+    overflow: hidden;
+    margin-left: 10px;
+    text-decoration: none; /* Прибираємо підкреслення з посилання */
+    color: black; /* Колір тексту чорний */
+    display: flex; /* Робимо, щоб посилання займало весь рядок */
+    padding: 10px;
+    font-size: 20px;
+    margin-bottom: 0;
+    line-height: 1;
+    transition: all 0.5s ease;
+}
+
+.left-menu ul li a:hover {
+    padding-left: 25px;
+    transition: all 0.5s ease;
+}
+
+.left-menu ul li {
+    overflow: hidden;
+    margin: 0; 
+    padding: 0;
+}
+
+.header-menu {
+    display: flex;
+    flex-wrap: nowrap;
+    color: black;
+    margin-right: 80%;
+}
+
+.header-menu p {
+    margin-top: 10px;
+    font-size: 15px;
+    transition: all 1s ease;
+}
+
+.header-menu p:hover {
+    transition: all 1s ease;
+    margin-left: -25px;
+    padding-top: 3px;
+    font-size: 20px;
+    white-space: nowrap;
 }
 
