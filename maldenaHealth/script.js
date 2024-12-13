@@ -1,20 +1,12 @@
 // Отримуємо елементи
 const filtersButton = document.getElementById("filters");
-const filtersPopup = document.getElementById("popup");
-const overlay = document.getElementById("overlay");
+const filtersPopup = document.getElementById("popup-filters");
 const closePopup = document.getElementById("closePopup");
 const applyFiltersButton = document.getElementById("applyFilters");
 const productList = document.getElementById("productList");
 const clearFiltersButton = document.getElementById("clearFilters");
 const categoryCheckboxes = document.querySelectorAll(".categoryCheckbox");
 
-overlay.style.display = "none";
-
-// Закрити попап при натискані за його межами
-overlay.addEventListener("click", function () {
-    filtersPopup.style.display = "none";
-    overlay.style.display = "none";
-});
 
 // Відкрити попап
 filtersButton.addEventListener("click", () => {
@@ -25,14 +17,12 @@ filtersButton.addEventListener("click", () => {
 // Закрити попап
 closePopup.addEventListener("click", () => {
     filtersPopup.style.display = "none";
-    overlay.style.display = "none";
 });
 
 // Додатково: Закрити попап при кліку за його межами
 filtersPopup.addEventListener("click", (event) => {
     if (event.target === filtersPopup) {
         filtersPopup.style.display = "none";
-        overlay.style.display = "none";
     }
 });
 
@@ -75,7 +65,6 @@ applyFiltersButton.addEventListener("click", () => {
 
     // Закриваємо попап після застосування фільтрів
     filtersPopup.style.display = "none";
-    overlay.style.display = "none";
 });
 
 // Скинути фільтри
@@ -97,5 +86,4 @@ clearFiltersButton.addEventListener("click", () => {
 
     // Закриваємо попап
     filtersPopup.style.display = "none";
-    overlay.style.display = "none";
 });
