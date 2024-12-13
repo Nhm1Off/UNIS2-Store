@@ -83,39 +83,53 @@
                         <br>
                     </div>
 
-        <!-- Popup -->
-        <button class="overlay" id="overlay"></button>
-        <div class="popup" id="popup">
-            <p class="p-headers">Фільтри</p>
-            <div class="close-icon" id="closePopup">
-                <img src="https://i.ibb.co/6nJsJBK/image.png">
-            </div>
-            <br><br>
-            <form id="filtersForm">
-                <label><p class="p-headers-mini">Категорії:</p></label>
-                <br>
-                <label>
-                    <input type="checkbox" class="categoryCheckbox" value="sports-nutrition"> Спортивне харчування
-                </label>
-                <br>
-                <label>
-                    <input type="checkbox" class="categoryCheckbox" value="health"> Здоров'я
-                </label>
-                <br> <br>
-                <p class="p-headers-mini">Ціна</p>
-                <label> 
-                    <input type="number" id="minPrice" placeholder="Мін." />
-                </label>
-                <br> <br>
-                <label>
-                    <input type="number" id="maxPrice" placeholder="Макс." />
-                </label>
-            </form>
-            <br><br>
-            <button id="applyFilters">Застосувати</button>
-            <br>
-            <button id="clearFilters">Скинути</button>
-        </div>
+                       <!-- Popup -->
+                <div class="overlay" id="popup-filters" style="display: none;">
+                    <div class="left-menu" style="padding: 10px;">
+                        <div class="closeOverlay" id="closePopup">
+                            <ul>
+                                <li>
+                                    <div class="header-menu">
+                                        <button style="background-color: transparent; border: 0; margin-top: 3px;">
+                                            <img src="https://i.ibb.co/6nJsJBK/image.png" width="30em" height="30em">
+                                        </button>
+                                        <p style="margin-left: 10px;">Фільтри</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <br><br>
+                        <form id="filtersForm">
+                            <label>
+                                <p class="p-headers-mini">Категорії:</p>
+                            </label>
+                            <label>
+                                <input type="checkbox" class="categoryCheckbox" value="sports-nutrition"> Спортивне
+                                харчування
+                            </label>
+                            <br>
+                            <label>
+                                <input type="checkbox" class="categoryCheckbox" value="health"> Здоров'я
+                            </label>
+                            <br> <br>
+                            <p class="p-headers-mini">Ціна</p>
+                            <label>
+                                <input type="number" id="minPrice" placeholder="Мін."
+                                    style="width: 150px; border-radius: 15px;" />
+                            </label>
+                            <br> <br>
+                            <label>
+                                <input type="number" id="maxPrice" placeholder="Макс."
+                                    style="width: 150px; border-radius: 15px;" />
+                            </label>
+                        </form>
+                        <br><br>
+                        <button id="applyFilters" style="margin-left: -2px;">Застосувати</button>
+                        <br>
+                        <button id="clearFilters"
+                            style="border-radius: 25px; border: 1px solid #ccc; padding: 10px; margin-left: -2px;">Скинути</button>
+                    </div>
+                </div>
         
         <!-- Popup header -->
         <div class="overlay" id="popup-header" style="display: none;">
