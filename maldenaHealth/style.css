@@ -642,10 +642,6 @@ a {
     list-style-type: none; /* Забираємо маркери списку */
 }
 
-.left-menu::before {
-    opacity: 1;
-}
-
 .left-menu ul li a {
     overflow: hidden;
     margin-left: 10px;
@@ -691,3 +687,29 @@ a {
     white-space: nowrap;
 }
 
+.wrapper {
+    overflow: hidden;
+    max-height: 250px;
+    max-width: 100%;
+    display: inline-block;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+    scrollbar-width: none;
+}
+
+.wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.wrapper .item {
+    width: auto;
+    height: 300px;
+    line-height: 200px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+.wrapper .item img {
+    border-radius: 10px;
+}
