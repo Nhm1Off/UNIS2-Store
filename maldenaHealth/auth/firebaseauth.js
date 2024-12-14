@@ -34,6 +34,7 @@ const googleSignInButton = document.getElementById("googleSignInButton");
 const signUp = document.getElementById("registerBtn");
 
 googleSignInButton.addEventListener("click", async () => {
+    googleSignInButton.disabled = true; // Блокуємо кнопку після першого кліка
     try {
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
@@ -64,9 +65,10 @@ googleSignInButton.addEventListener("click", async () => {
         window.location.href = "https://unis2.store/maldenaHealth/profile";  // Змінити на ваш шлях
     } catch (error) {
         console.error("Error during Google sign-in: ", error.message);
+    } finally {
+        googleSignInButton.disabled = false; // Знову активуємо кнопку
     }
 });
-
 
 signUp.addEventListener("click", (event) => {
     event.preventDefault();
