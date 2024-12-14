@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
-import { getFirestore, setDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 const firebaseConfig = {
     apiKey: "AIzaSyCkbg5rtAZ9SV321Djga4xBwsTG2uOUpjw",
@@ -17,6 +17,8 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 const db = getFirestore();
 
+const provider = new GoogleAuthProvider();
+
 function showMessage(message, divId) {
     var messageDiv = document.getElementById(divId);
     messageDiv.style.display = "block";
@@ -27,7 +29,44 @@ function showMessage(message, divId) {
     }, 5000);
 }
 
+const googleSignInButton = document.getElementById("googleSignInButton");
+
 const signUp = document.getElementById("registerBtn");
+
+googleSignInButton.addEventListener("click", async () => {
+    try {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+
+        console.log("User signed in: ", user);
+
+        // Перевірка, чи існує користувач у Firestore
+        const userDocRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(userDocRef);
+
+        if (!docSnap.exists()) {
+            // Якщо користувач не існує в базі, додаємо його
+            await setDoc(userDocRef, {
+                uid: user.uid,
+                email: user.email,
+                displayName: user.displayName,
+                balance: 0,  // Додаткові поля, якщо потрібно
+                cardStatus: false  // Статус картки
+            });
+
+            console.log("User added to Firestore");
+        }
+
+        // Зберігаємо ID користувача в localStorage
+        localStorage.setItem("loggedInUserId", user.uid);
+
+        // Перенаправлення на домашню сторінку або в профіль
+        window.location.href = "https://unis2.store/maldenaHealth/profile";  // Змінити на ваш шлях
+    } catch (error) {
+        console.error("Error during Google sign-in: ", error.message);
+    }
+});
+
 
 signUp.addEventListener("click", (event) => {
     event.preventDefault();
@@ -78,7 +117,7 @@ signIn.addEventListener("click", (event) => {
             showMessage("Ви успішно ввійшли в акаунт!", "signInMessage")
             const user = userCredential.user;
             localStorage.setItem("loggedInUserId", user.uid);
-            window.location.href = "https://unis2.store/maldenaHealth/profile"; // github /maldenaHealth
+            window.location.href = "../../profile"; // github https://unis2.store/maldenaHealth/profile
         })
         .catch((error) => {
             const errorCode = error.code;
@@ -94,3 +133,4 @@ signIn.addEventListener("click", (event) => {
             }
         })
 })
+
