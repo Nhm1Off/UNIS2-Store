@@ -13,9 +13,7 @@ const firebaseConfig = {
 };
 
 const app = initializeApp(firebaseConfig);
-
 const auth = getAuth();
-
 const db = getFirestore();
 
 onAuthStateChanged(auth, (user) => {
@@ -26,8 +24,14 @@ onAuthStateChanged(auth, (user) => {
         .then((docSnap) => {
             if (docSnap.exists()) {
                 const userData = docSnap.data();
+                
+                // Виведення імені та email
                 document.getElementById("loggedUserName").innerText = userData.name;
                 document.getElementById("loggedUserEmail").innerText = userData.email;
+                
+                // Виведення балансу
+                const balance = userData.balance || 0; // Якщо баланс не визначений, то 0
+                document.getElementById("loggedUserBalance").innerText = balance;
             }
             else {
                 console.log("No document found with matching id");
@@ -38,9 +42,9 @@ onAuthStateChanged(auth, (user) => {
         })
     }
     else {
-        console.log("User Id not found in Local Storage")
+        console.log("User Id not found in Local Storage");
     }
-})
+});
 
 const logoutButton = document.getElementById("logout");
 
@@ -48,9 +52,9 @@ logoutButton.addEventListener("click", () => {
     localStorage.removeItem("loggedInUserId");
     signOut(auth) 
     .then(() => {
-        window.location.href = "https://unis2.store/maldenaHealth/auth/register";
+        window.location.href = "../auth/register"; // Redirect to register page
     })
     .catch((error) => {
         console.error("Error Signing out: ", error);
     })
-})
+});
