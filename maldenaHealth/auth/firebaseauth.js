@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signInWithRedirect, getRedirectResult, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 import { getFirestore, setDoc, doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-firestore.js";
 
 const firebaseConfig = {
@@ -34,41 +34,79 @@ const googleSignInButton = document.getElementById("googleSignInButton");
 const signUp = document.getElementById("registerBtn");
 
 googleSignInButton.addEventListener("click", async () => {
-    googleSignInButton.disabled = true; // Блокуємо кнопку після першого кліка
+    googleSignInButton.disabled = true;
+
     try {
-        const result = await signInWithPopup(auth, provider);
-        const user = result.user;
+        const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-        console.log("User signed in: ", user);
+        if (isMobile) {
+            await signInWithRedirect(auth, provider);
+        } else {
+            const result = await signInWithPopup(auth, provider);
+            const user = result.user;
 
-        // Перевірка, чи існує користувач у Firestore
-        const userDocRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(userDocRef);
+            console.log("User signed in: ", user);
 
-        if (!docSnap.exists()) {
-            // Якщо користувач не існує в базі, додаємо його
-            await setDoc(userDocRef, {
-                uid: user.uid,
-                email: user.email,
-                displayName: user.displayName,
-                balance: 0,  // Додаткові поля, якщо потрібно
-                cardStatus: false  // Статус картки
-            });
+            // Перевіряємо чи є користувач у Firestore
+            const userDocRef = doc(db, "users", user.uid);
+            const docSnap = await getDoc(userDocRef);
 
-            console.log("User added to Firestore");
+            if (!docSnap.exists()) {
+                await setDoc(userDocRef, {
+                    uid: user.uid,
+                    email: user.email,
+                    displayName: user.displayName,
+                    balance: 0,
+                    cardStatus: false
+                });
+                console.log("User added to Firestore");
+            }
+
+            // Перенаправлення
+            window.location.href = "https://unis2.store/maldenaHealth/profile";
         }
-
-        // Зберігаємо ID користувача в localStorage
-        localStorage.setItem("loggedInUserId", user.uid);
-
-        // Перенаправлення на домашню сторінку або в профіль
-        window.location.href = "https://unis2.store/maldenaHealth/profile";  // Змінити на ваш шлях
     } catch (error) {
         console.error("Error during Google sign-in: ", error.message);
     } finally {
-        googleSignInButton.disabled = false; // Знову активуємо кнопку
+        googleSignInButton.disabled = false;
     }
 });
+
+// Обробка редиректу (для мобільних пристроїв)
+getRedirectResult(auth).then((result) => {
+    if (result && result.user) {
+        console.log("User signed in via redirect: ", result.user);
+        handleFirestoreUser(result.user);
+    }
+}).catch((error) => {
+    console.error("Error during redirect sign-in: ", error.message);
+});
+
+// Функція для роботи з Firestore
+async function handleFirestoreUser(user) {
+    const userDocRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(userDocRef);
+
+    if (!docSnap.exists()) {
+        await setDoc(userDocRef, {
+            uid: user.uid,
+            email: user.email,
+            displayName: user.displayName,
+            balance: 0, // Додаткові поля
+            cardStatus: false
+        });
+
+        console.log("User added to Firestore");
+    }
+
+    // Зберігаємо ID користувача в localStorage
+    localStorage.setItem("loggedInUserId", user.uid);
+
+    // Перенаправлення на домашню сторінку
+    window.location.href = "https://www.unis2.store/maldenaHealth/profile";
+}
+
+
 
 signUp.addEventListener("click", (event) => {
     event.preventDefault();
@@ -135,4 +173,3 @@ signIn.addEventListener("click", (event) => {
             }
         })
 })
-
