@@ -171,9 +171,13 @@
                     <option value="Картою">Оплата онлайн</option>
                     <option value="При отриманні">Оплата при отриманні</option>
                 </select>
+                <br><br>
+                
+                <label for="promocode">Промокод</label>
+                <br>
+                <input id="promocode" name="promocode">
 
                 <br><br>
-
                 <label for="no-call">Не зв'язуватися зі мною
                     <input type="checkbox" id="no-call" name="no-call">
                 </label>
@@ -246,6 +250,7 @@
             message += `<b>Адреса доставки: </b> ${this.address.value}\n`;
             message += `<b>Поштова служба: </b> ${this.poshta.value}\n`;
             message += `<b>Оплата: </b> ${this.oplata.value}\n`;
+            message += `<b>Промокод: </b> ${this.promocode.value}\n`;
             message += `<b>Сума: </b> ${this.price.value}\n`;
             message += `<b>Статус оплати: Не оплачено</b>`;
 
