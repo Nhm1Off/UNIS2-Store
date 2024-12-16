@@ -745,22 +745,6 @@ a {
     margin-bottom: 10px;
 }
 
-#messagePop {
-    display: block;
-    background-color: white;
-    width: 88%;
-    margin-left: 30px;
-    margin-right: 30px;
-    height: 200px;
-    color: black;
-    padding: 20px;
-    position: fixed;
-    z-index: 100;
-    overflow: hidden;
-    border-radius: 10px;
-    transition: all 0.5s ease;
-}
-
 .messageNot {
     position: fixed;
     top: 50%; 
@@ -788,8 +772,50 @@ a {
     z-index: 999; /* Фон буде під попапом */
 }
 
+#messagePop {
+    position: fixed;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    margin-top: 10px;
+    width: 80%; 
+    max-width: 400px; 
+    background-color: #ffffff;
+    border-radius: 10px;
+    color: rgb(0, 0, 0);
+    padding: 10px;
+    z-index: 1000; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    font-weight: 400;
+}
+
+.messagePopBackdrop {
+    position: fixed; /* Фіксація на екрані */
+    top: 0; 
+    left: 0; 
+    width: 100%; /* Покриває всю ширину екрану */
+    height: 100%; /* Покриває всю висоту екрану */
+    background-color: rgba(0, 0, 0, 0.5); /* Напівпрозорий чорний фон */
+    z-index: 999; /* Фон буде під попапом */
+}
+
 #googleSignInButton {
-    border: 1px solid #ccc;
     padding: 5px;
     border-radius: 10px;
+    border: 0;
+    background-color: white;
+}
+
+#facebookSignInButton {
+    padding: 5px;
+    border-radius: 10px;
+    border: 0;
+    background-color: white;
+}
+
+.line-vert {
+    height: 40px;
+    width: 2px;
+    background-color: #e3e3e3;
+    margin-top: 4px;
 }
