@@ -753,7 +753,7 @@ a {
     margin-top: 10px;
     width: 80%; 
     max-width: 400px; 
-    background-color: #ffffff;
+    background-color: white;
     border-radius: 10px;
     color: rgb(0, 0, 0);
     padding: 10px;
@@ -768,7 +768,7 @@ a {
     left: 0; 
     width: 100%; /* Покриває всю ширину екрану */
     height: 100%; /* Покриває всю висоту екрану */
-    background-color: rgba(0, 0, 0, 0.5); /* Напівпрозорий чорний фон */
+    background-color: rgba(0, 0, 0, 0.6); /* Напівпрозорий чорний фон */
     z-index: 999; /* Фон буде під попапом */
 }
 
