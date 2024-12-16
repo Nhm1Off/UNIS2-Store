@@ -20,6 +20,15 @@ const db = getFirestore();
 // Отримуємо елементи HTML
 const balanceDisplay = document.getElementById("balance");
 const one = document.getElementById("1");
+const two = document.getElementById("2");
+const three = document.getElementById("3");
+const four = document.getElementById("4");
+
+const popup = document.getElementById("messagePop");
+const messagePopBackdrop = document.querySelector(".messagePopBackdrop");
+
+const textMessagePop = document.getElementById("textMessagePop");
+
 
 one.addEventListener("click", async function () {
     try {
@@ -29,15 +38,28 @@ one.addEventListener("click", async function () {
                 const userId = user.uid; // Отримуємо ID авторизованого користувача
                 const userRef = doc(db, 'users', userId); // Зсилаємось на документ користувача
                 const docSnap = await getDoc(userRef); // Отримуємо дані документа
-                
+
                 if (docSnap.exists()) {
                     let currentBalance = docSnap.data().balance || 0; // Якщо balance не визначений, то 0
-                    
+
                     // Оновлення балансу (додаємо 10)
                     await updateDoc(userRef, {
-                        balance: currentBalance + 10
+                        balance: currentBalance + 10,
                     });
-                    
+
+                    popup.style.display = "block"
+                    messagePopBackdrop.style.display = "block"
+
+                    one.disabled = "true";
+                    localStorage.setItem("oneActive", one);
+
+                    textMessagePop.innerText = "Ви отримали 10 ₴ на ваш баланс";
+
+                    setTimeout(() => {
+                        popup.style.display = "none";
+                        messagePopBackdrop.style.display = "none";
+                    }, 3500);
+
                     // Оновлення балансу на сторінці
                     balanceDisplay.textContent = currentBalance + 10;
                     console.log("Баланс оновлено!");
@@ -46,6 +68,15 @@ one.addEventListener("click", async function () {
                 }
             } else {
                 console.log("Користувач не авторизований");
+                popup.style.display = "block"
+                messagePopBackdrop.style.display = "block"
+
+                textMessagePop.innerText = "Спочатку увійдіть, щоб отримати бонус";
+
+                setTimeout(() => {
+                    popup.style.display = "none";
+                    messagePopBackdrop.style.display = "none";
+                }, 3500);
             }
         });
     } catch (error) {
