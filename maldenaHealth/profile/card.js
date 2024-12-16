@@ -20,6 +20,8 @@ const activateCardButton = document.getElementById("activateCard");
 const messageAvair = document.getElementById("messageAvair");  // отримуємо елемент для повідомлення
 const messageContainer = document.querySelector(".messageNot");  // Отримуємо контейнер повідомлення
 
+const Overlay = document.querySelector(".messageNotBackdrop");
+
 activateCardButton.addEventListener("click", async () => {
     const loggedInUserId = localStorage.getItem("loggedInUserId");
     
@@ -43,7 +45,8 @@ activateCardButton.addEventListener("click", async () => {
                 
                 // Очистка повідомлення, якщо картка активована
                 messageAvair.innerText = "";
-                messageContainer.style.display = "none"; // Сховуємо контейнер повідомлення
+                messageContainer.style.display = "none";
+                Overlay.style.display = "none"; // Сховуємо контейнер повідомлення
 
                 // Приховуємо кнопку, якщо картка активована
                 activateCardButton.style.display = "none";  // Приховуємо кнопку
@@ -53,9 +56,12 @@ activateCardButton.addEventListener("click", async () => {
 
                 // Робимо контейнер повідомлення видимим і через 5 секунд приховуємо
                 messageContainer.style.display = "block"; // Відображаємо контейнер повідомлення
+                Overlay.style.display = "block";
+                
                 setTimeout(() => {
-                    messageContainer.style.display = "none"; // Сховуємо через 5 секунд
-                }, 5000);
+                    messageContainer.style.display = "none"; // Сховуємо через 4 секунди
+                    Overlay.style.display = "none";
+                }, 4000);
             }
         } else {
             console.log("Користувач не знайдений в базі даних");
