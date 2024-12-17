@@ -37,7 +37,11 @@
         
         <div class="messageNotBackdrop" style="display: none;"></div>
         <div class="messageNot" style="display: none;">
-            <p class="p-headers-mini">Повідомлення</p>
+            <span style="display: flex; justify-content: space-between; align-items: center;">
+                <p class="p-headers-mini">Повідомлення</p>
+                <button id="closeMessage">
+                <img src="https://i.ibb.co/wLrZQqT/image.png">
+            </button></span>
             <br>
             <hr color="#ccc">
             <br>
@@ -50,7 +54,9 @@
         <div>E-mail: <span id="loggedUserEmail"></span></div>
         <br>
 
-        <p>Баланс: <span id="loggedUserBalance">0</span> ₴</p>
+        <p>Баланс: <span id="loggedUserBalance">0</span> ₴ <span> <button class="btn-info" id="infoBalance">
+            <img src="https://i.ibb.co/DMXtf2x/image.png" width="25px">
+        </button> </span></p>
 
         <br><br>
         <hr color="#ccc">
