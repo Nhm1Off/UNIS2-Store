@@ -49,6 +49,10 @@ one.addEventListener("click", async function () {
 
                     popup.style.display = "block"
                     messagePopBackdrop.style.display = "block"
+                    popup.style.opacity = 0;
+                    setTimeout(() => {
+                        popup.style.opacity = 1;
+                    }, 20);
 
                     one.disabled = "true";
                     localStorage.setItem("oneActive", one);
@@ -72,11 +76,24 @@ one.addEventListener("click", async function () {
                 messagePopBackdrop.style.display = "block"
 
                 textMessagePop.innerText = "Спочатку увійдіть, щоб отримати бонус";
-
+                
                 setTimeout(() => {
-                    popup.style.display = "none";
-                    messagePopBackdrop.style.display = "none";
-                }, 3500);
+                    popup.style.opacity = 1;
+                    popup.style.display = 'block'; // Відображаємо елемент
+                    
+                    // Приховуємо елемент через 1 секунду
+                    setTimeout(() => {
+                        popup.style.opacity = 0;
+                        
+                        // Повністю приховуємо елемент після завершення переходу
+                        setTimeout(() => {
+                            popup.style.display = 'none';
+                            messagePopBackdrop.style.display = 'none';
+                        }, 1000); // Час, що відповідає тривалості переходу
+                        
+                    }, 1000); // Час, протягом якого елемент залишається видимим
+                    
+                }, 3500); // Поча
             }
         });
     } catch (error) {
