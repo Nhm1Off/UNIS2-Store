@@ -819,3 +819,36 @@ a {
     background-color: #e3e3e3;
     margin-top: 4px;
 }
+
+.btn-info {
+    background-color: transparent;
+    border: 0;
+    position: relative;
+    top: 5px;
+    left: 5px;
+    height: 25px;
+}
+
+.btn-info img {
+    opacity: 0.5;
+    transition: all 0.5s ease;
+}
+
+.btn-info img:hover {
+    transition: all 0.5s ease;
+    opacity: 0.7;
+}
+
+#closeMessage {
+    margin-right: 10px;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    transition: all 0.7s ease;
+    cursor: pointer;
+}
+
+#closeMessage img {
+    display: block;
+    width: 30px; 
+}
