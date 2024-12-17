@@ -52,7 +52,7 @@ activateCardButton.addEventListener("click", async () => {
                 activateCardButton.style.display = "none";  // Приховуємо кнопку
             } else {
                 // Якщо баланс менший за 150
-                messageAvair.innerText = "Не вдалося активувати подарункову карту, тому, що ваш баланс менший за 150 грн";
+                messageAvair.innerText = "На жаль, не вдалося активувати подарункову карту, оскільки ваш баланс менший за 150 ₴";
 
                 // Робимо контейнер повідомлення видимим і через 5 секунд приховуємо
                 messageContainer.style.display = "block"; // Відображаємо контейнер повідомлення
