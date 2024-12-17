@@ -856,3 +856,12 @@ a {
     display: block;
     width: 30px; 
 }
+
+.videoContent {
+    border-radius: 10px;
+}
+
+.video-p {
+    font-size: 20px;
+    font-weight: 300;
+}
