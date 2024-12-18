@@ -8,9 +8,8 @@ function AnimLikeImg() {
 
     setTimeout(() => {
         likeImg.style.animation = 'like-animation 0.6s ease';
-
-        likeImg.addEventListener('animationend', () => {
-                likeImg.src = 'https://i.ibb.co/tMtHPp3/image.png';  
+        likeImg.src = 'https://i.ibb.co/tMtHPp3/image.png';   likeImg.addEventListener('animationend', () => {
+ 
             if (liked) { 
                 liked = false; 
             } else {
