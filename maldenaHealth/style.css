@@ -865,3 +865,40 @@ a {
     font-size: 20px;
     font-weight: 300;
 }
+
+#likeBtn {
+    border: 0;
+    background-color: white;
+    border-radius: 30px;
+    padding: 7px;
+    margin-left: 5%;
+}
+
+#likeBtn span {
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+#likeBtn p {
+    margin-left: 5px;
+}
+
+/* #likeBtn:active #likeImg {
+    animation: like-animation 0.5s ease;
+} */
+
+@keyframes like-animation {
+    0% {
+        transform: scale(1) rotate(0deg);
+    }
+    60% {
+        transform: scale(1.3) rotate(-25deg); 
+    }
+    80% {
+        transform: scale(1.2) rotate(-15deg);
+    }
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+}
