@@ -10,8 +10,8 @@ function AnimLikeImg() {
         likeImg.style.animation = 'like-animation 0.6s ease';
 
         likeImg.addEventListener('animationend', () => {
-            if (liked) {
                 likeImg.src = 'https://i.ibb.co/tMtHPp3/image.png';  
+            if (liked) { 
                 liked = false; 
             } else {
 
