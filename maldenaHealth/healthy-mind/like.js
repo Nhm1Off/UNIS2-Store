@@ -8,14 +8,14 @@ function AnimLikeImg() {
 
     setTimeout(() => {
         likeImg.style.animation = 'like-animation 0.6s ease';
+        likeImg.src = 'https://i.ibb.co/wpqbNmx/image.png'; 
 
- 
-            if (liked) { 
+        likeImg.addEventListener('animationend', () => {
+            if (liked) {
                 likeImg.src = 'https://i.ibb.co/tMtHPp3/image.png';  
                 liked = false; 
             } else {
 
-                likeImg.src = 'https://i.ibb.co/wpqbNmx/image.png'; 
                 liked = true; 
             }
         }, { once: true });
