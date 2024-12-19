@@ -23,6 +23,7 @@ const likeCountText = document.getElementById('likeCount');
 
 let liked = false;
 let videoId = "video1"; // Unique identifier for the video
+let likeLock = false; // Prevent rapid clicking
 
 async function fetchLikeData() {
   const docRef = doc(db, "likes", videoId);
@@ -40,8 +41,12 @@ async function fetchLikeData() {
 }
 
 async function toggleLike() {
+  if (likeLock) return;
+  likeLock = true;
+
   if (!auth.currentUser) {
     alert("Увійдіть, щоб ставити лайки!");
+    likeLock = false;
     return;
   }
 
@@ -66,9 +71,12 @@ async function toggleLike() {
     likeCountText.textContent = likeCount;
     likeImg.src = liked ? 'https://i.ibb.co/wpqbNmx/image.png' : 'https://i.ibb.co/tMtHPp3/image.png';
   }
+
+  likeLock = false;
 }
 
 function AnimLikeImg() {
+  if (likeLock) return;
   likeImg.style.animation = 'none';
 
   setTimeout(() => {
