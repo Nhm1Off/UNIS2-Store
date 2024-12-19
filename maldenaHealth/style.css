@@ -902,3 +902,9 @@ a {
         transform: scale(1) rotate(0deg);
     }
 }
+
+#likeCount {
+    padding-right: 5px;
+    padding-left: 5px;
+    font-size: 18px;
+}
