@@ -26,15 +26,17 @@
     </div>
 
     <br><br><br><br><br>
-    
-    <p class="p-headers" style="margin-left: 5%; margin-right: 5%; border-radius: 20px; padding: 8px;">Майнкрафт геймплей</p>
+
+    <p class="p-headers" style="margin-left: 5%; margin-right: 5%; border-radius: 20px; padding: 8px;">Майнкрафт
+        геймплей</p>
     <br>
 
-    <video src="https://unis2.store/maldenaHealth/healthy-mind/videos/2024-11-16-09-39-00.mp4" controls type="video/mp4" autoplay style="width: 90%; margin-left: 5%; margin-right: 5%; align-items: center;" class="videoContent"></video>
+    <video src="https://unis2.store/maldenaHealth/healthy-mind/videos/2024-11-16-09-39-00.mp4" controls
+        style="width: 90%; margin-left: 5%; margin-right: 5%; align-items: center;" class="videoContent"></video>
     <br><br>
     <button id="likeBtn">
-        <span> <img id="likeImg" src="https://i.ibb.co/tMtHPp3/image.png" width="30px"> 
-            <p id="likeCount"> </p> 
+        <span> <img id="likeImg" src="https://i.ibb.co/tMtHPp3/image.png" width="30px">
+            <p id="likeCount"> </p>
         </span>
     </button>
     <br>
@@ -47,24 +49,41 @@
         <p> Тут будуть тільки корисні відео, тому очікуйте вже справжні відео тут</p>
     </div>
 
-    <p class="p-headers" style="margin-left: 5%;">Коментарі</p>
+    <p class="p-headers" style="margin-left: 5%;">Комментарі</p>
     <br>
-    <div class="comment" style="margin-left: 5%; margin-right: 5%; background-color: white; padding: 10px; border-radius: 10px;">
-        <p class="p-headers-mini" style="font-weight: 400;">Ден444</p>
-        <br>
-        <p>Найкраще відео</p>
-        <br>
-        <button id="replyToPeople" style="background-color: #eee; padding: 5px; border-radius: 20px; border: 0; font-size: 20px;">Відповісти</button>
+
+    <div class="comments-section">
+        <form id="commentForm">
+            <p id="userDisplayName" hidden></p>
+            <textarea id="commentText" placeholder="Додайте коментар..." required></textarea>
+            <input type="submit" class="submitOp" value="Опублікувати коментар">
+        </form>
+
+        <div id="commentsList" class="comments-list"></div>
     </div>
+
+    <!-- <div class="comment"
+        style="margin-left: 5%; margin-right: 5%; background-color: white; padding: 10px; border-radius: 10px;">
+        <div class="people" style="display: flex;">
+            <div class="avatar">
+                <img src="">
+            </div>
+            <div class="text" style="margin-left: 40px;">
+                <p class="p-headers-mini">Ден444</p>
+                <br>
+                <p>Найкраще відео</p>
+                <br>
+                <button id="replyToPeople"
+                    style="background-color: #eee; padding: 5px; border-radius: 20px; border: 0; font-size: 20px;">Відповісти</button>
+            </div>
+        </div>
+    </div> -->
     <br>
 
 
 
 
     <div class="overlay" id="popup-header" style="display: none;">
-        <!-- <button id="closeOverlay">
-    <img src="https://i.ibb.co/qBRxwkt/close-Window.png" width="30em" height="30em">
-</button> -->
         <div class="left-menu">
             <ul>
                 <li>
@@ -91,8 +110,11 @@
         </div>
     </div>
 
+    <input id="idVideo" value="video1" hidden>
+
     <script src="https://unis2.store/maldenaHealth/header/burger.js"></script>
     <script type="module" src="https://www.unis2.store/maldenaHealth/healthy-mind/like.js"></script>
+    <script type="module" src="https://www.unis2.store/maldenaHealth/healthy-mind/comments.js"></script>
 </body>
 
 </html>
