@@ -908,3 +908,45 @@ a {
     padding-left: 5px;
     font-size: 18px;
 }
+
+.comments-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.comment {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+}
+
+.comments-section textarea {
+    display: block;
+    width: 90%;
+    height: 50px;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.comments-section input {
+    margin-left: 5%;
+}
+
+.submitOp {
+    border-radius: 10px;
+    padding: 5px;
+    border: 0;
+    font-size: 15px;
+    background-color: rgba(255, 182, 35, 0.79);
+    transition: all 0.5s ease;
+}
