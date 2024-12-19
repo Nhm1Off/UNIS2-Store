@@ -861,6 +861,12 @@ a {
     border-radius: 10px;
 }
 
+@media (max-width: 540px) {
+    .videoContent {
+        width: 100%;
+    }
+}
+
 .video-p {
     font-size: 20px;
     font-weight: 300;
