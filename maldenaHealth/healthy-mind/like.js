@@ -22,7 +22,7 @@ const likeImg = document.getElementById('likeImg');
 const likeCountText = document.getElementById('likeCount');
 
 let liked = false;
-let videoId = "video1"; // Unique identifier for the video
+const videoId = document.getElementById('idVideo')?.value;
 let likeLock = false; // Prevent rapid clicking
 
 async function fetchLikeData() {
