@@ -85,7 +85,7 @@
         // Завантаження поста з Firestore за ID
         const loadPost = async () => {
             if (!postId) {
-                console.error("ID поста не знайдено в URL.");
+                console.error("ID поста не знайдено в URL");
                 return;
             }
 
@@ -95,12 +95,12 @@
 
                 if (postDoc.exists()) {
                     const postData = postDoc.data(); // Отримуємо дані поста
-                    console.log("postData:", postData);  // Для перевірки даних
+                    console.log("postData:", postData); // Для перевірки даних
 
                     const postTitle = postData.title; // Заголовок поста
-
                     const postContent = postData.body; // Вміст поста
                     const createdAt = postData.timestamp; // Дата створення поста
+                    const authorName = postData.author || "Автор невідомий"; // Беремо автора з поля, якщо він є
 
                     if (createdAt && createdAt.seconds) {
                         const createdAtDate = new Date(createdAt.seconds * 1000); // Конвертуємо в дату
@@ -109,7 +109,14 @@
                         // Виведення контенту поста на сторінку
                         document.getElementById('postTitle').textContent = postTitle;
                         document.getElementById('postContent').textContent = postContent;
-                        document.getElementById('postDate').textContent = timeAgo;
+                        document.getElementById('postDate').textContent = `${authorName} — ${timeAgo}`;
+
+                        const postAuthorElement = document.getElementById('postAuthor');
+                        if (postAuthorElement) {
+                            // postAuthorElement.innerText = `Автор: ${authorName}`; // Відображення імені
+                        } else {
+                            console.warn("Елемент з ID 'postAuthor' не знайдено.");
+                        }
                     } else {
                         console.error("Поле 'timestamp' не містить секунд.");
                     }
@@ -232,31 +239,36 @@
             }
         });
 
-        const getTimeAgo = (createdAt) => {
-            const currentTime = new Date();
-            const timeDifference = currentTime - createdAt;
-
-            let timeAgo = '';
-            if (timeDifference < 60000) {
-                const secondsAgo = Math.floor(timeDifference / 1000);
-                timeAgo = `${secondsAgo} секунд тому`;
-            } else if (timeDifference < 3600000) {
-                const minutesAgo = Math.floor(timeDifference / 60000);
-                timeAgo = `${minutesAgo} хвилин тому`;
-            } else if (timeDifference < 86400000) {
-                const hoursAgo = Math.floor(timeDifference / 3600000);
-                timeAgo = `${hoursAgo} годин тому`;
-            } else if (timeDifference < 2592000000) {
-                const daysAgo = Math.floor(timeDifference / 86400000);
-                timeAgo = `${daysAgo} днів тому`;
-            } else if (timeDifference < 31536000000) {
-                const monthsAgo = Math.floor(timeDifference / 2592000000);
-                timeAgo = `${monthsAgo} місяців тому`;
-            } else {
-                timeAgo = `Більше року тому`;
+        async function getUserName(userId) {
+            try {
+                const userDoc = await db.collection('users').doc(userId).get();
+                if (userDoc.exists) {
+                    return userDoc.data().name || 'Анонім'; // Повертаємо поле `name`, якщо існує
+                } else {
+                    return 'Анонім';
+                }
+            } catch (error) {
+                console.error('Помилка отримання імені користувача:', error);
+                return 'Анонім';
             }
+        }
 
-            return timeAgo;
+        const getTimeAgo = (date) => {
+            const now = new Date();
+            const seconds = Math.floor((now - date) / 1000);
+
+            if (seconds < 60) {
+                return `${seconds} секунд тому`;
+            } else if (seconds < 3600) {
+                const minutes = Math.floor(seconds / 60);
+                return `${minutes} хвилин тому`;
+            } else if (seconds < 86400) {
+                const hours = Math.floor(seconds / 3600);
+                return `${hours} годин тому`;
+            } else {
+                const days = Math.floor(seconds / 86400);
+                return `${days} днів тому`;
+            }
         };
 
         // Функція для отримання нікнейму користувача
@@ -278,13 +290,16 @@
         };
 
         // Завантажуємо пост і коментарі при завантаженні сторінки
-        window.onload = async () => {
-            await loadPost();
-            await loadComments();
+        window.onload = () => {
+            const postId = new URLSearchParams(window.location.search).get('id');
+            if (postId) {
+                loadPost(postId);
+            }
+            loadComments();
         };
 
     </script>
-
+    
     <div class="overlay" id="popup-header" style="display: none;">
         <!-- <button id="closeOverlay">
 <img src="https://i.ibb.co/qBRxwkt/close-Window.png" width="30em" height="30em">
