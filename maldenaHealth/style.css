@@ -931,6 +931,10 @@ a {
     border-radius: 5px;
     background-color: #f9f9f9;
     border-radius: 10px;
+    margin-bottom: 10px; /* Відступ знизу для кожного коментаря */
+    padding-bottom: 10px; 
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .comments-section textarea {
@@ -956,4 +960,74 @@ a {
     font-size: 15px;
     background-color: rgba(255, 182, 35, 0.79);
     transition: all 0.5s ease;
+}
+
+.btn-newPost {
+    border-radius: 10px;
+    padding: 5px;
+    border: 0;
+    font-size: 15px;
+    background-color: rgba(255, 182, 35, 0.79);
+    transition: all 0.5s ease;
+    margin-bottom: 5px;
+}
+
+#submit-post-button {
+    border-radius: 10px;
+    padding: 5px;
+    border: 0;
+    font-size: 20px;
+    background-color: rgba(255, 182, 35, 0.79);
+    transition: all 0.5s ease;
+    margin-top: 5px;
+}
+
+.content textarea {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+#posts-container {
+    padding: 20px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.post {
+    margin-bottom: 10px;
+}
+
+.post a {
+    padding-top: 7px;
+}
+
+#post-container {
+    padding: 20px;
+    margin: 10px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+#commentForm {
+    margin-left: 10px;
+}
+
+#commentText {
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    padding: 8px;
+    font-size: 18px;
+}
+
+#commentForm button {
+    border-radius: 10px;
+    padding: 5px;
+    border: 0;
+    font-size: 13.5px;
+    background-color: rgba(255, 182, 35, 0.79);
+    transition: all 0.5s ease;
+    margin-top: 5px;
 }
