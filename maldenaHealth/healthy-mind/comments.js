@@ -80,8 +80,11 @@ const loadComments = async () => {
             commentElement.classList.add('comment');
 
             // Створюємо елемент для ніку
-            const nameElement = document.createElement('strong');
+            const nameElement = document.createElement('p');
             nameElement.textContent = commentData.name;
+            nameElement.style.color = 'black';
+            nameElement.style.fontSize = "20px";
+            nameElement.style.fontWeight = "450";
 
             // Створюємо елемент для тексту коментаря
             const commentContent = document.createElement('p');
@@ -117,7 +120,19 @@ const loadComments = async () => {
             const dateElement = document.createElement('small');
             dateElement.textContent = timeAgo;
 
-            dateElement.style.paddingBottom = '5px';
+            // Позиціонуємо та стилізуємо час безпосередньо через JavaScript
+            dateElement.style.position = 'absolute';
+            dateElement.style.top = '5px';
+            dateElement.style.right = '5px';
+            dateElement.style.fontSize = '12px';
+            dateElement.style.color = '#888';
+
+            // Перевіримо, чи коментар існує перед додаванням часу
+            if (commentElement) {
+                // Додаємо елемент до коментаря
+                commentElement.style.position = 'relative';  // Важливо, щоб контейнер мав позицію
+                commentElement.appendChild(dateElement);
+            }
 
             // Додаємо всі елементи до коментаря
             commentElement.appendChild(nameElement);
@@ -158,6 +173,7 @@ commentForm.addEventListener('submit', async (e) => {
                 videoId: videoId,
                 comment: comment,
                 name: nickname,
+                userId: loggedInUserId, // Зберігаємо UID користувача
                 createdAt: serverTimestamp(),
             });
 
@@ -166,8 +182,6 @@ commentForm.addEventListener('submit', async (e) => {
         } catch (error) {
             console.error("Помилка при додаванні коментаря: ", error);
         }
-    } else {
-        alert("Будь ласка, введіть текст коментаря!");
     }
 });
 
