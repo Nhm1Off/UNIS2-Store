@@ -22,7 +22,8 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, serverTimestamp, doc, getDoc } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyCkbg5rtAZ9SV321Djga4xBwsTG2uOUpjw",
@@ -36,6 +37,22 @@
 
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
+        const auth = getAuth(app);
+
+        async function getUserName(userId) {
+            try {
+                const userDoc = await getDoc(doc(db, 'users', userId));
+                if (userDoc.exists()) {
+                    return userDoc.data().name || 'Анонім';
+                } else {
+                    console.error('Користувача не знайдено');
+                    return 'Анонім';
+                }
+            } catch (error) {
+                console.error('Помилка отримання імені користувача:', error);
+                return 'Анонім';
+            }
+        }
 
         document.getElementById('submit-post-button').addEventListener('click', async () => {
             const title = document.getElementById('title-input').value;
@@ -46,16 +63,34 @@
                 return;
             }
 
-            const newPost = {
-                title: title,
-                body: body,
-                timestamp: serverTimestamp()
-            };
+            onAuthStateChanged(auth, async (user) => {
+                if (user) {
+                    const userId = user.uid;
+                    const userName = await getUserName(userId);
 
-            await addDoc(collection(db, 'posts'), newPost);
-            window.location.href = 'index.html'; // Перехід на головну сторінку
+                    console.log(`Створення допису від користувача: ${userName}`);
+
+                    const newPost = {
+                        title: title,
+                        body: body,
+                        author: userName, // Зберігаємо ім'я автора
+                        timestamp: serverTimestamp()
+                    };
+
+                    try {
+                        await addDoc(collection(db, 'posts'), newPost);
+                        alert('Допис успішно створено!');
+                        window.location.href = 'index.html'; // Перехід на головну сторінку
+                    } catch (error) {
+                        console.error('Помилка при створенні допису:', error);
+                    }
+                } else {
+                    alert('Будь ласка, увійдіть у систему, щоб створити допис!');
+                }
+            });
         });
     </script>
+
 
     <div class="overlay" id="popup-header" style="display: none;">
         <!-- <button id="closeOverlay">
