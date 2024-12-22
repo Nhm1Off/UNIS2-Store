@@ -84,7 +84,7 @@
                     try {
                         await addDoc(collection(db, 'posts'), newPost);
                         alert('Допис успішно створено!');
-                        window.location.href = '././'; // Перехід на головну сторінку
+                        window.location.href = './'; // Перехід на головну сторінку
                     } catch (error) {
                         console.error('Помилка при створенні допису:', error);
                     }
