@@ -141,19 +141,19 @@
 
             if (timeDifference < 60000) {
                 const secondsAgo = Math.floor(timeDifference / 1000);  // Обчислюємо кількість секунд
-                timeAgo = `${secondsAgo} секунд тому`;
+                timeAgo = `${secondsAgo} сек тому`;
             } else if (timeDifference < 3600000) {
                 const minutesAgo = Math.floor(timeDifference / 60000);
-                timeAgo = `${minutesAgo} хвилин тому`;
+                timeAgo = `${minutesAgo} хв тому`;
             } else if (timeDifference < 86400000) {
                 const hoursAgo = Math.floor(timeDifference / 3600000);
-                timeAgo = `${hoursAgo} годин тому`;
+                timeAgo = `${hoursAgo} год тому`;
             } else if (timeDifference < 2592000000) {
                 const daysAgo = Math.floor(timeDifference / 86400000);
-                timeAgo = `${daysAgo} днів тому`;
+                timeAgo = `${daysAgo} дн. тому`;
             } else if (timeDifference < 31536000000) {
                 const monthsAgo = Math.floor(timeDifference / 2592000000);
-                timeAgo = `${monthsAgo} місяців тому`;
+                timeAgo = `${monthsAgo} міс. тому`;
             } else {
                 timeAgo = `Більше року тому`;
             }
@@ -262,16 +262,16 @@
             const seconds = Math.floor((now - date) / 1000);
 
             if (seconds < 60) {
-                return `${seconds} секунд тому`;
+                return `${seconds} сек тому`;
             } else if (seconds < 3600) {
                 const minutes = Math.floor(seconds / 60);
-                return `${minutes} хвилин тому`;
+                return `${minutes} хв тому`;
             } else if (seconds < 86400) {
                 const hours = Math.floor(seconds / 3600);
-                return `${hours} годин тому`;
+                return `${hours} год тому`;
             } else {
                 const days = Math.floor(seconds / 86400);
-                return `${days} днів тому`;
+                return `${days} дн. тому`;
             }
         };
 
