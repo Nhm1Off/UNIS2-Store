@@ -162,42 +162,45 @@
         };
 
         // Завантажуємо коментарі до поста
-        const loadComments = async () => {
+                const loadComments = async () => {
             const commentsSnapshot = await getDocs(query(collection(db, "comments"), orderBy("createdAt", "desc")));
-            commentsList.innerHTML = '';  // Очищаємо список перед додаванням нових коментарів
+            commentsList.innerHTML = '';
 
             commentsSnapshot.forEach((doc) => {
                 const commentData = doc.data();
-                const commentId = doc.id;  // Отримуємо ID коментаря
 
-                // Перевіряємо, чи цей коментар належить поточному посту
                 if (commentData.postId === postId) {
                     const commentElement = document.createElement('div');
                     commentElement.classList.add('comment');
 
-                    // Створюємо елемент для ніку
                     const nameElement = document.createElement('p');
                     nameElement.textContent = commentData.name;
                     nameElement.style.color = 'black';
                     nameElement.style.fontSize = "20px";
                     nameElement.style.fontWeight = "450";
 
-                    // Створюємо елемент для тексту коментаря
                     const commentContent = document.createElement('p');
                     commentContent.textContent = commentData.comment;
 
-                    const createdAt = new Date(commentData.createdAt.seconds * 1000); // Перетворюємо час на об'єкт Date
-                    const timeAgo = formatTimeAgo(createdAt);
+                    const createdAt = new Date(commentData.createdAt.seconds * 1000);
+                    const timeAgo = getTimeAgo(createdAt);
 
-                    // Створюємо елемент для часу публікації
                     const dateElement = document.createElement('small');
                     dateElement.textContent = timeAgo;
+
+                    // Додаємо стилі для часу
+                    dateElement.style.position = 'absolute';
+                    dateElement.style.top = '10px';
+                    dateElement.style.right = '10px';
+                    dateElement.style.color = 'gray';
+                    dateElement.style.fontSize = '12px';
+
+                    commentElement.style.position = 'relative'; // Для правильного позиціонування часу
 
                     commentElement.appendChild(nameElement);
                     commentElement.appendChild(commentContent);
                     commentElement.appendChild(dateElement);
 
-                    // Додаємо коментар до списку
                     commentsList.appendChild(commentElement);
                 }
             });
