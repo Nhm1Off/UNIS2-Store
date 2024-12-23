@@ -46,12 +46,11 @@
     <div id="commentsList">
     </div>
 
-    <script type="module">
+  <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
         import { getFirestore, doc, getDoc, collection, addDoc, getDocs, orderBy, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
         import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js";
 
-        // Конфігурація Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyCkbg5rtAZ9SV321Djga4xBwsTG2uOUpjw",
             authDomain: "maldenahealth-finally.firebaseapp.com",
@@ -62,31 +61,23 @@
             measurementId: "G-YH5DSD3L77"
         };
 
-        // Ініціалізація Firebase
         const app = initializeApp(firebaseConfig);
-
-        // Ініціалізація Firestore
         const db = getFirestore(app);
-
-        // Ініціалізація Firebase Authentication
         const auth = getAuth(app);
 
-        // Отримуємо елементи з DOM
         const commentForm = document.getElementById('commentForm');
         const commentText = document.getElementById('commentText');
         const commentsList = document.getElementById('commentsList');
         const postContainer = document.getElementById('postContainer');
 
-        // Отримуємо id поста з URL
         const urlParams = new URLSearchParams(window.location.search);
-        const postId = urlParams.get('id');  // Отримуємо ID поста з параметра 'id'
+        const postId = urlParams.get('id');
 
         if (!postId) {
             alert("ID поста не знайдено в URL!");
-            window.location.href = "/";  // Перенаправляємо на головну, якщо ID поста відсутнє
+            window.location.href = "/";
         }
 
-        // Завантаження поста з Firestore за ID
         const loadPost = async () => {
             if (!postId) {
                 console.error("ID поста не знайдено в URL");
@@ -94,33 +85,25 @@
             }
 
             try {
-                const postDocRef = doc(db, "posts", postId); // Шукаємо документ по ID
+                const postDocRef = doc(db, "posts", postId);
                 const postDoc = await getDoc(postDocRef);
 
                 if (postDoc.exists()) {
-                    const postData = postDoc.data(); // Отримуємо дані поста
-                    console.log("postData:", postData); // Для перевірки даних
+                    const postData = postDoc.data();
+                    console.log("postData:", postData);
 
-                    const postTitle = postData.title; // Заголовок поста
-                    const postContent = postData.body; // Вміст поста
-                    const createdAt = postData.timestamp; // Дата створення поста
-                    const authorName = postData.author || "Автор невідомий"; // Беремо автора з поля, якщо він є
+                    const postTitle = postData.title;
+                    const postContent = postData.body;
+                    const createdAt = postData.timestamp;
+                    const authorName = postData.author || "Автор невідомий";
 
                     if (createdAt && createdAt.seconds) {
-                        const createdAtDate = new Date(createdAt.seconds * 1000); // Конвертуємо в дату
-                        const timeAgo = getTimeAgo(createdAtDate); // Отримуємо час, який пройшов
+                        const createdAtDate = new Date(createdAt.seconds * 1000);
+                        const timeAgo = getTimeAgo(createdAtDate);
 
-                        // Виведення контенту поста на сторінку
                         document.getElementById('postTitle').textContent = postTitle;
                         document.getElementById('postContent').textContent = postContent;
                         document.getElementById('postDate').textContent = `${authorName} — ${timeAgo}`;
-
-                        const postAuthorElement = document.getElementById('postAuthor');
-                        if (postAuthorElement) {
-                            // postAuthorElement.innerText = `Автор: ${authorName}`; // Відображення імені
-                        } else {
-                            console.warn("Елемент з ID 'postAuthor' не знайдено.");
-                        }
                     } else {
                         console.error("Поле 'timestamp' не містить секунд.");
                     }
@@ -131,134 +114,6 @@
                 console.error("Помилка при завантаженні поста:", error);
             }
         };
-
-
-        // Форматування часу (пост було опубліковано)
-        const formatTimeAgo = (createdAt) => {
-            const currentTime = new Date();
-            const timeDifference = currentTime - createdAt;
-            let timeAgo = '';
-
-            if (timeDifference < 60000) {
-                const secondsAgo = Math.floor(timeDifference / 1000);  // Обчислюємо кількість секунд
-                timeAgo = `${secondsAgo} сек тому`;
-            } else if (timeDifference < 3600000) {
-                const minutesAgo = Math.floor(timeDifference / 60000);
-                timeAgo = `${minutesAgo} хв тому`;
-            } else if (timeDifference < 86400000) {
-                const hoursAgo = Math.floor(timeDifference / 3600000);
-                timeAgo = `${hoursAgo} год тому`;
-            } else if (timeDifference < 2592000000) {
-                const daysAgo = Math.floor(timeDifference / 86400000);
-                timeAgo = `${daysAgo} дн. тому`;
-            } else if (timeDifference < 31536000000) {
-                const monthsAgo = Math.floor(timeDifference / 2592000000);
-                timeAgo = `${monthsAgo} міс. тому`;
-            } else {
-                timeAgo = `Більше року тому`;
-            }
-
-            return timeAgo;
-        };
-
-        // Завантажуємо коментарі до поста
-                const loadComments = async () => {
-            const commentsSnapshot = await getDocs(query(collection(db, "comments"), orderBy("createdAt", "desc")));
-            commentsList.innerHTML = '';
-
-            commentsSnapshot.forEach((doc) => {
-                const commentData = doc.data();
-
-                if (commentData.postId === postId) {
-                    const commentElement = document.createElement('div');
-                    commentElement.classList.add('comment');
-
-                    const nameElement = document.createElement('p');
-                    nameElement.textContent = commentData.name;
-                    nameElement.style.color = 'black';
-                    nameElement.style.fontSize = "20px";
-                    nameElement.style.fontWeight = "450";
-
-                    const commentContent = document.createElement('p');
-                    commentContent.textContent = commentData.comment;
-
-                    const createdAt = new Date(commentData.createdAt.seconds * 1000);
-                    const timeAgo = getTimeAgo(createdAt);
-
-                    const dateElement = document.createElement('small');
-                    dateElement.textContent = timeAgo;
-
-                    // Додаємо стилі для часу
-                    dateElement.style.position = 'absolute';
-                    dateElement.style.top = '10px';
-                    dateElement.style.right = '10px';
-                    dateElement.style.color = 'gray';
-                    dateElement.style.fontSize = '12px';
-
-                    commentElement.style.position = 'relative'; // Для правильного позиціонування часу
-
-                    commentElement.appendChild(nameElement);
-                    commentElement.appendChild(commentContent);
-                    commentElement.appendChild(dateElement);
-
-                    commentsList.appendChild(commentElement);
-                }
-            });
-        };
-
-        // Обробник форми для додавання коментаря
-        commentForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const comment = commentText.value;
-            const user = auth.currentUser;
-
-            if (!user) {
-                alert("Будь ласка, увійдіть, щоб залишити коментар!");
-                return;
-            }
-
-            const loggedInUserId = localStorage.getItem("loggedInUserId");
-
-            if (!loggedInUserId) {
-                alert("ID користувача не знайдено в localStorage!");
-                return;
-            }
-
-            // Отримуємо нікнейм користувача з Firestore
-            const nickname = await getUserNickname(loggedInUserId);
-
-            if (comment) {
-                try {
-                    await addDoc(collection(db, "comments"), {
-                        postId: postId,  // Прив'язуємо коментар до поста
-                        comment: comment,
-                        name: nickname,
-                        userId: loggedInUserId, // Зберігаємо UID користувача
-                        createdAt: serverTimestamp(),
-                    });
-
-                    commentText.value = '';
-                    loadComments();
-                } catch (error) {
-                    console.error("Помилка при додаванні коментаря: ", error);
-                }
-            }
-        });
-
-        async function getUserName(userId) {
-            try {
-                const userDoc = await db.collection('users').doc(userId).get();
-                if (userDoc.exists) {
-                    return userDoc.data().name || 'Анонім'; // Повертаємо поле `name`, якщо існує
-                } else {
-                    return 'Анонім';
-                }
-            } catch (error) {
-                console.error('Помилка отримання імені користувача:', error);
-                return 'Анонім';
-            }
-        }
 
         const getTimeAgo = (date) => {
             const now = new Date();
@@ -278,15 +133,243 @@
             }
         };
 
-        // Функція для отримання нікнейму користувача
+        let repliesVisibilityMap = {};  // Об'єкт для збереження стану видимості відповідей
+
+        const loadComments = async () => {
+            // Ініціалізація змінної commentsMap
+            const commentsMap = {};
+
+            // Отримуємо коментарі з Firebase
+            const commentsSnapshot = await getDocs(query(collection(db, "comments"), orderBy("createdAt", "asc")));
+            commentsList.innerHTML = ''; // Очищаємо список перед відображенням нових коментарів
+
+            commentsSnapshot.forEach((doc) => {
+                const commentData = doc.data();
+                commentData.id = doc.id;
+
+                // Якщо коментар належить до поточної публікації
+                if (commentData.postId === postId) {
+                    // Якщо це відповідь на інший коментар
+                    if (commentData.parentCommentId) {
+                        if (!commentsMap[commentData.parentCommentId]) {
+                            commentsMap[commentData.parentCommentId] = [];
+                        }
+                        commentsMap[commentData.parentCommentId].push(commentData);
+                    } else {
+                        // Якщо це основний коментар
+                        if (!commentsMap[null]) {
+                            commentsMap[null] = [];
+                        }
+                        commentsMap[null].push(commentData);
+                    }
+                }
+            });
+
+            // Відображаємо основні коментарі і відповіді
+            if (commentsMap[null]) {
+                commentsMap[null].forEach((comment) => {
+                    const commentElement = createCommentElement(comment.id, comment, 0); // Рівень 0 для основних коментарів
+                    commentsList.appendChild(commentElement);
+
+                    // Відображаємо відповіді до основного коментаря
+                    if (commentsMap[comment.id]) {
+                        const repliesContainer = document.createElement('div');
+                        const repliesAreVisible = repliesVisibilityMap[comment.id] || false;
+                        repliesContainer.style.display = repliesAreVisible ? 'block' : 'none'; // Встановлюємо видимість відповідей
+
+                        commentsMap[comment.id].forEach((reply) => {
+                            const replyElement = createCommentElement(reply.id, reply, 1); // Рівень 1 для відповіді
+                            repliesContainer.appendChild(replyElement);
+
+                            // Відображаємо відповіді до відповіді
+                            if (commentsMap[reply.id]) {
+                                commentsMap[reply.id].forEach((subReply) => {
+                                    const subReplyElement = createCommentElement(subReply.id, subReply, 2); // Рівень 2 для підвідповідей
+                                    repliesContainer.appendChild(subReplyElement);
+                                });
+                            }
+                        });
+
+                        const showRepliesButton = document.createElement('button');
+                        showRepliesButton.textContent = repliesAreVisible ? 'Приховати відповіді' : 'Всі відповіді';
+                        showRepliesButton.style.marginLeft = "10px";
+                        showRepliesButton.style.marginBottom = "10px";
+                        showRepliesButton.classList.add("show-replies-btn");
+                        showRepliesButton.addEventListener('click', () => {
+                            repliesVisibilityMap[comment.id] = !repliesVisibilityMap[comment.id];  // Зміна стану видимості
+                            repliesContainer.style.display = repliesVisibilityMap[comment.id] ? 'block' : 'none';
+                            showRepliesButton.textContent = repliesVisibilityMap[comment.id] ? 'Приховати відповіді' : 'Всі відповіді';
+                        });
+
+                        commentElement.appendChild(showRepliesButton);
+                        commentElement.appendChild(repliesContainer);
+                    }
+                });
+            }
+        };
+
+        const createCommentElement = (commentId, commentData, level) => {
+            const commentElement = document.createElement('div');
+            commentElement.classList.add('comment');
+            commentElement.style.marginLeft = `${level * 20}px`; // Зміщення на кожен рівень
+
+            const nameElement = document.createElement('p');
+            nameElement.textContent = commentData.name;
+            nameElement.style.color = 'black';
+            nameElement.style.fontSize = "20px";
+            nameElement.style.fontWeight = "450";
+
+            const commentContent = document.createElement('p');
+            commentContent.textContent = commentData.comment;
+
+            const createdAt = commentData.createdAt.seconds
+                ? new Date(commentData.createdAt.seconds * 1000)
+                : new Date();
+            const timeAgo = getTimeAgo(createdAt);
+
+            const dateElement = document.createElement('small');
+            dateElement.textContent = timeAgo;
+            dateElement.style.position = 'absolute';
+            dateElement.style.top = '10px';
+            dateElement.style.right = '10px';
+            dateElement.style.color = 'gray';
+            dateElement.style.fontSize = '12px';
+
+            commentElement.style.position = 'relative';
+
+            const replyButton = document.createElement('button');
+            replyButton.textContent = 'Відповісти';
+            replyButton.classList.add('reply-button');
+            replyButton.style.marginTop = '10px';
+            replyButton.addEventListener('click', () => {
+                // Перевірка наявності форми відповіді, якщо вона вже є - не створюємо нову
+                if (!commentElement.querySelector('.reply-form')) {
+                    const replyForm = createReplyForm(commentId, commentElement);
+                    commentElement.appendChild(replyForm);  // Додаємо форму саме після коментаря
+                    replyButton.disabled = true; // Блокуємо кнопку "Відповісти", поки пишеться відповідь
+                }
+            });
+
+            commentElement.appendChild(nameElement);
+            commentElement.appendChild(commentContent);
+            commentElement.appendChild(dateElement);
+            commentElement.appendChild(replyButton);
+
+            // Додаємо секцію для відповідей, якщо вони є
+            if (commentData.replies && commentData.replies.length > 0) {
+                const repliesContainer = document.createElement('div');
+                repliesContainer.classList.add('replies-container');
+
+                commentData.replies.forEach(reply => {
+                    const replyElement = createReplyElement(reply);
+                    repliesContainer.appendChild(replyElement);
+                });
+
+                commentElement.appendChild(repliesContainer);
+            }
+
+            return commentElement;
+        };
+
+        const createReplyElement = (replyData) => {
+            const replyElement = document.createElement('div');
+            replyElement.classList.add('reply');
+            replyElement.style.marginLeft = '20px';
+
+            const replyName = document.createElement('p');
+            replyName.textContent = replyData.name;
+            replyName.style.color = 'gray';
+
+            const replyContent = document.createElement('p');
+            replyContent.textContent = replyData.comment;
+
+            replyElement.appendChild(replyName);
+            replyElement.appendChild(replyContent);
+
+            return replyElement;
+        };
+
+        const createReplyForm = (parentCommentId, commentElement) => {
+            const replyForm = document.createElement('form');
+            replyForm.classList.add('reply-form');
+            replyForm.style.marginTop = '10px';
+            replyForm.style.marginBottom = '10px'; // Додаємо відступ після форми
+
+            const replyInput = document.createElement('textarea');
+            replyInput.classList.add("reply-input");
+            replyInput.placeholder = 'Напишіть відповідь...';
+            replyInput.style.width = '100%';
+            replyInput.style.height = '50px';
+            replyInput.style.marginBottom = '10px';
+
+            const replyButton = document.createElement('button');
+            replyButton.textContent = 'Опублікувати відповідь';
+            replyButton.classList.add("reply-btn");
+            replyButton.type = 'submit';
+
+            const cancelButton = document.createElement('button');
+            cancelButton.textContent = 'Скасувати';
+            cancelButton.classList.add("cancel-btn");
+            cancelButton.type = 'button'; // Тип button, щоб не відправляти форму
+
+            // Обробник для кнопки "Скасувати"
+            cancelButton.addEventListener('click', () => {
+                // Очищаємо текстове поле та приховуємо форму
+                replyInput.value = '';
+                commentElement.removeChild(replyForm); // Видаляємо форму
+                const replyButton = commentElement.querySelector('.reply-button');
+                replyButton.disabled = false; // Знову активуємо кнопку "Відповісти"
+            });
+
+            replyForm.appendChild(replyInput);
+            replyForm.appendChild(replyButton);
+            replyForm.appendChild(cancelButton); // Додаємо кнопку "Скасувати"
+
+            replyForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+
+                const replyText = replyInput.value;
+                const user = auth.currentUser;
+
+                if (!user) {
+                    alert("Будь ласка, увійдіть, щоб залишити відповідь!");
+                    return;
+                }
+
+                const loggedInUserId = user.uid;
+                const nickname = await getUserNickname(loggedInUserId);
+
+                if (replyText) {
+                    try {
+                        // Додаємо відповідь у базу даних
+                        await addDoc(collection(db, "comments"), {
+                            postId: postId,
+                            comment: replyText,
+                            name: nickname,
+                            userId: loggedInUserId,
+                            createdAt: serverTimestamp(),
+                            parentCommentId: parentCommentId, // Зв'язуємо з батьківським коментарем
+                        });
+
+                        replyInput.value = '';
+                        loadComments(); // Оновлюємо коментарі після публікації
+                    } catch (error) {
+                        console.error("Помилка при додаванні відповіді: ", error);
+                    }
+                }
+            });
+
+            return replyForm;
+        };
+
+
         const getUserNickname = async (userId) => {
             try {
-                const userDocRef = doc(db, "users", userId);  // Шукаємо документ користувача
+                const userDocRef = doc(db, "users", userId);
                 const userDoc = await getDoc(userDocRef);
 
                 if (userDoc.exists()) {
-                    const userData = userDoc.data();
-                    return userData.name || 'Без імені';
+                    return userDoc.data().name || 'Без імені';
                 } else {
                     return 'Без імені';
                 }
@@ -296,15 +379,10 @@
             }
         };
 
-        // Завантажуємо пост і коментарі при завантаженні сторінки
         window.onload = () => {
-            const postId = new URLSearchParams(window.location.search).get('id');
-            if (postId) {
-                loadPost(postId);
-            }
+            loadPost();
             loadComments();
         };
-
     </script>
     
     <div class="overlay" id="popup-header" style="display: none;">
