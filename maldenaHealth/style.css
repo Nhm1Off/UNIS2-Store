@@ -1099,3 +1099,11 @@ a {
     padding: 10px;
     border: 2px solid #ccc;
 }
+
+#popup-filters {
+    margin-left: 28px;
+}
+
+#popup-filters #closePopup {
+    margin-left: -28px;
+}
