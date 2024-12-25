@@ -4,13 +4,13 @@ import { getFirestore, doc, getDoc, setDoc, updateDoc } from "https://www.gstati
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.6.10/firebase-auth.js";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyCkbg5rtAZ9SV321Djga4xBwsTG2uOUpjw",
-    authDomain: "maldenahealth-finally.firebaseapp.com",
-    projectId: "maldenahealth-finally",
-    storageBucket: "maldenahealth-finally.firebasestorage.app",
-    messagingSenderId: "494931005513",
-    appId: "1:494931005513:web:72dd11f631433967c9ef98",
-    measurementId: "G-YH5DSD3L77"
+  apiKey: "AIzaSyCkbg5rtAZ9SV321Djga4xBwsTG2uOUpjw",
+  authDomain: "maldenahealth-finally.firebaseapp.com",
+  projectId: "maldenahealth-finally",
+  storageBucket: "maldenahealth-finally.firebasestorage.app",
+  messagingSenderId: "494931005513",
+  appId: "1:494931005513:web:72dd11f631433967c9ef98",
+  measurementId: "G-YH5DSD3L77"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -32,8 +32,11 @@ async function fetchLikeData() {
   if (docSnap.exists()) {
     const data = docSnap.data();
     likeCountText.textContent = data.count || 0;
-    liked = data.users && data.users[auth.currentUser?.uid] ? true : false;
-    likeImg.src = liked ? 'https://i.ibb.co/wpqbNmx/image.png' : 'https://i.ibb.co/tMtHPp3/image.png';
+
+    if (auth.currentUser) {
+      liked = data.users && data.users[auth.currentUser.uid] ? true : false;
+      likeImg.src = liked ? 'https://i.ibb.co/wpqbNmx/image.png' : 'https://i.ibb.co/tMtHPp3/image.png';
+    }
   } else {
     await setDoc(docRef, { count: 0, users: {} });
     likeCountText.textContent = 0;
@@ -89,10 +92,13 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     fetchLikeData();
   } else {
-    likeCountText.textContent = "0";
     liked = false;
     likeImg.src = 'https://i.ibb.co/tMtHPp3/image.png';
   }
 });
 
+// Виклик fetchLikeData поза авторизацією, щоб кількість лайків відображалася завжди
+fetchLikeData();
+
 likeBtn.addEventListener("click", AnimLikeImg);
+
