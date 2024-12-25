@@ -380,7 +380,7 @@ a {
     cursor: pointer;
     color: #b7b7b7;
     border-radius: 40px;
-    border: 1px solid #7c7c7c;
+    border: 0;
     width: 30px;
     height: 30px;
 }
