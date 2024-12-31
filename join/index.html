@@ -102,10 +102,9 @@
                         text: message
                     })
                     
-                    window.location.href = "/succesfully";
-                    
                         .then(() => {
                             console.log("Повідомлення надіслано до Telegram!");
+                            window.location.href = "/succesfully";
                         })
                         .catch((error) => {
                             console.error("Помилка надсилання повідомлення: ", error);
