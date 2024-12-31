@@ -1,0 +1,127 @@
+* {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+}
+
+body {
+    margin: 0;
+    background-color: black;
+}
+
+.aurora-text {
+    padding: 5px;
+    font-size: 30px;
+    /* Розмір тексту */
+    position: relative;
+    color: #ffffff;
+    /* Колір тексту */
+    text-transform: uppercase;
+    text-align: center;
+    background: linear-gradient(90deg, #ff6ec4, #7873f5, #4ef5db, #ffcc70);
+    background-size: 200% 200%;
+    background-clip: text;
+    /* Standard property */
+    -webkit-background-clip: text;
+    /* WebKit-prefixed property for compatibility */
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    /* Optional: Add standard property if supported */
+    animation: aurora-move 6s ease infinite;
+    mix-blend-mode: lighten;
+    /* Для підсилення ефекту */
+}
+
+@keyframes aurora-move {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    /* Центрує кнопку по горизонталі */
+    align-items: center;
+    /* Центрує кнопку по вертикалі (якщо це потрібно) */
+}
+
+#teamBtn {
+    border-radius: 10px;
+    padding: 8px;
+    padding: 15px 30px;
+    border: 3px solid transparent;
+    /* прозора рамка */
+    border-radius: 5px;
+    /* округлені кути */
+    background-image: linear-gradient(90deg, #ff6ec4, #7873f5, #4ef5db, #ffcc70);
+    /* той самий градієнт */
+    background-size: 200% 200%;
+    background-clip: border-box;
+    /* обмежує ефект до рамки */
+    color: #ffffff;
+    /* колір тексту */
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    -webkit-background-clip: border-box;
+}
+
+button:hover {
+    background-position: 100% 50%;
+    border-color: transparent;
+}
+
+button:active {
+    background-position: 100% 50%;
+    background-position: 10% 50%;
+    border-color: transparent;
+}
+
+button:focus {
+    outline: none;
+}
+
+.header {
+    padding: 8px;
+}
+
+.content {
+    margin: 15px;
+    padding: 10px;
+    border-radius: 15px;
+    border: 2px solid #262626;
+}
+
+.content input,
+textarea {
+    margin-top: 5px;
+    border-radius: 10px;
+    padding: 8px;
+    border: 1px solid #696969;
+    background-color: rgba(46, 46, 46, 0.466);
+}
+
+.gradient-button {
+    background: linear-gradient(to bottom, #000000, #2a2a2a);
+    cursor: pointer;
+    background-color: rgba(46, 46, 46, 0.466);
+    border: 1px solid #696969;
+    border-radius: 18px;
+    padding: 8px;
+    transition: all 0.6s ease;
+}
+
+.gradient-button:hover {
+    transition: all 0.6s ease;
+    background: linear-gradient(to bottom, #000000, #4f4f4f);
+}
