@@ -58,7 +58,17 @@ body {
     border-radius: 10px;
     padding: 15px 30px;
     border: 3px solid transparent; /* прозора рамка */
-    background-image: linear-gradient(90deg, #ff6ec4, #7873f5, #4ef5db, #ffcc70); /* градієнт */
+    background-image: linear-gradient(90deg, 
+    #ff6ec4 0%, 
+    #7873f5 20%, 
+    #4ef5db 50%, 
+    #ffcc70 80%, 
+    #ff73a1 100%, 
+    #a1c4fd 120%, 
+    #f0f5ff 150%, 
+    #ffb347 200%);
+
+
     background-size: 200% 200%; /* для плавного руху градієнта */
     background-clip: border-box; /* застосування градієнта до рамки */
     -webkit-background-clip: border-box; /* сумісність із WebKit */
