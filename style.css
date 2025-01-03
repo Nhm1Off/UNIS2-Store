@@ -101,6 +101,7 @@ button:focus {
 
 .header {
     padding: 8px;
+    text-align: center;
 }
 
 .content {
