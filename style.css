@@ -150,3 +150,15 @@ a {
         background-position: 0% 50%;
     }
 }
+
+.sc-btn {
+    background-color: transparent;
+    cursor: start;
+    border: 0;
+    color: black;
+    font-size: 30px;
+}
+
+.mg-psc {
+    margin-top: 500px;
+}
