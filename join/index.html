@@ -14,6 +14,8 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script type="module" src="https://cdn.jsdelivr.net/npm/ldrs/dist/auto/jelly.js"></script>
 </head>
 
 <body>
@@ -25,7 +27,7 @@
     <div class="content">
         <form id="tg">
             <div class="form-group">
-                <h3>Станьте частиною нас</h3>
+                <h3>Стати частиною нас</h3>
                 <br><br>
                 <label for="name">Прізвище, Ім'я:</label>
                 <br>
@@ -45,7 +47,10 @@
                 <textarea id="work" name="work" required></textarea>
 
                 <br> <br>
-                <button type="submit" class="gradient-button">Надіслати</button>
+                <span style="display: flex; flex-wrap: nowrap;">
+                    <button type="submit" class="gradient-button">Надіслати</button>
+                    <l-jelly size="35" speed="0.9" color="white" style="margin-left: 8px;" id="load" hidden></l-jelly>
+                </span>
             </div>
         </form>
     </div>
@@ -55,11 +60,6 @@
         import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-analytics.js";
         import { getRemoteConfig, fetchAndActivate, getValue } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-remote-config.js";
 
-        // TODO: Add SDKs for Firebase products that you want to use
-        // https://firebase.google.com/docs/web/setup#available-libraries
-
-        // Your web app's Firebase configuration
-        // For Firebase JS SDK v7.20.0 and later, measurementId is optional
         const firebaseConfig = {
             apiKey: "AIzaSyDxCTqPRnmw4bitGyR9nKdRQ0AO8e3MlZE",
             authDomain: "unis2-site.firebaseapp.com",
@@ -79,6 +79,8 @@
             minimumFetchIntervalMillis: 3600000, // Оновлення раз на годину
         };
 
+        const load = document.getElementById("load");
+
         fetchAndActivate(remoteConfig)
             .then(() => {
                 const TOKEN = getValue(remoteConfig, 'TOKEN').asString();
@@ -87,6 +89,8 @@
 
                 document.getElementById("tg").addEventListener("submit", function (e) {
                     e.preventDefault();
+
+                    load.hidden = false;
 
                     const form = this;
 
@@ -101,7 +105,6 @@
                         parse_mode: 'html',
                         text: message
                     })
-                    
                         .then(() => {
                             console.log("Повідомлення надіслано до Telegram!");
                             window.location.href = "/succesfully";
