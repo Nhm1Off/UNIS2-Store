@@ -121,18 +121,12 @@ textarea {
 }
 
 .gradient-button {
-    background: linear-gradient(to bottom, #000000, #2a2a2a);
     cursor: pointer;
     background-color: rgba(46, 46, 46, 0.466);
     border: 1px solid #696969;
     border-radius: 18px;
     padding: 8px;
     transition: all 0.6s ease;
-}
-
-.gradient-button:hover {
-    transition: all 0.6s ease;
-    background: linear-gradient(to bottom, #000000, #4f4f4f);
 }
 
 a {
