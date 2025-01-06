@@ -162,3 +162,14 @@ a {
 .mg-psc {
     margin-top: 500px;
 }
+
+.loading-container {
+    display: flex; /* Використовуємо Flexbox */
+    justify-content: center; /* Центруємо по горизонталі */
+}
+
+@media (min-width: 768px) {
+    .loading-container {
+        justify-content: left;
+    }
+}
