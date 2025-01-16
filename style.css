@@ -101,7 +101,7 @@ button:focus {
 
 .header {
     padding: 8px;
-    text-align: center;
+    text-align: left;
 }
 
 .content {
@@ -166,4 +166,23 @@ a {
     .loading-container {
         justify-content: left;
     }
+}
+
+.aurora-a {
+    position: relative;
+    color: #ffffff;
+    /* Колір тексту */
+    text-transform: uppercase;
+    text-align: center;
+    background: linear-gradient(90deg, #6e73ff, #f5c373, #4ef5db, #f370ff);
+    background-size: 200% 200%;
+    background-clip: text;
+    /* Standard property */
+    -webkit-background-clip: text;
+    /* WebKit-prefixed property for compatibility */
+    -webkit-text-fill-color: transparent;
+    /* Optional: Add standard property if supported */
+    animation: aurora-move 6s ease infinite;
+    mix-blend-mode: lighten;
+    /* Для підсилення ефекту */
 }
