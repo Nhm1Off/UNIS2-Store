@@ -186,3 +186,19 @@ a {
     mix-blend-mode: lighten;
     /* Для підсилення ефекту */
 }
+
+.body-class {
+    background-color: #ccc;
+}
+
+.content-store {
+    background-color: white;
+    border-radius: 10px;
+    margin: 10px;
+    padding: 15px;
+    border: 0;
+}
+
+.body-class p, h1, h2, h3, label, span {
+    color: black;
+}
