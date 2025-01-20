@@ -104,10 +104,6 @@ button:focus {
     text-align: left;
 }
 
-.header p, h1, h2, h3, label {
-    color: white;
-}
-
 .content {
     margin: 15px;
     padding: 10px;
@@ -191,9 +187,9 @@ a {
     /* Для підсилення ефекту */
 }
 
-.body-class {
+/* .body-class {
     background-color: #ccc;
-}
+} */
 
 .content-store {
     background-color: white;
@@ -203,6 +199,6 @@ a {
     border: 0;
 }
 
-.body-class p, h1, h2, h3, label, span {
+/* .body-class p, h1, h2, h3, label, span {
     color: black;
-}
+} */
