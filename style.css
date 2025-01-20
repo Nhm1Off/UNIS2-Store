@@ -102,6 +102,9 @@ button:focus {
 .header {
     padding: 8px;
     text-align: left;
+}
+
+.header p, h1, h2, h3, label {
     color: white;
 }
 
