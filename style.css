@@ -202,3 +202,19 @@ a {
 /* .body-class p, h1, h2, h3, label, span {
     color: black;
 } */
+.container-a {
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+}
+
+.ct-a {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    .ct-a {
+        font-size: 1.2em; /* Зменшуємо розмір шрифта на мобільних пристроях */
+    }
+}
