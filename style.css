@@ -218,3 +218,52 @@ a {
         font-size: 1.2em; /* Зменшуємо розмір шрифта на мобільних пристроях */
     }
 }
+
+.task-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task {
+    background-color: #4d4d4d;
+    padding: 8px;
+    border-radius: 12px;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.tap-btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+#increment {
+    border-radius: 50%;
+    padding: 15px;
+    background-color: black;
+    border: 2px solid #ccc;
+    position: relative;
+    display: flex;
+    align-items: center; /* Вирівнює картинку по центру */
+    justify-content: center;
+}
+
+#increment img {
+    width: 100px; /* Зроби потрібний розмір */
+    height: 100px;
+    opacity: 0.3;
+}
+
+#increment span {
+    position: absolute;
+    font-size: 48px;
+    top: 30%; /* Прижимає до верху */
+    left: 50%;
+    transform: translateX(-50%);
+    /* background: rgba(0, 0, 0, 0.6); Напівпрозорий фон (за бажанням) */
+    color: white; /* Колір тексту */
+    /* padding: 2px 5px; */
+    /* border-radius: 5px; */
+}
